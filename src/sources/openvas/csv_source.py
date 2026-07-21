@@ -20,7 +20,7 @@ from mulitaminer.scanner_engine import get_scanner
 
 from common import blank, norm_key, paragraphs
 from sources.base import Example
-from sources.openvas_references import build_references
+from sources.openvas.references import build_references
 
 _NVT_RE = re.compile(r"^NVT:\s*(.*)$")
 _TEXT_FIELDS = {

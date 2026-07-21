@@ -3,8 +3,8 @@ import pandas as pd
 import pytest
 
 from common import containment, norm_key, tokens
-from sources.openvas_references import build_references
-from sources.openvas_csv import OpenVASCsvSource
+from sources.openvas.references import build_references
+from sources.openvas import OpenVASCsvSource
 
 
 # --- references_from_pdf -----------------------------------------------------

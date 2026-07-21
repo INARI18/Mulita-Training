@@ -21,9 +21,10 @@ src/
   common.py                shared text helpers (norm_key, tokens, containment)
   build_dataset.py         scanner-agnostic assembler (CLI)
   sources/
-    base.py                Example + LabelSource protocol
-    openvas_csv.py         OpenVAS vulnnet CSV as gold labels
-    openvas_references.py  OpenVAS References-section parser
+    base.py                Example + LabelSource protocol (scanner-agnostic)
+    openvas/               OpenVAS-specific labeling
+      csv_source.py        vulnnet CSV as gold labels
+      references.py        References-section parser
   verify/
     pairing.py             1:1 PDF vs CSV pairing check
     content.py             field-content containment check
@@ -31,8 +32,17 @@ tests/                     unit tests for the data engine
 data/                      inputs + generated dataset (gitignored)
 ```
 
-Add a training-data source by implementing `sources.base.LabelSource` and
-registering it in `sources/__init__.py`; the assembler is unchanged.
+Add a scanner by creating `sources/<scanner>/`, implementing
+`sources.base.LabelSource`, and registering it in `sources/__init__.py`; the
+assembler is unchanged.
+
+## Metrics ownership
+
+Extraction quality (BERTScore/ROUGE-L/F1/coverage) is measured by the tool's
+`mulitaminer evaluate` against the baselines — never reimplemented here. This
+repo owns only dataset metrics (verify/) and, later, training-process metrics
+(loss curves, dataset-size learning curve) that orchestrate train -> the
+tool's eval.
 
 ## Running
 
