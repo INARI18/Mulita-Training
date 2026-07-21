@@ -1,0 +1,6 @@
+# Datasets and generated artifacts never enter git
+data/
+outputs/
+.venv/
+__pycache__/
+*.py[cod]
