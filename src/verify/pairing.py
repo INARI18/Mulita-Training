@@ -13,25 +13,31 @@ Verdicts per PDF:
   NO_HOST / NO_BLOCKS  PDF unusable for pairing (listed)
 
 Run from the MulitaMiner2 repo (uses its environment):
-  uv run --no-sync python ../mulita-extractor-training/src/verify_pairing.py
+  uv run --no-sync python ../mulita-extractor-training/src/verify/pairing.py
 """
 from __future__ import annotations
 
 import argparse
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
-import pandas as pd
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from mulitaminer.pdf_reader import extract_pdf
-from mulitaminer.scanner_engine import get_scanner
+import pandas as pd  # noqa: E402
 
-HERE = Path(__file__).resolve().parent.parent
+from mulitaminer.pdf_reader import extract_pdf  # noqa: E402
+from mulitaminer.scanner_engine import get_scanner  # noqa: E402
 
-# NVT name inside an OpenVAS block: the "NVT:" line, possibly wrapped onto
-# following lines until a known section header starts.
+from common import norm_key as norm_name  # noqa: E402
+
+HERE = Path(__file__).resolve().parents[2]
+
 NVT_RE = re.compile(r"^NVT:\s*(.*)$")
+# Report furniture after a wrapped NVT name: the per-host results index and
+# bare page/count lines.
+FURNITURE_RE = re.compile(r"^\d+\s+results?\b|^\d+\s*$", re.IGNORECASE)
 SECTION_RE = re.compile(
     r"^(Summary|Impact|Solution|Vulnerability Detection Result|"
     r"Vulnerability Insight|Vulnerability Detection Method|"
@@ -39,21 +45,6 @@ SECTION_RE = re.compile(
     r"OID|CVSS|Quality of Detection)\b",
     re.IGNORECASE,
 )
-
-# Report-furniture lines that can follow a (wrapped) NVT name: the per-host
-# results index ("2 results per host 10") and bare page/count lines.
-FURNITURE_RE = re.compile(r"^\d+\s+results?\b|^\d+\s*$", re.IGNORECASE)
-
-
-def norm_name(name: str) -> str:
-    """Alphanumeric squeeze: the comparison key.
-
-    PDF text carries rendering artifacts the CSV does not (broken ligatures
-    like ￾ inside words, hyphens lost/kept at line wraps, quote style).
-    Dropping everything but [a-z0-9] makes the key immune to all of them
-    while staying plenty distinctive for these long NVT titles.
-    """
-    return re.sub(r"[^a-z0-9]", "", str(name).lower())
 
 
 def pdf_findings(pdf_path: Path, profile) -> tuple[str | None, Counter]:

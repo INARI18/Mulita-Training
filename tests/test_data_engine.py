@@ -2,9 +2,9 @@
 import pandas as pd
 import pytest
 
-from references_from_pdf import build_references
-from label_from_csv import norm_key, row_to_target
-from build_dataset import _containment, _tokens
+from common import containment, norm_key, tokens
+from sources.openvas_references import build_references
+from sources.openvas_csv import OpenVASCsvSource
 
 
 # --- references_from_pdf -----------------------------------------------------
@@ -61,9 +61,23 @@ def _row(**over) -> pd.Series:
     return pd.Series(base)
 
 
-def test_row_to_target_shape_and_types():
-    block = "High (CVSS: 10.0)\nNVT: PHP End of Life\nReferences\ncve: CVE-2016-5770\n"
-    t = row_to_target(_row(), block, block_id=3)
+class _Block:
+    def __init__(self, id, text):
+        self.id = id
+        self.text = text
+
+
+def _source() -> OpenVASCsvSource:
+    from mulitaminer.models import OpenVASRecord, extraction_model_for
+
+    src = OpenVASCsvSource.__new__(OpenVASCsvSource)  # no I/O; only _target used
+    src._model = extraction_model_for(OpenVASRecord)
+    return src
+
+
+def test_target_shape_and_types():
+    block = _Block(3, "High (CVSS: 10.0)\nNVT: PHP End of Life\nReferences\ncve: CVE-2016-5770\n")
+    t = _source()._target(_row(), block)
     assert t["block_id"] == 3
     assert t["Name"].startswith("PHP End of Life")
     assert t["description"] == ["The PHP version has reached end of life.",
@@ -75,21 +89,17 @@ def test_row_to_target_shape_and_types():
     assert t["plugin"] is None and t["plugin_details"] == {} and t["instances"] == []
 
 
-def test_row_to_target_rejects_bad_severity():
+def test_target_rejects_bad_severity():
     with pytest.raises(Exception):
-        row_to_target(_row(Severity="Bogus"), "NVT: x", 0)
+        _source()._target(_row(Severity="Bogus"), _Block(0, "NVT: x"))
 
 
 def test_norm_key_immune_to_artifacts():
-    # broken ligature + hyphen wrap collapse to the same key
     assert norm_key("Apache 2.4 mod_proxy") == norm_key("Apache 2.4 mod￾_proxy")
 
 
-# --- build_dataset guards ----------------------------------------------------
-
-
 def test_containment_detects_absent_text():
-    block = _tokens("the server runs php 5.5.9 and is end of life")
-    assert _containment(_tokens("php 5.5.9 end of life"), block) == 1.0
-    assert _containment(_tokens("completely unrelated invented sentence"), block) < 0.5
-    assert _containment(_tokens(""), block) == 1.0  # empty field is vacuously fine
+    block = tokens("the server runs php 5.5.9 and is end of life")
+    assert containment(tokens("php 5.5.9 end of life"), block) == 1.0
+    assert containment(tokens("completely unrelated invented sentence"), block) < 0.5
+    assert containment(tokens(""), block) == 1.0  # empty field vacuously fine

@@ -15,20 +15,23 @@ from __future__ import annotations
 
 import argparse
 import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-import pandas as pd
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from mulitaminer.pdf_reader import extract_pdf
-from mulitaminer.scanner_engine import get_scanner
+import pandas as pd  # noqa: E402
 
-HERE = Path(__file__).resolve().parent.parent
+from mulitaminer.pdf_reader import extract_pdf  # noqa: E402
+from mulitaminer.scanner_engine import get_scanner  # noqa: E402
 
+from common import norm_key as key_name, tokens  # noqa: E402
+
+HERE = Path(__file__).resolve().parents[2]
 NVT_RE = re.compile(r"^NVT:\s*(.*)$")
 
-# CSV columns whose text should be contained in the PDF block, mapped to a
-# short label used in the report.
+# CSV column -> short report label.
 FIELDS = {
     "Summary": "summary",
     "Impact": "impact",
@@ -44,28 +47,11 @@ FIELDS = {
     "CERTs": "certs",
 }
 
-TOKEN_RE = re.compile(r"[a-z0-9]+")
-
-
-def key_name(name: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", str(name).lower())
-
-
-def tokens(text) -> Counter:
-    if text is None or (isinstance(text, float) and text != text):
-        return Counter()
-    # Broken-ligature characters split words in PDF text; drop them the same
-    # way on both sides so they cannot cause false misses.
-    cleaned = str(text).replace("￾", "").replace("﻿", "")
-    return Counter(TOKEN_RE.findall(cleaned.lower()))
-
 
 def containment(field_tokens: Counter, block_tokens: Counter) -> float | None:
+    """None for an empty field (excluded from stats), else the hit fraction."""
     total = sum(field_tokens.values())
-    if total == 0:
-        return None
-    hit = sum((field_tokens & block_tokens).values())
-    return hit / total
+    return sum((field_tokens & block_tokens).values()) / total if total else None
 
 
 def main() -> None:
