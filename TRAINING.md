@@ -3,6 +3,10 @@
 How the MulitaMiner embedded-model training was assembled and run. Companion
 to the README (layout/commands); this is the record of what was done and why.
 
+Terminology: the pre-training comparison study ran the models **few-shot**
+(the tool's prompts carry worked examples; no weight updates), not zero-shot;
+"base" rows in the post-training tables refer to that regime.
+
 ## 1. Gold labels: the scanner's own export, never hand-made
 
 Each scanner contributes (PDF, machine export) pairs; the export is parsed
@@ -36,7 +40,7 @@ only; ZAP references gain `CWE n`/`WASC n` (skipping `-1`); ZAP instance
   Tenable unseen on the same app).
 - Cross-scanner overlap on other hosts is allowed by design: matched hosts
   carry largely distinct finding sets (different detection databases).
-- `resources/` xlsx are frozen as the historical zero-shot test set; tuning
+- `resources/` xlsx are frozen as the historical few-shot test set; tuning
   evaluation runs against `data/heldout/` only.
 
 ## 3. Input-faithfulness trim
@@ -65,11 +69,11 @@ the production-identical conversation: system = the tool's scanner prompt
 - Loss masked to the assistant turn (`train_on_responses_only`).
 - Chat template from the base model; qwen3 formatted with
   `enable_thinking: false` (thinking measured counterproductive under
-  json_schema decoding in the zero-shot study).
+  json_schema decoding in the few-shot study).
 - `max_seq_len` 8192; examples over it are dropped (44 train + 3 val), never
   truncated mid-answer.
 - 2 epochs, lr 2e-4, effective batch 16, eval per epoch.
-- Two finalists from the zero-shot study: **qwen3-1.7b** (primary) and
+- Two finalists from the few-shot study: **qwen3-1.7b** (primary) and
   **qwen2.5-1.5b** (control; also the stronger base on OpenVAS description,
   see the study notes) - the post-training comparison decides.
 
