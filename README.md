@@ -36,9 +36,26 @@ src/
     pairing.py             1:1 PDF vs CSV pairing check
     content.py             field-content containment check
     source_vs_baseline.py  source targets vs the derived eval xlsx (mapping check)
+  train/
+    sft.py                 QLoRA SFT (Unsloth), loss masked to the assistant turn
+    configs/               per-model training configs (qwen3-1.7b, qwen2.5-1.5b)
 tests/                     unit tests for the data engine
 data/                      inputs + generated dataset + heldout/ (gitignored)
 ```
+
+## Training (on the GPU box, Docker)
+
+The dataset is never committed; copy it to the box (`scp -r data/dataset ...`),
+then run inside the official Unsloth image (Blackwell/RTX 50xx ready):
+
+```
+docker run --gpus all -v ~/mulita-extractor-training:/w -w /w -d \
+  unsloth/unsloth python src/train/sft.py --config src/train/configs/qwen3-1.7b.json
+```
+
+Outputs land in `outputs/<name>/`: `adapter/`, `merged/` (fp16) and, with
+`--gguf`, `gguf/` (q4_k_m) for Ollama/llama.cpp serving. Evaluation of the
+tuned model runs in the tool repo against `data/heldout/` baselines.
 
 Add a scanner by creating `sources/<scanner>/`, implementing
 `sources.base.LabelSource`, and registering it in `sources/__init__.py`; the
