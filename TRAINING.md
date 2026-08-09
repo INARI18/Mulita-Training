@@ -111,8 +111,10 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 - [x] Dataset built: 6841 examples, 4 scanners
 - [x] Held-out baselines generated for all 4 scanners (`data/heldout/`)
 - [x] SFT script + configs; OOM issues resolved (batch, eval batch)
-- [ ] qwen2.5-1.5b training run complete (in progress on the 5080)
-- [ ] qwen3-1.7b training run
+- [x] qwen2.5-1.5b training run complete (`outputs/mulita-qwen2.5-1.5b`)
+- [ ] qwen3-1.7b training run (in progress on the 5080)
+- [ ] Eval infra ready: tuned-model profiles in the tool, GGUF export script,
+      held-out runbook (`scripts/eval_heldout.sh`) - pending first use
 - [ ] GGUF q4_k_m export of both
 - [ ] Evaluate tuned vs base vs DeepSeek on `data/heldout/` (tool's
       `mulitaminer evaluate`; body fields are the target metric)
