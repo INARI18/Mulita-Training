@@ -1,6 +1,11 @@
 # Datasets and generated artifacts never enter git
-data/
+data/*
 outputs/
 .venv/
 __pycache__/
 *.py[cod]
+
+# provenance record of the generated dataset (small, versioned)
+!data/dataset
+data/dataset/*
+!data/dataset/dataset_report.md
