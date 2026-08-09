@@ -13,6 +13,8 @@ REPO="$(cd "$(dirname "$0")/.." && pwd)"
 # override when the tool is not on PATH, e.g. inside the mulita image:
 #   MULITAMINER='uv run --no-sync mulitaminer'
 MM=${MULITAMINER:-mulitaminer}
+# evaluate phase: METRICS=token_f1,rouge_l for the fast lexical pass (default all)
+METRICS=${METRICS:-all}
 
 case "${1:?extract|evaluate}" in
 extract)
@@ -34,7 +36,7 @@ evaluate)
       echo "SKIP $stem: no run found under $out" >&2
       continue
     fi
-    $MM evaluate "$(dirname "$run")" -b "${pdf%.pdf}.xlsx"
+    $MM evaluate "$(dirname "$run")" -b "${pdf%.pdf}.xlsx" --metrics "$METRICS"
   done
   ;;
 *)
