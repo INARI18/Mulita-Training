@@ -23,10 +23,12 @@ def main() -> None:
     cfg = json.loads(args.config.read_text(encoding="utf-8"))
     run_dir = args.out / cfg["name"]
 
-    from datasets import load_dataset
-    from trl import SFTConfig, SFTTrainer
+    # unsloth must be imported before trl/transformers to apply its patches
     from unsloth import FastLanguageModel
     from unsloth.chat_templates import train_on_responses_only
+
+    from datasets import load_dataset
+    from trl import SFTConfig, SFTTrainer
 
     model, tokenizer = FastLanguageModel.from_pretrained(
         cfg["base_model"],
