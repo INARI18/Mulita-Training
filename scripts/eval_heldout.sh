@@ -10,6 +10,9 @@
 # Ollama), qwen2.5-1.5b, qwen3-1.7b-nothink (bases), deepseek.
 set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
+# override when the tool is not on PATH, e.g. inside the mulita image:
+#   MULITAMINER='uv run --no-sync mulitaminer'
+MM=${MULITAMINER:-mulitaminer}
 
 case "${1:?extract|evaluate}" in
 extract)
@@ -17,7 +20,7 @@ extract)
   out="${3:-$REPO/output_heldout/$model}"
   for pdf in "$REPO"/data/heldout/*/*.pdf; do
     scanner="$(basename "$(dirname "$pdf")")"
-    mulitaminer extract "$pdf" -s "$scanner" -m "$model" \
+    $MM extract "$pdf" -s "$scanner" -m "$model" \
       --output-dir "$out/$scanner"
   done
   ;;
@@ -31,7 +34,7 @@ evaluate)
       echo "SKIP $stem: no run found under $out" >&2
       continue
     fi
-    mulitaminer evaluate "$(dirname "$run")" -b "${pdf%.pdf}.xlsx"
+    $MM evaluate "$(dirname "$run")" -b "${pdf%.pdf}.xlsx"
   done
   ;;
 *)
