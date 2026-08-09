@@ -120,6 +120,9 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 - [ ] Evaluate tuned vs base vs DeepSeek on `data/heldout/` (tool's
       `mulitaminer evaluate`; body fields are the target metric)
 - [ ] Unseen-scanner cut (Tenable) for the tuned models
+- [ ] CPU execution cost: serve the winner's GGUF with inference forced to CPU
+      (Ollama `num_gpu: 0`) on the dev PC - a GPU-less machine is not needed,
+      the measurement is of the CPU-only path (tok/s, minutes/report)
 - [ ] Decide primary model (the §6-of-the-plan gate)
 - [ ] Conditional on the gate: publish the winner (HF model card, or GitHub
       Release / ollama push) - only needed if the no-GPU profile is to be
