@@ -4,9 +4,11 @@
   "max_seq_len": 8192,
   "lora_r": 32,
   "lora_alpha": 32,
-  "batch_size": 2,
-  "grad_accum": 8,
+  "batch_size": 1,
+  "grad_accum": 16,
   "epochs": 2,
-  "lr": 2e-4,
-  "template_kwargs": { "enable_thinking": false }
+  "lr": 0.0002,
+  "template_kwargs": {
+    "enable_thinking": false
+  }
 }
