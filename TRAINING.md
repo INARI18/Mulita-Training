@@ -117,8 +117,12 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 - [ ] Eval infra ready: tuned-model profiles in the tool, GGUF export script,
       held-out runbook (`scripts/eval_heldout.sh`) - pending first use
 - [ ] GGUF q4_k_m export of both
-- [ ] Evaluate tuned vs base vs DeepSeek on `data/heldout/` (tool's
-      `mulitaminer evaluate`; body fields are the target metric)
+- [ ] Evaluate tuned vs base on `data/heldout/` (tool's `mulitaminer
+      evaluate`; body fields are the target metric)
+- [ ] DeepSeek ceiling row: deferred (API unavailable). 5 of 8 held-outs can
+      be scored for free later (extractions already exist in
+      output_experiments; only re-evaluate against the trimmed baselines);
+      the 3 campaign OpenVAS held-outs need one small API run
 - [ ] Unseen-scanner cut (Tenable) for the tuned models
 - [ ] CPU execution cost: serve the winner's GGUF with inference forced to CPU
       (Ollama `num_gpu: 0`) on the dev PC - a GPU-less machine is not needed,
