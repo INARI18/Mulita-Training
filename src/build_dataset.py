@@ -41,6 +41,25 @@ def text_fields(scanner: str) -> list[str]:
             if overrides.get(p.name, p.metric) == "text"]
 
 
+def trim_target(target: dict, block_text: str, fields, cmin: float, trimmed: Counter) -> str | None:
+    """Keep only label content present in the input block. List fields lose the
+    non-contained paragraphs (exports can carry text the PDF never renders);
+    a non-contained scalar field rejects the example (returns the field name)."""
+    block_tokens = tokens(block_text)
+    for f in fields:
+        value = target.get(f)
+        if not value:
+            continue
+        if isinstance(value, list):
+            kept = [p for p in value if containment(tokens(p), block_tokens) >= cmin]
+            if len(kept) != len(value):
+                trimmed[f] += len(value) - len(kept)
+                target[f] = kept
+        elif containment(tokens(value), block_tokens) < cmin:
+            return f
+    return None
+
+
 def eval_identity(repo: Path) -> tuple[set[str], set[str]]:
     """Denied stems + eval-only hosts from heldout.json (see its comment)."""
     cfg = json.loads((repo / "heldout.json").read_text(encoding="utf-8"))
@@ -56,6 +75,7 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
     examples: list[dict] = []
     dropped: Counter = Counter()
     denied: Counter = Counter()
+    trimmed: Counter = Counter()
     fill: Counter = Counter()
 
     for source in sources:
@@ -68,12 +88,7 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
                 continue
 
             fields = tf_cache.setdefault(ex.scanner, text_fields(ex.scanner))
-            block_tokens = tokens(ex.block.text)
-            bad = next(
-                (f for f in fields if ex.target.get(f)
-                 and containment(tokens(ex.target[f]), block_tokens) < cmin),
-                None,
-            )
+            bad = trim_target(ex.target, ex.block.text, fields, cmin, trimmed)
             if bad:
                 dropped[bad] += 1
                 continue
@@ -93,10 +108,12 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
                 "_scanner": ex.scanner,
             })
 
-    _write(out_dir, examples, val_frac, dropped, denied, fill, prompts, deny_stems, deny_hosts)
+    _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
+           deny_stems, deny_hosts)
 
 
-def _write(out_dir, examples, val_frac, dropped, denied, fill, prompts, deny_stems, deny_hosts):
+def _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
+           deny_stems, deny_hosts):
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "prompts").mkdir(exist_ok=True)
     prompt_hashes = {}
@@ -120,8 +137,10 @@ def _write(out_dir, examples, val_frac, dropped, denied, fill, prompts, deny_ste
         "# Training dataset report", "",
         f"- examples admitted: {len(examples)} (train {len(train)}, val {len(val)})",
         f"- per scanner: {dict(per_scanner)}",
-        f"- dropped (field not contained): {sum(dropped.values())}"
+        f"- dropped (scalar field not contained): {sum(dropped.values())}"
         + (f" {dict(dropped)}" if dropped else ""),
+        f"- trimmed paragraphs (not rendered in the PDF): {sum(trimmed.values())}"
+        + (f" {dict(trimmed)}" if trimmed else ""),
         f"- source reports: {len({ex['_source'] for ex in examples})}",
         f"- contamination guard: {len(deny_stems)} stems, {len(deny_hosts)} eval-only hosts; "
         f"denied examples: {dict(denied) or 0}",

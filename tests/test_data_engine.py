@@ -185,6 +185,29 @@ def test_nessus_severity_and_paragraphs():
     assert _paragraphs("<p>One.</p>\n\n<p>Two.</p>") == ["One.", "Two."]
 
 
+def test_trim_target_drops_unrendered_paragraphs():
+    from collections import Counter
+    from build_dataset import trim_target
+
+    block = "THREAT:\nApache is an open-source web server.\nAffected Versions: 2.4.27"
+    target = {"description": ["Apache is an open-source web server.",
+                              "QID Detection Logic: reviews the banner of the HTTP Server."],
+              "Name": "Apache flaw"}
+    trimmed = Counter()
+    bad = trim_target(target, block, ["description", "name"], 0.8, trimmed)
+    assert bad is None
+    assert target["description"] == ["Apache is an open-source web server."]
+    assert trimmed["description"] == 1
+
+
+def test_trim_target_rejects_uncontained_scalar():
+    from collections import Counter
+    from build_dataset import trim_target
+
+    target = {"category": "Completely unrelated invented category"}
+    assert trim_target(target, "some block text", ["category"], 0.8, Counter()) == "category"
+
+
 def test_containment_detects_absent_text():
     block = tokens("the server runs php 5.5.9 and is end of life")
     assert containment(tokens("php 5.5.9 end of life"), block) == 1.0
