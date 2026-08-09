@@ -119,4 +119,7 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 - [ ] Evaluate tuned vs base vs DeepSeek on `data/heldout/` (tool's
       `mulitaminer evaluate`; body fields are the target metric)
 - [ ] Unseen-scanner cut (Tenable) for the tuned models
-- [ ] Decide primary model; HF publication + Modelfile
+- [ ] Decide primary model (the §6-of-the-plan gate)
+- [ ] Conditional on the gate: publish the winner (HF model card, or GitHub
+      Release / ollama push) - only needed if the no-GPU profile is to be
+      usable by third parties; thesis results do not depend on it
