@@ -14,7 +14,7 @@ from typing import Iterator
 
 import pandas as pd
 
-from mulitaminer.models import OpenVASRecord, extraction_model_for
+from mulitaminer.models import extraction_model_for
 from mulitaminer.pdf_reader import extract_pdf
 from mulitaminer.scanner_engine import get_scanner
 
@@ -53,7 +53,7 @@ class OpenVASCsvSource:
     def __init__(self, pdfs_dir: Path, csv_path: Path):
         self.pdfs_dir = Path(pdfs_dir)
         self.csv_path = Path(csv_path)
-        self._model = extraction_model_for(OpenVASRecord)
+        self._model = extraction_model_for(get_scanner(self.scanner).record_type)
 
     def _target(self, row: pd.Series, block) -> dict:
         data: dict = {"block_id": block.id, "Name": str(row["NVT Name"]).strip()}
@@ -61,9 +61,6 @@ class OpenVASCsvSource:
             data[field] = paragraphs(row.get(column))
         data["references"] = build_references(block.text)
         data["log_method"] = []
-        data["plugin"] = None
-        data["plugin_details"] = {}
-        data["instances"] = []
         data["cvss"] = None if blank(row.get("CVSS")) else float(row["CVSS"])
         data["severity"] = str(row["Severity"]).strip().upper()
         data["port"] = _port(row.get("Port"))

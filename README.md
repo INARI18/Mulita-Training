@@ -10,26 +10,34 @@ Design note: `MulitaMiner2/docs/superpowers/plans/2026-07-21-embedded-model-plan
 
 ## Contamination rule
 
-The tool's evaluation baselines (everything under `MulitaMiner2/resources/`)
-are the test set and never enter training. `build_dataset` enforces this and
-aborts if any source example overlaps a baseline host or report.
+`heldout.json` is the train/eval separation contract: per-scanner held-out
+reports (evaluated with scanner-export baselines), denied stems (app duplicates
+of held-outs; eval-only scanners), and eval-only hosts (the held-out apps'
+hosts, denied across ALL scanners so those apps stay eval-only everywhere).
+Cross-scanner overlap on other hosts is allowed by design (matched hosts carry
+largely distinct finding sets). `build_dataset` skips and reports denied
+examples.
 
 ## Layout
 
 ```
+heldout.json               train/eval separation (held-outs, denied stems/hosts)
 src/
   common.py                shared text helpers (norm_key, tokens, containment)
-  build_dataset.py         scanner-agnostic assembler (CLI)
+  build_dataset.py         scanner-agnostic assembler (CLI, --sources all)
+  make_heldout_baselines.py  held-out OpenVAS xlsx from the campaign CSV
   sources/
     base.py                Example + LabelSource protocol (scanner-agnostic)
-    openvas/               OpenVAS-specific labeling
-      csv_source.py        vulnnet CSV as gold labels
-      references.py        References-section parser
+    openvas/               vulnnet CSV as gold labels (+ References parser)
+    qualys/                scan CSV export as gold labels
+    nessus/                "Vulnerabilities by Host" HTML export as gold labels
+    zap/                   ZAP XML report as gold labels
   verify/
     pairing.py             1:1 PDF vs CSV pairing check
     content.py             field-content containment check
+    source_vs_baseline.py  source targets vs the derived eval xlsx (mapping check)
 tests/                     unit tests for the data engine
-data/                      inputs + generated dataset (gitignored)
+data/                      inputs + generated dataset + heldout/ (gitignored)
 ```
 
 Add a scanner by creating `sources/<scanner>/`, implementing
@@ -50,8 +58,9 @@ Scripts use the MulitaMiner2 environment (the `mulitaminer` package is there):
 
 ```
 cd ../MulitaMiner2
-uv run --no-sync python ../mulita-extractor-training/src/build_dataset.py
-uv run --no-sync python ../mulita-extractor-training/src/verify/pairing.py
+uv run --no-sync python ../mulita-extractor-training/src/build_dataset.py --sources all
+uv run --no-sync python ../mulita-extractor-training/src/make_heldout_baselines.py
+uv run --no-sync python ../mulita-extractor-training/src/verify/source_vs_baseline.py qualys-csv
 uv run --no-sync python -m pytest ../mulita-extractor-training/tests
 ```
 

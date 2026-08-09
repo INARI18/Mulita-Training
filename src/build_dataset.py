@@ -2,8 +2,9 @@
 
 Scanner-agnostic: each Example carries which scanner renders its input, so the
 system prompt, block rendering and text-field set all derive from the tool.
-Guards before admission: contamination (eval baselines never enter), field
-containment (labels must be present in the input), schema validity (upstream).
+Guards before admission: contamination (heldout.json: held-out stems, denied
+stems, eval-only hosts), field containment (labels must be present in the
+input), schema validity (upstream).
 
 Provenance: the exact prompt text used per scanner is snapshotted into the
 output, so a trained artifact records the prompt it was trained against.
@@ -34,41 +35,37 @@ CONTAINMENT_MIN = 0.80
 
 
 def text_fields(scanner: str) -> list[str]:
-    record_type = get_scanner(scanner).record_type
-    return [p.name for p in field_plans(record_type) if p.metric == "text"]
+    profile = get_scanner(scanner)
+    overrides = dict(profile.field_metric_overrides)
+    return [p.name for p in field_plans(profile.record_type)
+            if overrides.get(p.name, p.metric) == "text"]
 
 
-def baseline_identity(resources: Path) -> tuple[set[str], set[str]]:
-    stems = {p.stem.lower() for p in resources.rglob("*.pdf")}
-    hosts: set[str] = set()
-    import pandas as pd
-
-    for xlsx in resources.rglob("*.xlsx"):
-        try:
-            df = pd.read_excel(xlsx)
-        except Exception:
-            continue
-        for col in ("host", "Host", "IP"):
-            if col in df.columns:
-                hosts |= {str(h).strip() for h in df[col].dropna()}
-    return stems, hosts
+def eval_identity(repo: Path) -> tuple[set[str], set[str]]:
+    """Denied stems + eval-only hosts from heldout.json (see its comment)."""
+    cfg = json.loads((repo / "heldout.json").read_text(encoding="utf-8"))
+    stems = {s.lower() for stems in cfg["heldout"].values() for s in stems}
+    stems |= {s.lower() for s in cfg["denied_stems"]}
+    return stems, set(cfg["eval_only_hosts"])
 
 
 def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
-    deny_stems, deny_hosts = baseline_identity(TOOL / "resources")
+    deny_stems, deny_hosts = eval_identity(REPO)
     tf_cache: dict[str, list[str]] = {}
     prompts: dict[str, str] = {}
     examples: list[dict] = []
     dropped: Counter = Counter()
+    denied: Counter = Counter()
     fill: Counter = Counter()
 
     for source in sources:
         for ex in source.examples():
-            if Path(ex.source_id).stem.lower() in deny_stems or ex.block.host in deny_hosts:
-                raise SystemExit(
-                    f"CONTAMINATION: {ex.source_id} (host {ex.block.host}) "
-                    f"overlaps an evaluation baseline."
-                )
+            if Path(ex.source_id).stem.lower() in deny_stems:
+                denied["stem"] += 1
+                continue
+            if ex.block.host in deny_hosts:
+                denied["host"] += 1
+                continue
 
             fields = tf_cache.setdefault(ex.scanner, text_fields(ex.scanner))
             block_tokens = tokens(ex.block.text)
@@ -93,12 +90,13 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
                      "content": json.dumps({"items": [ex.target]}, ensure_ascii=False)},
                 ],
                 "_source": ex.source_id,
+                "_scanner": ex.scanner,
             })
 
-    _write(out_dir, examples, val_frac, dropped, fill, prompts, deny_stems, deny_hosts)
+    _write(out_dir, examples, val_frac, dropped, denied, fill, prompts, deny_stems, deny_hosts)
 
 
-def _write(out_dir, examples, val_frac, dropped, fill, prompts, deny_stems, deny_hosts):
+def _write(out_dir, examples, val_frac, dropped, denied, fill, prompts, deny_stems, deny_hosts):
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "prompts").mkdir(exist_ok=True)
     prompt_hashes = {}
@@ -117,14 +115,16 @@ def _write(out_dir, examples, val_frac, dropped, fill, prompts, deny_stems, deny
             for ex in rows:
                 fh.write(json.dumps({"messages": ex["messages"]}, ensure_ascii=False) + "\n")
 
+    per_scanner = Counter(ex["_scanner"] for ex in examples)
     report = [
         "# Training dataset report", "",
         f"- examples admitted: {len(examples)} (train {len(train)}, val {len(val)})",
+        f"- per scanner: {dict(per_scanner)}",
         f"- dropped (field not contained): {sum(dropped.values())}"
         + (f" {dict(dropped)}" if dropped else ""),
         f"- source reports: {len({ex['_source'] for ex in examples})}",
-        f"- contamination guard: {len(deny_stems)} baseline stems, "
-        f"{len(deny_hosts)} baseline hosts denied",
+        f"- contamination guard: {len(deny_stems)} stems, {len(deny_hosts)} eval-only hosts; "
+        f"denied examples: {dict(denied) or 0}",
         f"- prompt snapshots: {prompt_hashes}",
         "", "## Field fill rate", "",
         *[f"- {f}: {n} ({n / max(len(examples), 1):.0%})" for f, n in fill.most_common()],
@@ -134,17 +134,27 @@ def _write(out_dir, examples, val_frac, dropped, fill, prompts, deny_stems, deny
     print(f"\nWrote {out_dir}/train.jsonl, val.jsonl, prompts/, dataset_report.md")
 
 
+def default_sources() -> dict:
+    return {
+        "openvas-csv": lambda: SOURCES["openvas-csv"](
+            REPO / "data" / "pdfs", REPO / "data" / "vulnnet_scans_openvas.csv"),
+        "qualys-csv": lambda: SOURCES["qualys-csv"](TOOL / "resources" / "qualys"),
+        "nessus-html": lambda: SOURCES["nessus-html"](TOOL / "resources" / "nessus"),
+        "zap-xml": lambda: SOURCES["zap-xml"](TOOL / "resources" / "zap"),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", default="openvas-csv", choices=sorted(SOURCES))
-    parser.add_argument("--pdfs", type=Path, default=REPO / "data" / "pdfs")
-    parser.add_argument("--csv", type=Path, default=REPO / "data" / "vulnnet_scans_openvas.csv")
+    parser.add_argument("--sources", default="all",
+                        help="'all' or comma list of: " + ",".join(sorted(SOURCES)))
     parser.add_argument("--out", type=Path, default=REPO / "data" / "dataset")
     parser.add_argument("--val-frac", type=float, default=0.1)
     args = parser.parse_args()
 
-    source = SOURCES[args.source](args.pdfs, args.csv)
-    assemble([source], args.out, args.val_frac, CONTAINMENT_MIN)
+    factories = default_sources()
+    names = sorted(factories) if args.sources == "all" else args.sources.split(",")
+    assemble([factories[n]() for n in names], args.out, args.val_frac, CONTAINMENT_MIN)
 
 
 if __name__ == "__main__":

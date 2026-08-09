@@ -1,0 +1,20 @@
+{
+  "comment": "Train/eval separation. heldout: per-scanner report stems kept out of training and evaluated with scanner-export baselines. denied_stems: never train (same-scanner app duplicate of a held-out; eval-only scanners without machine gold; legacy hand-made baselines). eval_only_hosts: hosts of the held-out app targets, denied across ALL scanners so those apps stay eval-only everywhere. Cross-scanner overlap on other hosts is allowed by design (matched hosts carry largely distinct finding sets; embedded-model plan s11).",
+  "heldout": {
+    "openvas": ["openvas_bkimminich_juice-shop", "openvas_raesene_bwapp", "openvas_wordpress_4.9"],
+    "nessus": ["Nessus_VulnLab_scan-b"],
+    "qualys": ["Qualys_VulnLab_scan-b"],
+    "zap": ["ZAP_JuiceShop", "ZAP_bWAPP", "ZAP_JBoss7"]
+  },
+  "denied_stems": [
+    "openvas_hackersploit_bwapp-docker",
+    "TenableWAS_JuiceShop",
+    "TenableWAS_bWAPP",
+    "Acunetix_testaspnet",
+    "Acunetix_testphp",
+    "OpenVAS_JuiceShop",
+    "OpenVAS_Metasploitable2",
+    "openvas_artifactory-oss_5.11.0"
+  ],
+  "eval_only_hosts": ["172.30.7.1", "172.30.9.2", "172.30.9.4", "172.31.1.20", "172.31.1.83"]
+}
