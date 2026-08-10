@@ -105,12 +105,14 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 
 ## 6b. Findings from the first evaluation round (2026-08-09/10)
 
-- **Tuned qwen2.5 on held-outs (partial, lexical metrics):** the body-field
-  collapse is FIXED - solution 0.05 -> 0.855 (DeepSeek few-shot ceiling was
-  0.82), description 0.39 -> 0.755, detection_result 0.14 -> 0.683, impact
-  0.794, recall 0.947, retries 55 / unrecovered 22 over 994 findings.
-  insight lagged (0.15) - inspect per-scanner. Numbers are cross-set vs the
-  few-shot study until base-on-heldout lands.
+- **FINAL tuned-vs-base table (same 8 held-outs, lexical metrics, 1 run):**
+  tuned qwen2.5 beats its base on 14 of 17 fields. Headlines: solution
+  0.006 -> 0.855 (DeepSeek few-shot ceiling was 0.82), detection_method
+  0.019 -> 0.685, references 0.112 -> 0.731, description 0.409 -> 0.755,
+  product_detection_result 0.234 -> 0.902, recall 0.860 -> 0.947,
+  unrecovered 40 -> 22. Weak/regressed (v2 re-check list): insight 0.15,
+  cvss 0.36, instances 0.58 -> 0.42 (ZAP, n=22); log_method ruler-blind.
+  Aggregation script: weighted measured_mean over evaluation.json files.
 - **Tuned qwen3 degenerates under constrained decoding** (repetition loops,
   6x slower, JSON truncation); clean free-form. Tuned qwen2.5 tolerates the
   grammar. Model dropped (see decision below); partial runs kept as evidence
@@ -159,11 +161,10 @@ Then: GGUF re-export, re-evaluate on held-outs, CPU cost, gate.
       held-out runbook (`scripts/eval_heldout.sh`) - pending first use
 - [ ] GGUF q4_k_m export of both
 - [x] Tuned qwen2.5 extracted + evaluated on held-outs (partial table in 6b)
-- [ ] Base qwen2.5 on held-outs (`base-q25` container running on the 5080)
+- [x] Base qwen2.5 on held-outs, evaluated
 - [x] cvss/schema test done: schema stays ON for the champion (see 6b);
       cvss root cause moves to the v2-retrain re-check
-- [ ] Full tuned-vs-base table (after the two above; lexical metrics first,
-      bertscore/nli at closing time)
+- [x] Full tuned-vs-base table (6b; bertscore/nli still pending for closing)
 - [ ] Dataset v2 + final retrain (see 6c)
 - [ ] DeepSeek ceiling row: deferred (API unavailable). 5 of 8 held-outs can
       be scored for free later (extractions already exist in
