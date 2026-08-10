@@ -9,3 +9,6 @@ __pycache__/
 !data/dataset
 data/dataset/*
 !data/dataset/dataset_report.md
+
+# extraction outputs (generated)
+output_heldout/
