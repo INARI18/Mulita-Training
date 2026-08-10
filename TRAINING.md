@@ -205,6 +205,12 @@ Evidence stack that the champion learned the task rather than the data:
    No collapse on never-seen content - the model extracts, it does not
    recite. (Novel scoring higher likely reflects simpler advisory texts in
    that subset; n=96 supports "no collapse", nothing finer.)
+   Per-scanner decomposition of the 96 (Bia's challenge): nessus 51 (novel
+   desc+sol 0.657), qualys 38 (0.925), zap 4, openvas 3 - the cut spans two
+   major formats, NOT nessus-only; but novel-within-OpenVAS is under-tested
+   (n=3: the 126 trained campaign reports cover nearly the whole NVT space
+   of the held-outs). The Tenable unseen-scanner cut is the strong-form
+   answer: there, all findings AND the format are novel.
 4. Unseen-scanner cut (Tenable) still pending - the distribution-shift test.
 
 Method for (3): normalize names (alphanumeric squeeze), collect all item
