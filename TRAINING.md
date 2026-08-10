@@ -191,6 +191,16 @@ cut. One-command run: config epochs=2 clone of qwen2.5-1.5b-v3.json, ~2h30.
 Decide after the v3 table: if v3 degrades contract vs v2, the half-dose
 hypothesis is confirmed and v4 is the test.
 
+**v3 RESULTS (same 8 held-outs): v2 STAYS champion; half-dose confirmed both
+ways.** v3 recovered half the prose (description 0.585 -> 0.662, still below
+v1's 0.755) and jumped on technical fields (detection_method 0.919, category
+0.962, detection_result 0.829) but degraded where it hurts: recall 0.965 ->
+0.929, unrecovered 19 -> 30, port/protocol ~0.87 -> ~0.70, cvss 0.79 ->
+0.71, instances 0.84 -> 0.35; bwapp stress report took 3x longer with 203
+drops. Novel-NVT cut again shows no collapse (solution 0.969 on unseen).
+v4 (2 epochs) queued as the full-dose test - v1/v2/v3 gave us a clean dose-
+response series for the thesis.
+
 ## 6e. Memorization control (learned vs memorized)
 
 Evidence stack that the champion learned the task rather than the data:
