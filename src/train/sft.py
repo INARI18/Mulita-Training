@@ -56,13 +56,18 @@ def main() -> None:
         "val": str(args.data / "val.jsonl"),
     })
     data = data.map(to_text, remove_columns=["messages"])
-    # drop the few giant outliers instead of truncating mid-answer
+    # drop the few giant outliers instead of truncating mid-answer; the eval
+    # pass materializes full fp32 logits, so cap val harder (12k-token val
+    # examples OOM the 16 GB card at evaluation time)
+    eval_cap = min(cfg["max_seq_len"], 8192)
     before = {k: len(d) for k, d in data.items()}
-    data = data.filter(
+    data["train"] = data["train"].filter(
         lambda r: len(tokenizer(r["text"]).input_ids) <= cfg["max_seq_len"])
-    for k in data:
+    data["val"] = data["val"].filter(
+        lambda r: len(tokenizer(r["text"]).input_ids) <= eval_cap)
+    for k, cap in (("train", cfg["max_seq_len"]), ("val", eval_cap)):
         if (n := before[k] - len(data[k])):
-            print(f"{k}: dropped {n} examples over {cfg['max_seq_len']} tokens")
+            print(f"{k}: dropped {n} examples over {cap} tokens")
 
     trainer = SFTTrainer(
         model=model,
