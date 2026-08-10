@@ -103,6 +103,42 @@ docker run --gpus all -v ~/mulita-extractor-training:/w -w /w -d --name train-<x
 Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 -> ~1h30-2h per model (qwen2.5-1.5b).
 
+## 6b. Findings from the first evaluation round (2026-08-09/10)
+
+- **Tuned qwen2.5 on held-outs (partial, lexical metrics):** the body-field
+  collapse is FIXED - solution 0.05 -> 0.855 (DeepSeek few-shot ceiling was
+  0.82), description 0.39 -> 0.755, detection_result 0.14 -> 0.683, impact
+  0.794, recall 0.947, retries 55 / unrecovered 22 over 994 findings.
+  insight lagged (0.15) - inspect per-scanner. Numbers are cross-set vs the
+  few-shot study until base-on-heldout lands.
+- **Tuned qwen3 degenerates under constrained decoding** (repetition loops,
+  6x slower, JSON truncation); clean free-form. Tuned qwen2.5 tolerates the
+  grammar. Model dropped (see decision below); partial runs kept as evidence
+  (`output_heldout/mulita-qwen3-1.7b{,-schema}` on the box).
+- **cvss-null anomaly (tuned q25, OpenVAS):** block header shows the score,
+  severity extracted right, cvss=null in ~55%. Training gold had cvss ~100%.
+  Leading hypothesis: mild grammar friction (null = cheapest legal escape).
+  DECIDING TEST pending: wordpress_4.9 with `mulita-qwen2.5-1.5b-noschema`
+  profile; compare null rate vs 27/54 with schema. Outcome decides the
+  champion's serving config (schema on/off).
+- **log_method gold bug:** the campaign CSV has no Log Method column, so
+  gold AND held-out baseline say empty while the production prompt says fill;
+  the model fills with real block content and scores 0 on 104 measured pairs.
+  Ruler-blind field - ignore its scores for now.
+
+## 6c. Dataset v2 + final retrain (one batch, planned)
+
+All fixes land in ONE dataset regeneration + ONE qwen2.5 retrain (~1h30):
+
+1. Production chunking: pack examples as 1-4 blocks per call with combined
+   `{"items":[...]}`, mirroring the tool's chunker (user request; removes the
+   train/serve mismatch class entirely).
+2. log_method gold parsed from the block's own `Log Method:` section
+   (deterministic, like build_references); regenerate held-out baselines.
+3. Whatever the cvss/schema test decides (serving flag and/or gold tweak).
+
+Then: GGUF re-export, re-evaluate on held-outs, CPU cost, gate.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
@@ -117,8 +153,12 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 - [ ] Eval infra ready: tuned-model profiles in the tool, GGUF export script,
       held-out runbook (`scripts/eval_heldout.sh`) - pending first use
 - [ ] GGUF q4_k_m export of both
-- [ ] Evaluate tuned vs base on `data/heldout/` (tool's `mulitaminer
-      evaluate`; body fields are the target metric)
+- [x] Tuned qwen2.5 extracted + evaluated on held-outs (partial table in 6b)
+- [ ] Base qwen2.5 on held-outs (`base-q25` container running on the 5080)
+- [ ] cvss/schema deciding test (wordpress noschema; command in chat/6b)
+- [ ] Full tuned-vs-base table (after the two above; lexical metrics first,
+      bertscore/nli at closing time)
+- [ ] Dataset v2 + final retrain (see 6c)
 - [ ] DeepSeek ceiling row: deferred (API unavailable). 5 of 8 held-outs can
       be scored for free later (extractions already exist in
       output_experiments; only re-evaluate against the trimmed baselines);
