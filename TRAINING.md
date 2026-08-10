@@ -162,12 +162,24 @@ unrecovered 19. Cost: prose regressed - description 0.755 -> 0.585, solution
 far above base everywhere). log_method now measurable: 0.404 (v1 0.087 with
 its empty-gold training). **CHAMPION: v2.**
 
-**Optional v3 (polish, not gate-blocking):** the two training shapes teach
+**v3 (mixed shapes, union design):** the two training shapes teach
 complementary skills (single-block -> prose depth; production chunks ->
-multi-item structure). v3 = train on BOTH (all v2 chunks + all v1
-single-block examples, ~2x dataset, ~3h). Trivial assembler change (emit
-both shapes). Expected to recover the prose regression while keeping the
-structural gains; not guaranteed - only worth doing if time allows.
+multi-item structure). v3 trains on BOTH: every record appears once as a
+single-block example and once inside its production chunk (8740 examples =
+6841 singles + 1899 chunks); 1 epoch keeps total content exposure equal to
+v2's 2 epochs.
+
+Format balance - two different counts, don't confuse them:
+- By EXAMPLES, singles are ~78% of the jsonl (a 4-finding report yields 4
+  single examples + 1 chunk example). This only governs how often the model
+  sits in a 1-block context during training.
+- By LEARNING SIGNAL it is exactly 50/50 by construction: loss is masked to
+  the assistant answer, and each record's answer is written exactly once in
+  each shape - so the gradient mass per format is 1:1 (the chunk example
+  carries N answers at once).
+If the v3 table shows the balance leaning one way, the ratio (duplicate
+chunks / subsample singles) is the next knob; the token math above is the
+guide.
 
 ## 6e. Memorization control (learned vs memorized)
 
