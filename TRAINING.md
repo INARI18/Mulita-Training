@@ -169,6 +169,18 @@ single-block examples, ~2x dataset, ~3h). Trivial assembler change (emit
 both shapes). Expected to recover the prose regression while keeping the
 structural gains; not guaranteed - only worth doing if time allows.
 
+## 6d. Dataset versioning (local, never in git)
+
+Physical copies live side by side under `data/` (gitignored):
+`data/dataset-v1` (single-block shape), `data/dataset-v2` (production-chunked,
+archived byte-exact from the v2 training), `data/dataset` = the current one.
+`build_dataset.py --shape single|chunked|mixed` regenerates any shape;
+`mixed` is the v3 recipe. Honest note: `dataset-v1` was REgenerated with the
+current gold (log_method filled), so it is shape-faithful but not byte-equal
+to what the v1 model actually trained on; the exact historical v1 is
+reproducible only by checking out the pre-v2 commit. dataset_report.md in git
+records provenance per commit.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)

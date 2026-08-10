@@ -72,7 +72,8 @@ def eval_identity(repo: Path) -> tuple[set[str], set[str]]:
     return stems, set(cfg["eval_only_hosts"])
 
 
-def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
+def assemble(sources, out_dir: Path, val_frac: float, cmin: float,
+             shape: str = "chunked") -> None:
     deny_stems, deny_hosts = eval_identity(REPO)
     tf_cache: dict[str, list[str]] = {}
     prompts: dict[str, str] = {}
@@ -104,30 +105,39 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
             # first gold wins on duplicate block matches within a report
             by_report.setdefault((ex.scanner, ex.source_id), {}).setdefault(ex.block.id, ex)
 
-    # production-shaped examples: pack each report's gold-bearing blocks with
-    # the tool's own chunker and answer every block of the chunk at once
+    # shapes: "chunked" = production packing (N blocks -> N items, the tool's
+    # own chunker); "single" = one block per call (items of length 1);
+    # "mixed" = both, interleaved by the trainer's shuffle
     n_records = 0
+
+    def emit(scanner, source_id, prompt, blocks, targets):
+        examples.append({
+            "messages": [
+                {"role": "system", "content": prompt},
+                {"role": "user", "content": render_chunk(blocks)},
+                {"role": "assistant",
+                 "content": json.dumps({"items": targets}, ensure_ascii=False)},
+            ],
+            "_source": source_id,
+            "_scanner": scanner,
+        })
+
     for (scanner, source_id), by_id in by_report.items():
         prompt = prompts.setdefault(scanner, get_scanner(scanner).prompt())
         ordered = [by_id[i] for i in sorted(by_id)]
-        chunks, _ = pack(
-            [e.block for e in ordered],
-            max_blocks_per_chunk=get_scanner(scanner).max_vulns_per_chunk,
-            token_budget=TRAIN_TOKEN_BUDGET,
-        )
-        for chunk in chunks:
-            items = [by_id[b.id].target for b in chunk.blocks]
-            n_records += len(items)
-            examples.append({
-                "messages": [
-                    {"role": "system", "content": prompt},
-                    {"role": "user", "content": render_chunk(chunk.blocks)},
-                    {"role": "assistant",
-                     "content": json.dumps({"items": items}, ensure_ascii=False)},
-                ],
-                "_source": source_id,
-                "_scanner": scanner,
-            })
+        n_records += len(ordered)
+        if shape in ("single", "mixed"):
+            for e in ordered:
+                emit(scanner, source_id, prompt, [e.block], [e.target])
+        if shape in ("chunked", "mixed"):
+            chunks, _ = pack(
+                [e.block for e in ordered],
+                max_blocks_per_chunk=get_scanner(scanner).max_vulns_per_chunk,
+                token_budget=TRAIN_TOKEN_BUDGET,
+            )
+            for chunk in chunks:
+                emit(scanner, source_id, prompt, chunk.blocks,
+                     [by_id[b.id].target for b in chunk.blocks])
 
     _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
            deny_stems, deny_hosts, n_records)
@@ -189,13 +199,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sources", default="all",
                         help="'all' or comma list of: " + ",".join(sorted(SOURCES)))
+    parser.add_argument("--shape", default="chunked", choices=["single", "chunked", "mixed"])
     parser.add_argument("--out", type=Path, default=REPO / "data" / "dataset")
     parser.add_argument("--val-frac", type=float, default=0.1)
     args = parser.parse_args()
 
     factories = default_sources()
     names = sorted(factories) if args.sources == "all" else args.sources.split(",")
-    assemble([factories[n]() for n in names], args.out, args.val_frac, CONTAINMENT_MIN)
+    assemble([factories[n]() for n in names], args.out, args.val_frac,
+             CONTAINMENT_MIN, args.shape)
 
 
 if __name__ == "__main__":
