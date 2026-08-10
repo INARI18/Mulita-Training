@@ -169,6 +169,26 @@ single-block examples, ~2x dataset, ~3h). Trivial assembler change (emit
 both shapes). Expected to recover the prose regression while keeping the
 structural gains; not guaranteed - only worth doing if time allows.
 
+## 6e. Memorization control (learned vs memorized)
+
+Evidence stack that the champion learned the task rather than the data:
+
+1. eval_loss falls across epochs on every run (no train/val divergence);
+   caveat: the val split shares NVTs with train, so this alone is weak.
+2. Held-out reports (stems + hosts denied from training) score high.
+3. **Novel-NVT cut (the direct memorization test):** held-out v2 pairs split
+   by whether the finding's name appeared anywhere in training gold.
+   Seen (n=863) vs novel (n=96) token_f1: description 0.583 vs 0.606,
+   solution 0.756 vs 0.945, impact 0.770 vs 0.969, insight 0.563 vs 0.518.
+   No collapse on never-seen content - the model extracts, it does not
+   recite. (Novel scoring higher likely reflects simpler advisory texts in
+   that subset; n=96 supports "no collapse", nothing finer.)
+4. Unseen-scanner cut (Tenable) still pending - the distribution-shift test.
+
+Method for (3): normalize names (alphanumeric squeeze), collect all item
+Names from the training jsonl, classify each evaluation pair, aggregate
+non-vacuous token_f1 per group.
+
 ## 6d. Dataset versioning (local, never in git)
 
 Physical copies live side by side under `data/` (gitignored):
