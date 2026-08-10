@@ -1,0 +1,113 @@
+{
+  "config": {
+    "input": "/training/data/heldout/nessus/Nessus_VulnLab_scan-b.pdf",
+    "scanner": "nessus",
+    "model": "mulita-qwen3-1.7b",
+    "model_name": null,
+    "formats": [],
+    "debug": false
+  },
+  "block_count": 268,
+  "raw_record_count": 250,
+  "final_record_count": 250,
+  "usage": {
+    "prompt_tokens": 417441,
+    "completion_tokens": 98604,
+    "calls": 150,
+    "cost_usd": 0.0
+  },
+  "duration_s": 1291.35,
+  "warnings": [
+    "chunk 21: duplicate block_id 60 dropped",
+    "chunk 21: duplicate block_id 60 dropped",
+    "chunk 21: duplicate block_id 60 dropped",
+    "chunk 21: duplicate block_id 60 dropped",
+    "chunk 21: duplicate block_id 60 dropped",
+    "chunk 21: duplicate block_id 60 dropped",
+    "chunk 21: duplicate block_id 60 dropped",
+    "chunk 37: duplicate block_id 118 dropped",
+    "chunk 63: duplicate block_id 211 dropped",
+    "chunk 83: unknown block_id 257 dropped",
+    "block 55 yielded no record after 3 attempts; dropped",
+    "block 119 yielded no record after 3 attempts; dropped",
+    "block 121 yielded no record after 3 attempts; dropped",
+    "block 127 yielded no record after 3 attempts; dropped",
+    "block 173 yielded no record after 3 attempts; dropped",
+    "block 193 yielded no record after 3 attempts; dropped",
+    "block 194 yielded no record after 3 attempts; dropped",
+    "block 209 yielded no record after 3 attempts; dropped",
+    "block 210 yielded no record after 3 attempts; dropped",
+    "block 215 yielded no record after 3 attempts; dropped",
+    "block 220 yielded no record after 3 attempts; dropped",
+    "block 221 yielded no record after 3 attempts; dropped",
+    "block 224 yielded no record after 3 attempts; dropped",
+    "block 236 yielded no record after 3 attempts; dropped",
+    "block 257 yielded no record after 3 attempts; dropped",
+    "block 262 yielded no record after 3 attempts; dropped",
+    "block 264 yielded no record after 3 attempts; dropped",
+    "block 265 yielded no record after 3 attempts; dropped",
+    "negation gate: 5 flip candidate(s) flagged; see negation_flags in run.json"
+  ],
+  "drops": {
+    "unknown_id": 1,
+    "duplicate_id": 9,
+    "validation_error": 0,
+    "unrecovered": 18
+  },
+  "retries": {
+    "bad_json": 53,
+    "bad_shape": 0
+  },
+  "merge_log": [],
+  "negation_flags": [
+    {
+      "block_id": 14,
+      "field": "detection_result",
+      "kind": "invented",
+      "overlap": 1.0,
+      "extracted_sentence": "Detected local MAC Address        : e68cc3441691\n Response from local MAC Address   : e68cc3441691\nDetected Gateway MAC Address      : 621fd2489f9c\n Response from Gateway MAC Address : 621fd2489f9c /no",
+      "source_sentence": "Detected local MAC Address : e68cc3441691\n Response from local MAC Address : e68cc3441691\n Detected Gateway MAC Address : 621fd2489f9c\n Response from Gateway MAC Address : 621fd2489f9c",
+      "nli_score": null
+    },
+    {
+      "block_id": 29,
+      "field": "detection_result",
+      "kind": "invented",
+      "overlap": 1.0,
+      "extracted_sentence": "Detected local MAC Address        : e68cc3441691\n Response from local MAC Address   : e68cc3441691\nDetected Gateway MAC Address      : 429bb495668b\n Response from Gateway MAC Address : 429bb495668b /no",
+      "source_sentence": "Detected local MAC Address : e68cc3441691\n Response from local MAC Address : e68cc3441691\n Detected Gateway MAC Address : 429bb495668b\n Response from Gateway MAC Address : 429bb495668b",
+      "nli_score": null
+    },
+    {
+      "block_id": 98,
+      "field": "detection_result",
+      "kind": "invented",
+      "overlap": 1.0,
+      "extracted_sentence": "Detected local MAC Address        : e68cc3441691\n Response from local MAC Address   : e68cc3441691\nDetected Gateway MAC Address      : aaea2f7428f1\n Response from Gateway MAC Address : aaea2f7428f1 /no",
+      "source_sentence": "Detected local MAC Address : e68cc3441691\n Response from local MAC Address : e68cc3441691\n Detected Gateway MAC Address : aaea2f7428f1\n Response from Gateway MAC Address : aaea2f7428f1",
+      "nli_score": null
+    },
+    {
+      "block_id": 183,
+      "field": "detection_result",
+      "kind": "invented",
+      "overlap": 1.0,
+      "extracted_sentence": "Detected local MAC Address        : e68cc3441691\n Response from local MAC Address   : e68cc3441691\nDetected Gateway MAC Address      : 0e2f8a2f783c\n Response from Gateway MAC Address : 0e2f8a2f783c /no",
+      "source_sentence": "Detected local MAC Address : e68cc3441691\n Response from local MAC Address : e68cc3441691\n Detected Gateway MAC Address : 0e2f8a2f783c\n Response from Gateway MAC Address : 0e2f8a2f783c",
+      "nli_score": null
+    },
+    {
+      "block_id": 28,
+      "field": "name",
+      "kind": "dropped",
+      "overlap": 0.545,
+      "extracted_sentence": "Redis Server Unprotected by Password Authentication",
+      "source_sentence": "100634 - Redis Server Unprotected by Password Authentication\nSynopsis\nA Redis server is not protected by password authentication.",
+      "nli_score": null
+    }
+  ],
+  "pdf": {
+    "pages": 344,
+    "backend": "pypdfium2"
+  }
+}

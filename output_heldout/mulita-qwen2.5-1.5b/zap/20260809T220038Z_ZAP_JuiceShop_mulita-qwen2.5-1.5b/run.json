@@ -1,0 +1,39 @@
+{
+  "config": {
+    "input": "/training/data/heldout/zap/ZAP_JuiceShop.pdf",
+    "scanner": "zap",
+    "model": "mulita-qwen2.5-1.5b",
+    "model_name": null,
+    "formats": [],
+    "debug": false
+  },
+  "block_count": 10,
+  "raw_record_count": 9,
+  "final_record_count": 9,
+  "usage": {
+    "prompt_tokens": 10485,
+    "completion_tokens": 3376,
+    "calls": 5,
+    "cost_usd": 0.0
+  },
+  "duration_s": 67.25,
+  "warnings": [
+    "block 8 yielded no record after 3 attempts; dropped"
+  ],
+  "drops": {
+    "unknown_id": 0,
+    "duplicate_id": 0,
+    "validation_error": 0,
+    "unrecovered": 1
+  },
+  "retries": {
+    "bad_json": 3,
+    "bad_shape": 0
+  },
+  "merge_log": [],
+  "negation_flags": [],
+  "pdf": {
+    "pages": 11,
+    "backend": "pypdfium2"
+  }
+}

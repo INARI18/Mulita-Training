@@ -1,0 +1,5448 @@
+[
+  {
+    "Name": "PHP End of Life (EOL) Detection - Linux",
+    "description": [
+      "The PHP version on the remote host has reached the end of life and should not be used anymore."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "The "
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 1",
+    "description": [
+      "The target host is vulnerable to multiple vulnerabilities in PHP versions prior to 8.1.32, 8.2.x prior to 8.2.26 and 8.3.x prior to 8.3.14. The most severe vulnerability is CVE-2025-1217: Header parser of 'http' stream wrapper does not handle folded headers.",
+      ""
+    ],
+    "solution": [
+      "Solution type: VendorFix",
+      "Update to version 8.1.32, 8.2.26 or later."
+    ],
+    "impact": [],
+    "references": [
+      "cve: CVE-2025-1217",
+      "url: https://www.php.net/ChangeLog-8.php#8.1.32",
+      "url: https://www.php.net/ChangeLog-8.php#8.2.26",
+      "url: https://www.php.net/ChangeLog-8.php#8.3.14"
+    ],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9",
+      "Product detection result",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722"
+    ],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 2",
+    "description": [
+      "The target host is vulnerable to multiple vulnerabilities in PHP versions prior to 8.1.32, 8.2.x prior to 8.2.26 and 8.3.x prior to 8.3.14. The most severe vulnerability is CVE-2025-1217: Header parser of 'http' stream wrapper does not handle folded headers.",
+      ""
+    ],
+    "solution": [
+      "Solution type: VendorFix",
+      "Update to version 8.1.32, 8.2.26 or later."
+    ],
+    "impact": [],
+    "references": [
+      "cve: CVE-2025-1217",
+      "url: https://www.php.net/ChangeLog-8.php#8.1.32",
+      "url: https://www.php.net/ChangeLog-8.php#8.2.26",
+      "url: https://www.php.net/ChangeLog-8.php#8.3.14"
+    ],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9",
+      "Product detection result",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722"
+    ],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 3",
+    "description": [
+      "The target host is vulnerable to multiple vulnerabilities in PHP versions prior to 8.1.31, 8.2.x prior to 8.2.26 and 8.3.x prior to 8.3.14. The most severe vulnerability is CVE-2024-8929: Leak partial content of the heap through heap buffer over-read.",
+      ""
+    ],
+    "solution": [
+      "Solution type: VendorFix",
+      "Update to version 8.1.31, 8.2.26 or later."
+    ],
+    "impact": [],
+    "references": [
+      "cve: CVE-2024-8929",
+      "url: https://www.php.net/ChangeLog-8.php#8.1.31",
+      "url: https://www.php.net/ChangeLog-8.php#8.2.26",
+      "url: https://www.php.net/ChangeLog-8.php#8.3.14"
+    ],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9",
+      "Product detection result",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722"
+    ],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server < 2.4.54 Multiple Vulnerabilities - Linux",
+    "description": [
+      "Apache HTTP Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7",
+      "Fixed version: 2.4.54"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.32, 5.6.x < 5.6.18, 7.x < 7.0.3 Multiple Vulnerabilities (Jul 2016) - Linux",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Critical (CVSS: 9.8)",
+    "description": [
+      "The host is vulnerable to multiple vulnerabilities in PHP prior to version 8.1.29, 8.2.x < 8.2.20, and 8.3.x < 8.3.8.",
+      "The host is also vulnerable to a specific vulnerability on Windows systems only."
+    ],
+    "solution": [
+      "VendorFix",
+      "Update to version 8.1.29, 8.2.20, or 8.3.8 or later."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 7",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation",
+      "OID:1.3.6.1.4.1.25623.1.0.117232)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server Multiple Vulnerabilities (Jun 2017) - Linux",
+    "description": [
+      "Apache HTTP Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7",
+      "Fixed version: 2.4.26",
+      "Installation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.27, 5.6.x < 5.6.11 Arbitrary Code Execution Vulnerability (Aug 2016) - Linux",
+    "description": [
+      "PHP is prone to an arbitrary code execution vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9",
+      "Fixed version: 5.5.27, 5.6.11 or later",
+      "Installation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Critical (CVSS: 9.8)",
+    "description": [
+      "The target host is vulnerable to multiple vulnerabilities in PHP prior to version 5.6.28 and 7.x prior to 7.0.13.",
+      "Product detection result: cpe:/a:php:php:5.5.9",
+      "Detected by PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)",
+      "Summary: PHP is prone to multiple vulnerabilities.",
+      "Quality of Detection (QoD): 30%",
+      "Vulnerability Detection Result: Installed version: 5.5.9, Fixed version: 5.6.28",
+      "Solution type: VendorFix",
+      "Update to version 5.6.28, 7.0.13 or later.",
+      "Affected Software/OS: PHP prior to version 5.6.28 and 7.x prior to 7.0.13."
+    ],
+    "solution": [
+      "Solution type: VendorFix",
+      "Update to version 5.6.28, 7.0.13 or later.",
+      "Affected Software/OS: PHP prior to version 5.6.28 and 7.x prior to 7.0.13."
+    ],
+    "impact": [],
+    "references": [
+      "cve: CVE-2016-8670",
+      "cve: CVE-2016-9933, CVE-2016-9934",
+      "cve: CVE-2016-10397",
+      "url: http://www.php.net/ChangeLog-5.php",
+      "url: http://www.php.net/ChangeLog-7.php",
+      "url: http://bugs.php.net/73280",
+      "url: http://bugs.php.net/72696",
+      "url: http://bugs.php.net/73331",
+      "url: http://bugs.php.net/73192"
+    ],
+    "severity": "critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "Product: cpe:/a:php:php:5.5.9",
+      "Method: PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)",
+      "References: cve: CVE-2016-8670, cve: CVE-2016-9933, cve: CVE-2016-9934, cve: CVE-2016-10397",
+      "OID: 1.3.6.1.4.1.25623.1.0.811489"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: PHP < 5.6.28, 7.x < 7.0.13 Multiple Vulnerabilities (Nov 2016) - Linux",
+      "OID: 1.3.6.1.4.1.25623.1.0.811489"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.27, 7.x < 7.0.12 Multiple DoS Vulnerabilities (Oct 2016) - Linux",
+    "description": [
+      "PHP is prone to multiple denial of service (DoS) vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server <= 2.4.51 Buffer Overflow Vulnerability - Linux",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 14",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 15",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.4.42, 5.5.x < 5.5.26, 5.6.x < 5.6.10 Multiple Vulnerabilities (Aug 2016) - Linux",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.25, 7.x < 7.0.10 Multiple Vulnerabilities (Sep 2016) - Linux",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.x < 5.6.34, 7.x < 7.0.28, 7.1.x < 7.1.15, 7.2.x < 7.2.3 Stack Buffer Overflow",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.4.28, 8.0.x < 8.0.16, 8.1.x < 8.1.3 Security Update (Feb 2022) - Linux",
+    "description": [
+      "Fix #81708: UAF due to php_filter_float() failing for ints.",
+      "A security fix was released in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 22",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "PHP < 5.5.37",
+      "5.6.x < 5.6.23",
+      "7.x < 7.0.8 Multiple Vulnerabilities (Aug 2016) - Linux"
+    ],
+    "log_method": [
+      "cve: CVE-2016-5766",
+      "cve: CVE-2016-5767",
+      "cve: CVE-2016-5768",
+      "cve: CVE-2016-5769",
+      "cve: CVE-2016-5772",
+      "cve: CVE-2016-5773",
+      "url: http://www.php.net/ChangeLog-5.php",
+      "url: http://www.securityfocus.com/bid/91397",
+      "url: http://www.securityfocus.com/bid/91398",
+      "url: http://www.securityfocus.com/bid/91399",
+      "url: http://www.securityfocus.com/bid/91396",
+      "url: http://www.securityfocus.com/bid/91395",
+      "url: http://www.php.net/ChangeLog-7.php"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 23",
+    "description": [
+      "The host is vulnerable to multiple vulnerabilities in PHP prior to version 5.5.37 and 5.6.x prior to 5.6.23 on Linux.",
+      "This vulnerability allows remote attackers to cause a denial of service (use-after-free and application crash) or possibly execute arbitrary code via a large integer argument."
+    ],
+    "solution": [
+      "Solution type: VendorFix",
+      "Update to version 5.5.37, 5.6.23 or later.",
+      "Affected Software/OS: PHP prior to version 5.5.37 and 5.6.x prior to 5.6.23 on Linux."
+    ],
+    "impact": [],
+    "references": [
+      "cve: CVE-2016-5766",
+      "cve: CVE-2016-5767",
+      "cve: CVE-2016-5768",
+      "cve: CVE-2016-5769",
+      "cve: CVE-2016-5772",
+      "cve: CVE-2016-5773",
+      "url: http://www.php.net/ChangeLog-5.php",
+      "url: http://www.securityfocus.com/bid/91401",
+      "url: http://www.securityfocus.com/bid/91403",
+      "cert-bund: CB-K16/2012",
+      "cert-bund: CB-K16/1776",
+      "cert-bund: CB-K16/1452",
+      "cert-bund: CB-K16/1179",
+      "cert-bund: CB-K16/1106",
+      "cert-bund: CB-K16/1070",
+      "cert-bund: CB-K16/1030",
+      "cert-bund: CB-K16/0965",
+      "dfn-cert: DFN-CERT-2018-0576",
+      "dfn-cert: DFN-CERT-2016-2125",
+      "dfn-cert: DFN-CERT-2016-1882",
+      "dfn-cert: DFN-CERT-2016-1541",
+      "dfn-cert: DFN-CERT-2016-1253",
+      "dfn-cert: DFN-CERT-2016-1178",
+      "dfn-cert: DFN-CERT-2016-1139",
+      "dfn-cert: DFN-CERT-2016-1097",
+      "dfn-cert: DFN-CERT-2016-1022"
+    ],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Critical (CVSS: 9.8)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: PHP < 5.4.43, 5.5.x < 5.5.27, 5.6.x < 5.6.11 Multiple Vulnerabilities (Mar 2016) - Linux",
+      "Product detection result: cpe:/a:php:php:5.5.9",
+      "Method: PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722",
+      "References: CVE-2015-5589, CVE-2015-5590, CVE-2015-8838, URL: http://www.php.net/ChangeLog-5.php, URL: http://www.securityfocus.com/bid/75970, URL: http://www.securityfocus.com/bid/88763, URL: http://www.securityfocus.com/bid/75974, URL: https://bugs.php.net/bug.php?id=69923",
+      "cert-bund: CB-K16/0944, cert-bund: CB-K16/0912, cert-bund: CB-K16/0623, cert-bund: CB-K16/0614, cert-bund: CB-K16/0422, cert-bund: CB-K15/1439, cert-bund: CB-K15/1261, cert-bund: CB-K15/1147",
+      "dfn-cert: DFN-CERT-2016-1004, dnf-cert: DFN-CERT-2016-0972, dnf-cert: DFN-CERT-2016-0676, dnf-cert: DFN-CERT-2016-0659, dnf-cert: DFN-CERT-2016-0460, dnf-cert: DFN-CERT-2015-1515, dnf-cert: DFN-CERT-2015-1335, dnf-cert: DFN-CERT-2015-1203"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.35, 5.6.x < 5.6.21, 7.x < 7.0.6 Multiple Vulnerabilities (Jul 2016) - Linux",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Critical (CVSS: 9.8)",
+    "description": [
+      "Multiple vulnerabilities exist in PHP due to improper validation of certain Exception objects and the 'openssl_random_pseudo_bytes' function incorrectly relying on the deprecated 'RAND_pseudo_bytes' function.",
+      "The installation path is / port: 80/tcp"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9",
+      "OID:1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Critical (CVSS: 9.8)",
+    "description": [
+      "Multiple vulnerabilities in PHP prior to version 5.5.34, 5.6.x < 5.6.20 and 7.x < 7.0.5 on Linux.",
+      "The following flaws exist: "
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.3.29, 5.4.x < 5.4.30, 5.5.x < 5.5.14 Multiple Vulnerabilities (Jun/Aug 2014) - Linux",
+    "description": [
+      "The following vulnerabilities exist: - CVE-2014-3981: Insecure temporary file use in the configure script - CVE-2014-4721: phpinfo() Type Confusion Information Leak Vulnerability - CVE-2014-0207: cdf_read_short_sector insufficient boundary check - CVE-2014-3478: mconvert incorrect handling of truncated pascal string size - CVE-2014-3479: cdf_check_stream_offset insufficient boundary check - CVE-2014-3480: cdf_count_chain insufficient boundary check - CVE-2014-3487: cdf_read_property_info insufficient boundary check - CVE-2014-3515: unserialize() SPL ArrayObject / SPLObjectStorage Type Confusion - CVE-2014-9912: Buffer overflow in locale_get_display_name and uloc_getDisplayName (li-bicu 4.8.1)"
+    ],
+    "solution": [
+      "Solution type: VendorFix",
+      "Update to version 5.3.29, 5.4.30, 5.5.14 or later.",
+      "Affected Software/OS: PHP versions 5.3.x prior to 5.3.29, 5.4.x prior to 5.4.30 and 5.5.x prior to 5.5.14."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [
+      "The vulnerabilities include insecure temporary file use in the configure script, phpinfo() Type Confusion Information Leak Vulnerability, cdf_read_short_sector insufficient boundary check, mconvert incorrect handling of truncated pascal string size, cdf_check_stream_offset insufficient boundary check, cdf_count_chain insufficient boundary check, cdf_read_property_info insufficient boundary check, unserialize() SPL ArrayObject / SPLObjectStorage Type Confusion, Buffer overflow in locale_get_display_name and uloc_getDisplayName (li-bicu 4.8.1)."
+    ],
+    "detection_result": [],
+    "detection_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: PHP < 5.3.29, 5.4.x < 5.4.30, 5.5.x < 5.5.14 Multiple Vulnerabilities (Jun/Aug .,→..",
+      "OID:1.3.6.1.4.1.25623.1.0.809736"
+    ],
+    "product_detection_result": [
+      "Product: cpe:/a:php:php:5.5.9",
+      "Method: PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "log_method": [
+      "Details: PHP < 5.3.29, 5.4.x < 5.4.30, 5.5.x < 5.5.14 Multiple Vulnerabilities (Jun/Aug .,→..",
+      "OID:1.3.6.1.4.1.25623.1.0.809736"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.29, 7.0.x < 7.0.14 DoS Vulnerability - Linux",
+    "description": [
+      "PHP is prone to a denial of service (DoS) vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 2.4.0 - 2.4.55 HTTP Request Smuggling Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Apache HTTP Server 2.4.0 - 2.4.55 HTTP Request Smuggling Vulnerability",
+      "OID:1.3.6.1.4.1.25623.1.0.104597"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP <= 5.6.27 / 7.0.x <= 7.0.12 DoS Vulnerability",
+    "description": [
+      "PHP is prone to a denial of service (DoS) vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP <= 7.1.5 Multiple DoS Vulnerabilities",
+    "description": [
+      "PHP is prone to multiple denial of service (DoS) vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: None\nInstallation:path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 2.4.0 - 2.4.55 HTTP Request Smuggling Vulnerability",
+    "description": [
+      "Apache HTTP Server is prone to a HTTP request smuggling vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.56\nInstallation:path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 36",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.4.0"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 37",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.4.0"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 38",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.4.0"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 39",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 40",
+    "description": [
+      "PHP < 7.1.33, 7.2.x < 7.2.24, 7.3.x < 7.3.11 RCE Vulnerability - Version Check"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 41",
+    "description": [
+      "PHP < 7.1.33, 7.2.x < 7.2.24, 7.3.x < 7.3.11 RCE Vulnerability - Version Check"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 42",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 43",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical (CVSS: 9.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server <= 2.4.52 Multiple Vulnerabilities - Linux",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 45 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.6,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 46 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.6,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 47 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 9.1,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.31, 5.6.x < 5.6.17, 7.x < 7.0.2 Out of Bounds Read Memory Corruption",
+    "description": [
+      "A memory corruption vulnerability occurs via a large 'bgd_color' argument to the 'imagerotate' function in 'ext/gd/libgd/gd_interpolation.c' script."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.40, 8.x <= 8.0.31 Security Update (cpujan2023) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to a vulnerability in libcurl."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 50",
+    "description": [
+      "Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities - Linux\nProduct detection result\n cpe:/a:apache:http_server:2.4.7\nDetected by Apache HTTP Server Detection Consolidation (OID: 1.3.6.1.4.1.25623.1 →.0.117232)\nSummary\nApache HTTP Server is prone to multiple vulnerabilities.\nQuality of Detection (QoD): 30%\nVulnerability Detection Result\nInstalled version: 2.4.7\nFixed version: 2.4.27\nInstallation path / port: 80/tcp\nImpact\nSuccessful exploitation will allow remote attackers to cause the target service to crash. A remote user can obtain potentially sensitive information as well on the target system.\nSolution:\nSolution type: VendorFix\nUpdate to Apache HTTP Server 2.2.34 or 2.4.27 or later.\nAffected Software/OS\nApache HTTP Server 2.2.x before 2.2.34 and 2.4.x before 2.4.27.\nVulnerability Insight\nThe flaw exists due to error in Apache 'mod_auth_digest' which does not properly initialize memory used to process 'Digest' type HTTP Authorization headers.\nVulnerability Detection Method\nChecks if a vulnerable version is present on the target host.\nDetails: Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities - Linux\nOID:1.3.6.1.4.1.25623.1.0.811237\nVersion used: 2024-02-15T05:05:40Z\nProduct Detection Result\nProduct: cpe:/a:apache:http_server:2.4.7\nMethod: Apache HTTP Server Detection Consolidation\nOID: 1.3.6.1.4.1.25623.1.0.117232)\nReferences\ncve: CVE-2017-9788\nurl: http://www.securitytracker.com/id/1038906\nurl: http://www.securityfocus.com/bid/99569\nurl: http://httpd.apache.org/security/vulnerabilities_22.html\nurl: http://httpd.apache.org/security/vulnerabilities_24.html"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [
+      "cve: CVE-2017-9788",
+      "url: http://www.securitytracker.com/id/1038906",
+      "url: http://www.securityfocus.com/bid/99569",
+      "url: http://httpd.apache.org/security/vulnerabilities_22.html",
+      "url: http://httpd.apache.org/security/vulnerabilities_24.html"
+    ],
+    "severity": "Critical (CVSS: 9.1)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities - Linux\nOID:1.3.6.1.4.1.25623.1.0.811237\nVersion used: 2024-02-15T05:05:40Z"
+    ],
+    "product_detection_result": [
+      "Product: cpe:/a:apache:http_server:2.4.7",
+      "Method: Apache HTTP Server Detection Consolidation\nOID: 1.3.6.1.4.1.25623.1.0.117232)",
+      "References"
+    ],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 51",
+    "description": [
+      "Apache HTTP Server < 2.4.55 Multiple Vulnerabilities - Linux\nProduct detection result\n cpe:/a:apache:http_server:2.4.7\nDetected by Apache HTTP Server Detection Consolidation (OID: 1.3.6.1.4.1.25623.1 →.0.117232)\nSummary\nApache HTTP Server is prone to multiple vulnerabilities.\nQuality of Detection (QoD): 30%\nVulnerability Detection Result\nInstalled version: 2.4.7\nFixed version: 2.4.55\nInstallation path / port: 80/tcp\nSolution:\nSolution type: VendorFix\nUpdate to version 2.4.55 or later.\nAffected Software/OS\nApache HTTP Server version 2.4.54 and prior.\nVulnerability Insight\nThe following vulnerabilities exist:\n- CVE-2006-20001: mod_dav out of bounds read, or write of zero byte\n- CVE-2022-36760: Possible request smuggling in mod_proxy_ajp\n- CVE-2022-37436: mod_proxy allows a backend to trigger HTTP response splitting\nVulnerability Detection Method\nChecks if a vulnerable version is present on the target host.\nDetails: Apache HTTP Server < 2.4.55 Multiple Vulnerabilities - Linux\nOID:1.3.6.1.4.1.25623.1.0.149152\nVersion used: 2024-02-15T05:05:40Z\nProduct Detection Result\nProduct: cpe:/a:apache:http_server:2.4.7\nMethod: Apache HTTP Server Detection Consolidation\nOID: 1.3.6.1.4.1.25623.1.0.117232)\nReferences\ncve: CVE-2006-20001\ncve: CVE-2022-36760\ncve: CVE-2022-37436"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [
+      "cve: CVE-2006-20001",
+      "cve: CVE-2022-36760",
+      "cve: CVE-2022-37436",
+      "url: https://httpd.apache.org/security/vulnerabilities_24.html#2.4.55"
+    ],
+    "severity": "Critical (CVSS: 9.0)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Apache HTTP Server < 2.4.55 Multiple Vulnerabilities - Linux\nOID:1.3.6.1.4.1.25623.1.0.149152\nVersion used: 2024-02-15T05:05:40Z"
+    ],
+    "product_detection_result": [
+      "Product: cpe:/a:apache:http_server:2.4.7",
+      "Method: Apache HTTP Server Detection Consolidation\nOID: 1.3.6.1.4.1.25623.1.0.117232)",
+      "References"
+    ],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.40, 8.x <= 8.0.31 Security Update (cpujan2023) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to a vulnerability in libcurl."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.41, 8.x <= 8.0.31 Security Update (cpuapr2023) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to a vulnerability in InnoDB (zlib)."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.7.42\nInstallation path / port: 3306/tcp\nSolution type: VendorFix\nUpdate to version 5.7.42, 8.0.32 or later.\nAffected Software/OS Oracle MySQL Server version 5.7.41 and prior and 8.x through 8.0.31.",
+      "Product Detection Result Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152)",
+      "impact",
+      "Solution type: VendorFix\nUpdate to version 5.7.42, 8.0.32 or later.\nAffected Software/OS Oracle MySQL Server version 5.7.41 and prior and 8.x through 8.0.31.",
+      "Product Detection Result Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152)",
+      "log_method",
+      "References\ncve: CVE-2022-37434\nurl: https://www.oracle.com/security-alerts/cpuapr2023.html#AppendixMSQL\nadvisory-id: cpuapr2023\ncert-bund: WID-SEC-2026-0180\ncert-bund: WID-SEC-2024-1653\ncert-bund: WID-SEC-2024-1591\ncert-bund: WID-SEC-2024-1790\ncert-bund: WID-SEC-2024-1591\ncert-bund: WID-SEC-2024-1653\ncert-bund: WID-SEC-2024-0794\ncert-bund: WID-SEC-2024-0122\ncert-bund: WID-SEC-2024-0120\ncert-bund: WID-SEC-2024-0064\ncert-bund: WID-SEC-2023-2031\ncert-bund: WID-SEC-2023-1812\ncert-bund: WID-SEC-2023-1791\ncert-bund: WID-SEC-2023-1790\ncert-bund: WID-SEC-2023-1783\ncert-bund: WID-SEC-2023-1728\ncert-bund: WID-SEC-2023-1542\ncert-bund: WID-SEC-2023-1350\ncert-bund: WID-SEC-2023-1033\ncert-bund: WID-SEC-2023-1031\ncert-bund: WID-SEC-2023-1021\ncert-bund: WID-SEC-2023-1016\ncert-bund: WID-SEC-2023-1015\ncert-bund: WID-SEC-2023-0140\ncert-bund: WID-SEC-2023-0137\ncert-bund: WID-SEC-2023-0132\ncert-bund: WID-SEC-2023-0126\ncert-bund: WID-SEC-2023-0125\ncert-bund: WID-SEC-2022-1888\ncert-bund: WID-SEC-2022-1438\ncert-bund: WID-SEC-2022-0929\nadvisory-id: cpuapr2023",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152)",
+      "Solution type: VendorFix\nUpdate to version 5.7.42, 8.0.32 or later.\nAffected Software/OS Oracle MySQL Server version 5.7.41 and prior and 8.x through 8.0.31.",
+      "References\ncve: CVE-2022-37434\nurl: https://www.oracle.com/security-alerts/cpuapr2023.html#AppendixMSQL\nadvisory-id: cpuapr2023\ncert-bund: WID-SEC-2026-0180\ncert-bund: WID-SEC-2024-1653\ncert-bund: WID-SEC-2024-1591\ncert-bund: WID-SEC-2024-1790\ncert-bund: WID-SEC-2024-1591\ncert-bund: WID-SEC-2024-1653\ncert-bund: WID-SEC-2024-0794\ncert-bund: WID-SEC-2024-0125\ncert-bund: WID-SEC-2023-3028\ncert-bund: WID-SEC-2023-2816\ncert-bund: WID-SEC-2023-2799\ncert-bund: WID-SEC-2023-1643\ncert-bund: WID-SEC-2023-0885\ncert-bund: WID-SEC-2023-0881\ncert-bund: WID-SEC-2023-0553\ncert-bund: WID-SEC-2023-0122\ncert-bund: WID-SEC-2023-0119\ncert-bund: WID-SEC-2023-0105\ncert-bund: WID-SEC-2022-2799\ncert-bund: WID-SEC-2022-2421\ncert-bund: WID-SEC-2022-2415\ncert-bund: WID-SEC-2022-2366\ncert-bund: WID-SEC-2022-2365\ncert-bund: WID-SEC-2022-2364\ncert-bund: WID-SEC-2022-2363\ncert-bund: WID-SEC-2022-2323\ncert-bund: WID-SEC-2022-1841\ncert-bund: WID-SEC-2022-1710"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "References\ncve: CVE-2022-37434\nurl: https://www.oracle.com/security-alerts/cpuapr2023.html#AppendixMSQL\nadvisory-id: cpuapr2023\ncert-bund: WID-SEC-2026-0180\ncert-bund: WID-SEC-2024-1653\ncert-bund: WID-SEC-2024-1591\ncert-bund: WID-SEC-2024-1790\ncert-bund: WID-SEC-2024-1591\ncert-bund: WID-SEC-2024-1653\ncert-bund: WID-SEC-2024-0794\ncert-bund: WID-SEC-2024-0122\ncert-bund: WID-SEC-2024-0120\ncert-bund: WID-SEC-2024-0064\ncert-bund: WID-SEC-2023-2031\ncert-bund: WID-SEC-2023-1812\ncert-bund: WID-SEC-2023-1791\ncert-bund: WID-SEC-2023-1790\ncert-bund: WID-SEC-2023-1783\ncert-bund: WID-SEC-2023-1728\ncert-bund: WID-SEC-2023-1542\ncert-bund: WID-SEC-2023-1350\ncert-bund: WID-SEC-2023-1033\ncert-bund: WID-SEC-2023-1031\ncert-bund: WID-SEC-2023-1021\ncert-bund: WID-SEC-2023-1016\ncert-bund: WID-SEC-2023-1015\ncert-bund: WID-SEC-2023-0140\ncert-bund: WID-SEC-2023-0137\ncert-bund: WID-SEC-2023-0132\ncert-bund: WID-SEC-2023-0126\ncert-bund: WID-SEC-2023-0125\ncert-bund: WID-SEC-2022-1888\ncert-bund: WID-SEC-2022-1438\ncert-bund: WID-SEC-2022-0929\nadvisory-id: cpuapr2023",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152}]}"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.43, 8.x <= 8.0.34, 8.1.0 Security Update (cpuoct2023)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.7.43, 8.x <= 8.0.34, 8.1.0 Security Update (cpuoct2023)",
+      "OID:1.3.6.1.4.1.25623.1.0.151217"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Update (cpuoct2018 - 02)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.5.52 / 5.6 <= 5.6.33 / 5.7 <= 5.7.15 Security Update",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Critical",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 9.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.5.52 / 5.6 <= 5.6.33 / 5.7 <= 5.7.15 Security Update (OID:1.3.6.1.4.1.25623.1.0.809387)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 58 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 8.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 59 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 8.8,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.4.30, 8.0.x < 8.0.20, 8.1.x < 8.1.7 Security Update (Jun 2022) - Linux",
+    "description": [
+      "PHP released new versions which include a security fix."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 7.4.30\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.36, 7.x < 7.0.30, 7.1.x < 7.1.17, 7.2.x < 7.2.5 Multiple Vulnerabilities (May\n2018) - Linux",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 5.6.36\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.36, 5.6.x < 5.6.22 Multiple Vulnerabilities (Aug 2016) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 8.6,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.36, 5.6.x < 5.6.22, 7.x < 7.0.7 Multiple Vulnerabilities (Aug 2016) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 8.6,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 8.2.30, 8.3.x < 8.3.29, 8.4.x < 8.4.16 Multiple Vulnerabilities - Linux",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 8.2.30\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 2.4.7 - 2.4.51 Multiple Vulnerabilities - Linux",
+    "description": [
+      "A crafted URI sent to httpd configured as a forward proxy (ProxyRequests on) can cause a crash\n(NULL pointer dereference) or, for configurations mixing forward and reverse proxy declarations,\ncan allow for requests to be directed to a declared Unix Domain Socket endpoint (Server Side Request Forgery)."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.52\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server Man-in-the-Middle Attack Vulnerability (Jul 2016) - Linux",
+    "description": [
+      "A man-in-the-middle attack vulnerability in Apache HTTP Server versions prior to the listed releases was found."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.24\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 8.0.28, 8.1.x < 8.1.16, 8.2.x < 8.2.3 Security Update - Linux",
+    "description": [
+      "Multiple vulnerabilities in PHP versions prior to the listed releases were found."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 8.0.28\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.24, 7.x <= 7.0.8 Multiple Vulnerabilities (Jul 2016) - Linux",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 8.0.27, 8.1.x < 8.1.14, 8.2.x < 8.2.1 Security Update - Linux",
+    "description": [
+      "Due to an uncaught integer overflow, PDO::quote() of PDO_SQLite may return a not properly quoted string."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 'CVE-2017-7189' Improper Input Validation Vulnerability - Linux",
+    "description": [
+      "PHP is improperly validating input from untrusted input.",
+      "Product detection result: cpe:/a:php:php:5.5.9"
+    ],
+    "solution": [
+      "Solution type: WillNotFix",
+      "No solution was made available by the vendor."
+    ],
+    "impact": [],
+    "references": [
+      "cve: CVE-2017-7189",
+      "url: https://bugs.php.net/bug.php?id=74192",
+      "url: https://bugs.php.net/bug.php?id=74429",
+      "url: https://github.com/php/php-src/commit/bab0b99f376dac9170ac81382a5ed526938d5,→95a"
+    ],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "Product: cpe:/a:php:php:5.5.9",
+      "Method: PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "High (CVSS: 7.5)",
+    "description": [
+      "Multiple vulnerabilities in PHP allow remote attackers to cause a denial of service, execute arbitrary code, and disclose sensitive information via crafted requests.",
+      "The following flaws exist:\n- Algorithmic complexity vulnerability in the 'multipart_buffer_headers' function in main/rfc1867.c script in PHP.\n- 'pcntl_exec' implementation in PHP truncates a pathname upon encountering a \\\u0000 character.\n- Integer overflow in the 'ftp_genlist' function in ext/ftp/ftp.c script in PHP.\n- The 'phar_parse_tarfile' function in ext/phar/tar.c script in PHP does not verify that the first character of a filename is different from the \\\u0000 character.",
+      "Vulnerability Detection Method: Checks if a vulnerable version is present on the target host."
+    ],
+    "solution": [
+      "Solution type: VendorFix\nUpdate to version 5.4.41, 5.5.25, 5.6.9 or later.\nAffected Software/OS: PHP prior to version 5.4.41, 5.5.x prior to 5.5.25 and 5.6.x prior to 5.6.9.",
+      "Solution type: VendorFix\nUpdate to version 5.6.37, 7.0.31, 7.1.20 or 7.2.8 or later.\nAffected Software/OS: PHP prior to version 5.6.37, 7.x prior to 7.0.31, 7.1.x prior to 7.1.20 and 7.2.x prior to 7.2.8."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9",
+      "Product: cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.3.27, 7.4.x < 7.4.15, 8.0.x < 8.0.2 NULL Deference Vulnerability (Feb 2021) - Linux",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 7.3.27\nInstallation:path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.2.30, 7.3 < 7.3.17, 7.4 < 7.4.5 DoS Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.2.28 Multiple Vulnerabilities",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.5 Multiple Vulnerabilities (Jan 2015)",
+    "description": [
+      "A free operation on a stack-based character array is performed by the apprentice_load function in libmagic/apprentice.c in the Fileinfo component.",
+      "A free operation on a stack-based character array is performed by the apprentice_load function in libmagic/apprentice.c in the Fileinfo component."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 5.6.5\nInstallation:path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.32, 7.x < 7.0.24, 7.1.x < 7.1.11 Heap Based Buffer Overflow Vulnerability - Linux",
+    "description": [
+      "A heap-based buffer overflow vulnerability exists in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 5.6.32\nInstallation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.0 DoS Vulnerability - Linux",
+    "description": [
+      "A denial of service (DoS) vulnerability exists in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 5.6.0\nInstallation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.32, 5.6.x < 5.6.18, 7.x < 7.0.3 Privilege Escalation Vulnerability - Linux",
+    "description": [
+      "PHP is prone to a privilege escalation vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.21, 5.6.x < 5.6.5 Multiple DoS Vulnerabilities (Jan 2015)",
+    "description": [
+      "PHP is prone to multiple denial of service (DoS) vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.24, 5.6.x < 5.6.8 DoS Vulnerability - Linux",
+    "description": [
+      "PHP is prone to a denial of service (DoS) vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.24, 5.6.x < 5.6.8 DoS Vulnerability - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.31 DoS Vulnerability - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.31, 7.x < 7.0.17, 7.1.x < 7.1.3 DoS Vulnerability (Jul 2017) - Linux",
+    "description": [
+      "PHP is prone to a denial of service (DoS) vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP Out of Bounds Read Vulnerability (Jan 2015)",
+    "description": [
+      "PHP is prone to an out of bounds read vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 5.5.21\nInstallation:path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 8.1.33, 8.2.x < 8.2.29, 8.3.x < 8.3.23, 8.4.x < 8.4.10 Multiple Vulnerabilities - Linux",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 8.1.33\nInstallation:path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 'Whitespace Defects' Multiple Vulnerabilities",
+    "description": [
+      "Apache HTTP Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.25\nInstallation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 'mod_auth_digest' DoS Vulnerability - Linux",
+    "description": [
+      "Apache HTTP Server is prone to a denial of service (DoS) vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.25\nInstallation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.4.44, 5.5.x < 5.5.28, 5.6.x < 5.6.12 Multiple Vulnerabilities (Mar 2016) - Linux",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP Multiple Vulnerabilities (Jan 2015)",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.4.39, 5.5.x < 5.5.23, 5.6.x < 5.6.7 Multiple Vulnerabilities",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "Product: cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.4.38, 5.5.x < 5.5.22, 5.6.x < 5.6.6 Multiple RCE Vulnerabilities (Jul 2015) - Linux",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 5.5.22\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server < 2.4.38 mod_session_cookie Vulnerability - Linux",
+    "description": [
+      "In Apache HTTP Server mod_session checks the session expiry time before decoding the session.\nThis causes session expiry time to be ignored for mod_session_cookie sessions since the expiry\ntime is loaded when the session is decoded."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.38\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 94",
+    "description": [
+      "NVT: PHP 5.x < 5.6.39, 7.x < 7.0.33, 7.1.x < 7.1.26, 7.2.x < 7.2.14 DoS Vulnerability - Linux",
+      "Product detection result:cpe:/a:php:php:5.5.9",
+      "Detected by PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)",
+      "Summary: PHP is prone to a denial of service (DoS) vulnerability.",
+      "Quality of Detection (QoD): 30%",
+      "Vulnerability Detection Result: Installed version: 5.5.9, Fixed version: 5.6.39, Installation path / port: 80/tcp, Impact: Successful exploitation will allow attackers to cause a denial of service of the affected application.",
+      "Solution: Solution type: VendorFix, Update to version 5.6.39, 7.0.33, 7.1.26, 7.2.14, 7.3.0 or later.",
+      "Affected Software/OS: PHP versions 5.x prior to 5.6.39, 7.0.x prior to 7.0.33, 7.1.x prior to 7.1.26 and 7.2.x prior to 7.2.14.",
+      "Vulnerability Insight: A NULL pointer dereference and application crash via an empty string occurs in the message argument to the imap_mail function of ext/imap/php_imap.c.",
+      "Vulnerability Detection Method: Checks if a vulnerable version is present on the target host.",
+      "Details: PHP 5.x < 5.6.39, 7.x < 7.0.33, 7.1.x < 7.1.26, 7.2.x < 7.2.14 DoS Vulnerability.",
+      "OID:1.3.6.1.4.1.25623.1.0.108505",
+      "Version used: 2025-09-24T05:39:03Z",
+      "Product Detection Result: Product: cpe:/a:php:php:5.5.9",
+      "Method: PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)",
+      "references:[cve: CVE-2018-19935, url: https://bugs.php.net/bug.php?id=77020, url: http://www.securityfocus.com/bid/106143, cert-bund: WID-SEC-2022-2128, cert-bund: CB-K18/1154, dfn-cert: DFN-CERT-2022-2638, dfn-cert: DFN-CERT-2019-1181, dfn-cert: DFN-CERT-2019-0313, dfn-cert: DFN-CERT-2019-0044, dfn-cert: DFN-CERT-2018-2476]"
+    ],
+    "solution": [
+      "Solution type: VendorFix",
+      "Update to version 5.6.39, 7.0.33, 7.1.26, 7.2.14, 7.3.0 or later.",
+      "Affected Software/OS: PHP versions 5.x prior to 5.6.39, 7.0.x prior to 7.0.33, 7.1.x prior to 7.1.26 and 7.2.x prior to 7.2.14."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "High (CVSS: 7.5)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [
+      "A NULL pointer dereference and application crash via an empty string occurs in the message argument to the imap_mail function of ext/imap/php_imap.c.",
+      "Vulnerability Detection Method: Checks if a vulnerable version is present on the target host.",
+      "Details: Apache HTTP Server < 2.4.39 mod_auth_digest Access Control Bypass Vulnerability."
+    ],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server < 2.4.39 mod_auth_digest Access Control Bypass Vulnerability - Linux",
+    "description": [
+      "In Apache HTTP Server, a race condition in mod_auth_digest when running in a threaded server could allow a user with valid credentials to authenticate using another username, bypassing configured access control restrictions."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7",
+      "Fixed version: 2.4.39"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server < 2.4.58 'mod_macro' Out-of-bounds Read Vulnerability - Linux",
+    "description": [
+      "Apache HTTP Server is prone to an out-of-bounds read vulnerability in mod_macro."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7",
+      "Fixed version: 2.4.58"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 98 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 99 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.117232"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.4.x < 5.4.37, 5.5.x < 5.5.21, 5.6.x < 5.6.5 Multiple Vulnerabilities (Feb 2015)",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.4.x < 5.4.36, 5.5.x < 5.5.20, 5.6.x < 5.6.4 Use After Free Vulnerability (Jan 2015)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.805411"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed) - Version Check",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.108252"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "EasyPHP Webserver <= 12.1 Multiple Vulnerabilities - Active Check",
+    "description": [
+      "EasyPHP Webserver is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Vulnerable URL: http://bwapp.trabalho_vulnnet/phpinfo.php"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.4.45, 5.5.x < 5.5.29, 5.6.x < 5.6.13 RCE Vulnerability (Mar 2016) - Linux",
+    "description": [
+      "A remote code execution (RCE) vulnerability was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.4.x < 5.4.27, 5.5.x < 5.5.12 Privilege Escalation Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.2,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.4.44, 5.5.x < 5.5.28, 5.6.x < 5.6.12, 7.x < 7.0.4 DoS and Information Disclosure Vulnerability - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 7.1,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.3.7 - 7.3.31, 7.4.x < 7.4.25, 8.0.x < 8.0.12 Security Update (Oct 2021) - Linux",
+    "description": [
+      "A security update was released for PHP versions affected by a vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Updates (apr2018-3678067) 04 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 7.7,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.813149"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Security Updates (apr2018-3678067) 04 - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.813149",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result: Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152)",
+      "References: cve: CVE-2018-2761, cve: CVE-2018-2771, cve: CVE-2018-2781, cve: CVE-2018-2773, cve: CVE-2018-2817, cve: CVE-2018-2813, cve: CVE-2018-2755, cve: CVE-2018-2819, cve: CVE-2018-2818",
+      "url: http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html",
+      "cert-bund: WID-SEC-2023-1594, cert-bund: CB-K18/0608",
+      "dfn-cert: DFN-CERT-2019-1047, dfn-cert: DFN-CERT-2018-1276, dfn-cert: DFN-CERT-2018-1265, dfn-cert: DFN-CERT-2018-0913, dfn-cert: DFN-CERT-2018-0723"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle Mysql Security Updates (apr2017-3236618) 02 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 7.7,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.48 Security Update (cpujul2020) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.36 / 8.0 <= 8.0.27 Security Update (cpujan2022)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product detection result"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.7.36 / 8.0 <= 8.0.27 Security Update (cpujan2022)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.37 / 8.0 <= 8.0.28 Security Update (cpuapr2022) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.7.38\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Denial Of Service Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "MariaDB / Oracle MySQL Detection (MySQL Protocol)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.41, 8.x <= 8.0.30 Security Update",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "MariaDB / Oracle MySQL Detection (MySQL Protocol)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 7.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product detection result"
+    ],
+    "log_method": [
+      "Oracle Mysql Security Updates (apr2017-3236618) 01 - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.810881"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.29 / 8.0 <= 8.0.19 Security Update (cpuapr2021) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to a vulnerability in the parser."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.7.30\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Unspecified Vulnerability-03 (Sep 2016) - Linux",
+    "description": [
+      "Oracle MySQL is prone to an unspecified vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "HIGH",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.5.52\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Updates (jan2018-3236628) 04 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 7.1,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.812651"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Oracle Mysql Security Updates (jan2018-3236628) 04 - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.812651"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP Multiple Vulnerabilities (Sep 2019) - Linux",
+    "description": [
+      "PHP is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 7.2.22\nInstallation:path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server Multiple Vulnerabilities (May 2015)",
+    "description": [
+      "Apache HTTP Server is prone to a denial of service vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.10\nInstallation:path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 131",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 6.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [
+      "Apache HTTP Server Detection Consolidation"
+    ],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Product: cpe:/a:apache:http_server:2.4.7",
+      "Method: Apache HTTP Server Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.117232",
+      "Version used: 2021-11-01T03:59:12Z",
+      "Product Detection Result: Product: cpe:/a:apache:http_server:2.4.7",
+      "Method: Apache HTTP Server Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.147048",
+      "Version used: 2021-11-01T03:59:12Z",
+      "Product Detection Result: Product: cpe:/a:apache:http_server:2.4.7"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Medium (CVSS: 6.8)",
+    "description": [
+      "Multiple vulnerabilities in PHP versions prior to 5.4.32 and 5.5.15.",
+      "The following flaws exist:\n- CVE-2014-3597: Multiple overflow conditions in the 'php_parserr' function within ext/standard/dns.c script.\n- CVE-2014-3587: Integer overflow in the 'cdf_read_property_info' function in cdf.c within the Fileinfo component.\n- CVE-2014-5120: An error in the '_php_image_output_ctx' function within ext/gd/gd_ctx.c script as NULL bytes in paths to various image handling functions are not stripped.",
+      "Vulnerability Detection Method",
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "solution": [
+      "Solution type: VendorFix\nUpdate to version 5.4.32, 5.5.16 or later.\nAffected Software/OS\nPHP version 5.4.x prior to 5.4.32 and 5.5.x prior to 5.5.16."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9",
+      "Product Detection Result\nProduct: cpe:/a:php:php:5.5.9\nMethod: PHP Detection Consolidation\nOID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "log_method": [
+      "Installed version: 5.5.9",
+      "Fixed version: 5.5.16 or later."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP Heap Use-After-Free Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 6.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.4.40, 5.5.x < 5.5.24, 5.6.x < 5.6.8 Improper Input Validation Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 6.8)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.2.34, 7.3 < 7.3.23, 7.4 < 7.4.11 Multiple Vulnerabilities (Oct 2020) - Linux",
+    "description": [
+      "A stack-based buffer overflow flaw was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.3.31, 7.4.x < 7.4.24, 8.0.x < 8.0.11 Security Update (Sep 2021) - Linux",
+    "description": [
+      "Fixed bug #81420 (ZipArchive::extractTo extracts outside of destination)."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 138",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 6.5)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722",
+      "References",
+      "cve: CVE-2022-31628,cve: CVE-2022-31629,url: https://www.php.net/ChangeLog-7.php#7.4.31,url: https://www.php.net/ChangeLog-8.php#8.0.24,url: https://www.php.net/ChangeLog-8.php#8.1.11",
+      "cert-bund: WID-SEC-2023-1737,cert-bund: WID-SEC-2023-0561,cert-bund: WID-SEC-2023-0137,cert-bund: WID-SEC-2022-1567,dfn-cert: DFN-CERT-2024-1192,dfn-cert: DFN-CERT-2023-1600,dfn-cert: DFN-CERT-2023-0422,dfn-cert: DFN-CERT-2022-2869,dfn-cert: DFN-CERT-2022-2639,dfn-cert: DFN-CERT-2022-2638,dfn-cert: DFN-CERT-2022-2598,dfn-cert: DFN-CERT-2022-2523,dfn-cert: DFN-CERT-2022-2337,dfn-cert: DFN-CERT-2022-2157",
+      "Vulnerability_detection_result_Installed_version_5.5.9_Fixed_version_7.4.31_Installation_path_port_80_tcp_Solution_type_VendorFix_Update_to_version_7.4.31_or_later_Affected_software_os_PHP_versions_prior_to_7.2.26.Vulnerability_insight_PHP_is_prone_to_multiple_vulnerabilities:-Buffer_underflow_in_bc_shift_addsub(CVE-2019-11046)-DirectoryIterator_class_silently_truncates_after_a_null_byte(CVE-2019-11045)-Use-after-free_in_exif_parsing_under_memory_sanitizer(CVE-2019-11050)-Heap_buffer_overflow_READ_in_exif(CVE-2019-11047)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 139",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 6.5)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722",
+      "References",
+      "cve: CVE-2019-11045,cve: CVE-2019-11046,cve: CVE-2019-11047,cve: CVE-2019-11050,url: https://www.php.net/ChangeLog-7.php#7.2.26",
+      "cert-bund: WID-SEC-2022-2122,cb-k20/1199,cb-k19/1099,dfn-cert: DFN-CERT-2022-2638,dfn-cert: DFN-CERT-2020-2627,dfn-cert: DFN-CERT-2020-1964,dfn-cert: DFN-CERT-2020-0415,dfn-cert: DFN-CERT-2020-0382,dfn-cert: DFN-CERT-2020-0339,dfn-cert: DFN-CERT-2019-2709,dfn-cert: DFN-CERT-2019-2659",
+      "Vulnerability_detection_method_Checks_if_a_vulnerable_version_is_present_on_the_target_host.Details: PHP < 7.2.26 Multiple Vulnerabilities (Dec 2019) - Linux"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.x < 7.1.20, 7.2.x < 7.2.8, 7.3.0alpha1 < 7.3.0alpha3 DoS Vulnerability - Linux",
+    "description": [
+      "A denial of service (DoS) vulnerability exists in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 7.1.20\nInstallation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 2.4.0 - 2.4.40 Multiple Vulnerabilities - Linux",
+    "description": [
+      "Multiple vulnerabilities exist in Apache HTTP Server versions from 2.4.0 to 2.4.40."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.41\nInstallation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 2.4.0 - 2.4.40 Multiple Vulnerabilities",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 6.1)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation (OID: 1.3.6.1.4.1.25623.1,→.0.117232)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server CRLF Injection Vulnerability (Dec 2016)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 6.1)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation (OID: 1.3.6.1.4.1.25623.1,→.0.117232)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.4.38, 5.5.x < 5.5.22, 5.6.x < 5.6.6 XSS Vulnerability (Aug 2016) - Linux",
+    "description": [
+      "A cross-site scripting (XSS) vulnerability was found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.6.33, 7.x < 7.0.27, 7.1.x < 7.1.13, 7.2.x < 7.2.1 Multiple Vulnerabilities - Linux",
+    "description": [
+      "Multiple vulnerabilities were found in PHP versions prior to the listed releases."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.5.28, 5.6.x < 5.6.12 DoS Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 5.9)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Multiple Vulnerabilities (Jul 2021)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 5.9)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 8.1.28, 8.2.x < 8.2.18, 8.3.x < 8.3.6 Security Update (GHSA-h746-cjrr-wfmr) - Linux",
+    "description": [
+      "PHP is prone to a vulnerability in password_verify."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 149 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 5.6,
+    "insight": [],
+    "detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.117232)",
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 150 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 5.5,
+    "insight": [],
+    "detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.117232)",
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 151 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 5.4,
+    "insight": [],
+    "detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.117232)",
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.2.31, 7.x < 7.0.28, 7.1.x < 7.1.15, 7.2.x < 7.2.3 Multiple DoS Vulnerabilities (May 2020) - Linux",
+    "description": [
+      "When the path component of a request URL contains multiple consecutive slashes ('/'), directives such as LocationMatch and RewriteRule must account for duplicates in regular expressions while other aspects of the servers processing will implicitly collapse them. leading to a Denial-of-Service condition (CVE-2019-11048)."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9",
+      "Fixed version: 7.2.31",
+      "Installation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 154",
+    "description": [
+      "The script reports files identified by the following separate VT: 'phpinfo() Output Detection (HTTP)' (OID: 1.3.6.1.4.1.25623.1.0.108474).",
+      ""
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [
+      "cve: CVE-2008-0149",
+      "cve: CVE-2023-49282",
+      "cve: CVE-2023-49283",
+      "cve: CVE-2024-10486"
+    ],
+    "severity": "Medium (CVSS: 5.3)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "phpinfo() Output Reporting (HTTP)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 155",
+    "description": [
+      "The script reports files identified by the following separate VT: 'PHP < 7.3.33, 7.4.x < 7.4.26, 8.0.x < 8.0.13 Security Update (Nov 2021) - Linux'",
+      ""
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [
+      "cve: CVE-2021-21707"
+    ],
+    "severity": "Medium (CVSS: 5.3)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "PHP Detection Consolidation"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server < 2.4.39 URL Normalization Vulnerability - Linux",
+    "description": [
+      "When the path component of a request URL contains multiple consecutive slashes ('/'), directives such as LocationMatch and RewriteRule must account for duplicates in regular expressions while other aspects of the servers processing will implicitly collapse them. leading to a Denial-of-Service condition (CVE-2019-0220)."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7",
+      "Fixed version: 2.4.39",
+      "Installation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.3.26, 7.x < 7.0.28, 7.1.x < 7.1.15, 7.2.x < 7.2.3 Filter Vulnerability (Jan 2021) - Linux",
+    "description": [
+      "PHP is prone to a vulnerability where FILTER_VALIDATE_URL accepts URLs with invalid userinfo."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 7.3.26\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server Tunneling Misconfiguration Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 5.3)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP Heap Based Buffer Overflow Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 5.1)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.4.x < 5.4.35, 5.5.x < 5.5.19, 5.6.x < 5.6.3 DoS Vulnerability (Nov 2014) - Linux",
+    "description": [
+      "PHP is prone to a denial of service (DoS) vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 5.5.19\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP 5.x < 5.4.29, 5.5.x < 5.5.13 Multiple DoS Vulnerabilities (Jun 2014)",
+    "description": [
+      "PHP is prone to multiple denial of service vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 5.5.13\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server < 2.4.64 Multiple Vulnerabilities - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 5.0)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Apache HTTP Server < 2.4.64 Multiple Vulnerabilities - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.154909"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Enabled Directory Listing/Indexing Detection (HTTP)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 5.0)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:web_servers_with_an_enabled_directory_listing_indexing"
+    ],
+    "log_method": [
+      "Checks previously detected directories on a remote web server if a directory listing/indexing is enabled.",
+      "Note: This check has a low QoD (Quality of Detection) value as it is not possible to automatically determine if the directory listing/indexing has been enabled on purpose."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 'mod_lua' Denial of Service Vulnerability -01 (May 2015)",
+    "description": [
+      "Apache HTTP Server is prone to a denial of service vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.13\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server Multiple Vulnerabilities (Aug 2015) - Linux",
+    "description": [
+      "Apache HTTP Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.14\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server DoS Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 5.0)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Apache HTTP Server Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.117232)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP Security Update Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 5.0)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation",
+      "OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.3.28, 7.4.x < 7.4.18 IMAP Header Injection Vulnerability (Apr 2021) - Linux",
+    "description": [
+      "PHP is prone to an IMAP header injection vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.9\nFixed version: 7.3.28\nInstallation\npath / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 169 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 4.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 170 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 4.7,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "BLOCK 171 (host: 172.30.9.2, port: 80/tcp)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 4.6,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP Detection Consolidation (OID: 1.3.6.1.4.1.25623.1.0.171722)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 2.4.x < 2.4.66 Improper Neutralization Vulnerability - Linux",
+    "description": [
+      "Apache HTTP Server is prone to an improper neutralization vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.66\nInstallation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server < 2.4.66 SSI Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 4.3)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 5.4.32, 5.5.x < 5.5.16 DoS Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 4.3)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 'mod_lua' Denial of Service Vulnerability (May 2015)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium (CVSS: 4.3)",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:apache:http_server:2.4.7"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server 'mod_cache' Denial of Service Vulnerability -01 (May 2015)",
+    "description": [
+      "Apache HTTP Server is prone to a denial of service vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 2.4.7\nFixed version: 2.4.10\nInstallation path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 8.0.29, 8.1.x < 8.1.20, 8.2.x < 8.2.7 Security Update - Linux",
+    "description": [
+      "Oracle MySQL is prone to multiple unspecified vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: Apply the patch"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Updates (jan2017-2881727) 02 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 6.7,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152"
+    ],
+    "log_method": [
+      "Oracle Mysql Security Updates (jan2017-2881727) 02 - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.809866"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.49 / 5.7 <= 5.7.31 / 8.0 <= 8.0.21 Security Update (cpuoct2020)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 6.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "OID: 1.3.6.1.4.1.25623.1.0.108958"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.6.49 / 5.7 <= 5.7.31 / 8.0 <= 8.0.21 Security Update (.",
+      "OID:1.3.6.1.4.1.25623.1.0.100152"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle Mysql Security Updates (oct2017-3236626) 04 - Linux",
+    "description": [
+      "Multiple flaws exist due to:\n- An error in 'Client programs' component.\n- An error in 'Server: DDL'.\n- An error in 'Server: Replication'\n"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: Apply the patch"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle Mysql Security Updates (oct2017-3236626) 02 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 6.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Oracle Mysql Security Updates (oct2017-3236626) 02 - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.811987"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle Mysql Security Updates (jan2018-3236628) 02 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 6.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Oracle Mysql Security Updates (jan2018-3236628) 02 - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.812647"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.46 Security Update (cpujan2020) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 6.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.6.46 Security Update (cpujan2020) - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.143358"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 8.0.41, 8.1 <= 8.4.4, 9.0 <= 9.2.0 Security Update (cpuapr2025)",
+    "description": [
+      "Oracle MySQL Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 8.0.42\nInstallation\npath / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      ",",
+      "references:[\"cve: CVE-2025-21577\",\"cve: CVE-2025-30682\",\"cve: CVE-2025-30687\",\"cve: CVE-2025-30688\",\"cve: CVE-2025-21574\",\"cve: CVE-2025-21575\",\"cve: CVE-2025-30693\",\"cve: CVE-2025-30695\",\"cve: CVE-2025-30715\",\"cve: CVE-2025-21584\",\"cve: CVE-2025-21580\",\"cve: CVE-2025-21581\"]}]}].user. I need you to extract the severity of a block with the ID 193, which has the following details: "
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Update (cpujul2018 - 02) - Linux",
+    "description": [
+      "Oracle MySQL is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.32 / 8.0 <= 8.0.22 Security Update (cpuapr2021) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.5.50 / 5.6 <= 5.6.31 / 5.7 <= 5.7.13 Security Update (cpuoct2016) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to an unspecified vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.44 / 5.7 <= 5.7.26 / 8.0 <= 8.0.16 Security Update (cpu-jul2019) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.45 / 5.7 <= 5.7.27 / 8.0 <= 8.0.17 Security Update (cpuoct2019)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 6.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Server <= 5.6.45 / 5.7 <= 5.7.27 / 8.0 <= 8.0.17 Security Update (.,→..OID:1.3.6.1.4.1.25623.1.0.143029",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Detected by MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Server <= 5.6.45 / 5.7 <= 5.7.27 / 8.0 <= 8.0.17 Security Update (.,→..OID:1.3.6.1.4.1.25623.1.0.143031",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.44 / 5.7 <= 5.7.26 / 8.0 <= 8.0.16 Security Update",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 6.2,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.6.45\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.5.47 / 5.6 <= 5.6.28 / 5.7 <= 5.7.10 Security Update",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 6.1,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: See the referenced vendor advisory\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Backronym Vulnerability (Jun 2016) - Linux",
+    "description": [
+      "Oracle MySQL is prone to a backronym vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.7.3\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.42 / 8.x <= 8.0.33 Security Update (cpujul2023) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 5.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Detected by MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.5.48 / 5.6 <= 5.6.29 / 5.7 <= 5.7.11 Security Update (cpuapr2016v3) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 5.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Detected by MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.42 / 5.7 <= 5.7.24 / 8.0 <= 8.0.13 Security Update (cpuapr2019) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to a vulnerability in the libmysqld subcomponent."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.6.43\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.43 / 5.7 <= 5.7.25 / 8.0 <= 8.0.15 Security Update (cpuapr2019) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 8.0.43",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 5.5,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "MariaDB / Oracle MySQL Detection (MySQL Protocol)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.45 / 5.7 <= 5.7.27",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 5.3,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "MariaDB / Oracle MySQL Detection (MySQL Protocol)"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Update (jul2017-3236622) 03 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 5.3,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle Mysql Security Updates (jul2017-3236622) 03 - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.811435",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result: Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152), References: cve: CVE-2017-3636, url: http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html",
+      "url: http://www.securityfocus.com/bid/99736"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Updates (jul2017-3236622) 02 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.811433)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Updates (apr2017-3236618) 03 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.810885)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 8.0.39, 8.1 <= 8.4.1, 9.0 <= 9.0.1 Security Update (cpuoct2024)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.170872)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.46 / 5.7 <= 5.7.26 Security Update (cpuapr2020) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to multiple vulnerabilities in OpenSSL."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.6.47\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      ",",
+      "References:[\"CVE-2019-1547\",\"CVE-2019-1549\",\"CVE-2019-1552\",\"CVE-2019-1563\"]"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.39 / 8.0 <= 8.0.30 Security Update (cpuoct2022)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 5.3,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.7.39 / 8.0 <= 8.0.30 Security Update (cpuoct2022) - Li.",
+      "OID:1.3.6.1.4.1.25623.1.0.118387",
+      "Version used: 2025-09-09T05:38:49Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 8.0.35 Security Update (cpuoct2024)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [
+      "Checks if a vulnerable version is present on the target host"
+    ],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Detected by MariaDB / Oracle MySQL Detection (MySQL Protocol) (OID: 1.3.6.1.4.1.25623.1.0.100152)",
+      "Summary",
+      "Oracle MySQL Server is prone to multiple vulnerabilities.",
+      "Quality of Detection (QoD): 30%"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.50 / 5.7 <= 5.7.32 / 8.0 <= 8.0.22 Security Update (cpu-jan2021) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to multiple vulnerabilities."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.6.51\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.30 / 8.0 <= 8.0.17 Security Update (cpuapr2021) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to a denial of service (DoS) vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.7.31\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.33 Security Update (cpuapr2021)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Detected by MariaDB / Oracle MySQL Detection (MySQL Protocol) (OID: 1.3.6.1.4.1.25623.1.0.100152)",
+      "Summary: Oracle MySQL Server is prone to a denial of service (DoS) vulnerability.",
+      "Quality of Detection (QoD): 30%"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Server <= 5.7.33 Security Update (cpuapr2021)",
+      "OID:1.3.6.1.4.1.25623.1.0.145801",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result: Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152) References:cve: CVE-2021-2154 url: https://www.oracle.com/security-alerts/cpuapr2021.html#AppendixMSQL advisory-id: cpuapr2021 cert-bund: WID-SEC-2023-0065 cert-bund: CB-K21/0421 dfn-cert: DFN-CERT-2021-0821",
+      "dfn-cert: DFN-CERT-2021-0984 dfn-cert: DFN-CERT-2021-0666 dfn-cert: DFN-CERT-2021-0821"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 8.0.38, 8.1 <= 8.4.1, 9.0 <= 9.0.1 Security Update (cpuoct2024)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Detected by MariaDB / Oracle MySQL Detection (MySQL Protocol) (OID: 1.3.6.1.4.1.25623.1.0.100152)",
+      "Summary: Oracle MySQL Server is prone to a denial of service (DoS) vulnerability.",
+      "Quality of Detection (QoD): 30%"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Server <= 8.0.38, 8.1 <= 8.4.1, 9.0 <= 9.0.1 Security Update (cpuoct2024)",
+      "OID:1.3.6.1.4.1.25623.1.0.170868",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result: Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152) References:cve: CVE-2024-21207 url: https://www.oracle.com/security-alerts/cpuoct2024.html#AppendixMSQL advisory-id: cpuoct2024 cert-bund: WID-SEC-2024-3188 dfn-cert: DFN-CERT-2024-2732",
+      "dfn-cert: DFN-CERT-2024-0933 dfn-cert: DFN-CERT-2024-0666 dfn-cert: DFN-CERT-2021-1660 dfn-cert: DFN-CERT-2021-0984 dfn-cert: DFN-CERT-2021-0821"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.43, 8.x <= 8.0.31 Security Update (cpuoct2023)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Detected by MariaDB / Oracle MySQL Detection (MySQL Protocol) (OID: 1.3.6.1.4.1.25623.1.0.100152)",
+      "Summary: Oracle MySQL Server is prone to denial of service (DoS) vulnerability.",
+      "Quality of Detection (QoD): 30%"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Server <= 5.7.43, 8.x <= 8.0.31 Security Update (cpuoct2023)",
+      "OID:1.3.6.1.4.1.25623.1.0.151215",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result: Product: cpe:/a:mysql:mysql:5.5.47 Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152) References:cve: CVE-2023-22028 url: https://www.oracle.com/security-alerts/cpuoct2023.html#AppendixMSQL advisory-id: cpuoct2023 cert-bund: WID-SEC-2023-2690 dfn-cert: DFN-CERT-2024-0108 dfn-cert: DFN-CERT-2023-2536"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Update (cpujul2018 - 04) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.41, 8.x <= 8.0.32 Security Update (cpujul2023)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Update (cpujul2018 - 04) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.50 / 5.7 <= 5.7.30 / 8.0 <= 8.0.17 Security Update (cpu-jan2021)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.9,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Product: cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol) OID: 1.3.6.1.4.1.25623.1.0.100152)"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.40 Security Update (cpujan2023) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.4,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.149167"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Server <= 5.7.40 Security Update (cpujan2023) - Linux",
+      "OID: 1.3.6.1.4.1.25623.1.0.149167"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 8.0.39, 8.1 <= 8.4.0 Security Update (cpuoct2024) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.4,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Server <= 8.0.39, 8.1 <= 8.4.0 Security Update (cpuoct2024) - Linux",
+      "OID: 1.3.6.1.4.1.25623.1.0.170870"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.36 / 8.0 <= 8.0.27 Security Update (cpuoct2022) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.4,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Server <= 5.7.36 / 8.0 <= 8.0.27 Security Update (cpuoct2022) - Linux",
+      "OID: 1.3.6.1.4.1.25623.1.0.118381"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Security Updates (jan2017-2881727) 04 - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.4,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.809870"
+    ],
+    "log_method": [
+      "Checks if a vulnerable version is present on the target host.",
+      "Details: Oracle MySQL Security Updates (jan2017-2881727) 04 - Linux",
+      "OID: 1.3.6.1.4.1.25623.1.0.809870"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.39 / 8.0 <= 8.0.29 Security Update (cpuoct2022) - Linux",
+    "description": [
+      "Oracle MySQL Server is prone to an information disclosure vulnerability."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Installed version: 5.5.47\nFixed version: 5.7.40\nInstallation path / port: 3306/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      ",",
+      "OID:1.3.6.1.4.1.25623.1.0.118385",
+      "Version used: 2025-09-09T05:38:49Z",
+      "Product Detection Result:cpe:/a:mysql:mysql:5.5.47Method: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152",
+      "References:cve: CVE-2022-21592\nurl: https://www.oracle.com/security-alerts/cpuoct2022.html#AppendixMSQL\nadvisory-id: cpuoct2022\ncert-bund: WID-SEC-2024-1591\ncert-bund: WID-SEC-2023-2031\ncert-bund: WID-SEC-2022-1776\ndfn-cert: DFN-CERT-2022-2306"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.39 / 8.0 <= 8.0.16 Security Update (cpuoct2022)",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 4.3,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47",
+      "OID: 1.3.6.1.4.1.25623.1.0.100152"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.7.39 / 8.0 <= 8.0.16 Security Update (cpuoct2022)",
+      "OID:1.3.6.1.4.1.25623.1.0.118383",
+      "Version used: 2025-09-09T05:38:49Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP <= 5.6.0 'PEAR' Symlink Attack Vulnerability",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 3.6,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP <= 5.6.0 'PEAR' Symlink Attack Vulnerability",
+      "OID:1.3.6.1.4.1.25623.1.0.171722",
+      "Version used: 2025-09-24T05:39:03Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP < 7.2.33, 7.3 < 7.3.21, 7.4 < 7.4.9 DoS Vulnerability (Aug 2020) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": 3.6,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:php:php:5.5.9"
+    ],
+    "log_method": [
+      "PHP < 7.2.33, 7.3 < 7.3.21, 7.4 < 7.4.9 DoS Vulnerability (Aug 2020) - Linux",
+      "OID:1.3.6.1.4.1.25623.1.0.144365",
+      "Version used: 2025-09-24T05:39:03Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.5.48 / 5.6 <= 5.6.29 / 5.7 <= 5.7.10 Security Update (cpu-jul2016) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": 3.7,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.5.48 / 5.6 <= 5.6.29 / 5.7 <= 5.7.10 Security Update (cpu-jul2016) - Linux",
+      "cve: CVE-2016-3452"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.5.48 / 5.6 <= 5.6.29 / 5.7 <= 5.7.10 Security Update (cpu-jul2016) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 3.7,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.5.48 / 5.6 <= 5.6.29 / 5.7 <= 5.7.10 Security Update (cpu-jul2016) - Linux",
+      "cve: CVE-2016-3452"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.5.48 / 5.6 <= 5.6.29 / 5.7 <= 5.7.10 Security Update (cpu-jul2016) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 3.7,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.5.48 / 5.6 <= 5.6.29 / 5.7 <= 5.7.10 Security Update (cpu-jul2016) - Linux",
+      "cve: CVE-2016-3452"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.7.40, 8.x <= 8.0.31 Security Update (cpuapr2023) - Linux",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": 2.7,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [
+      "cpe:/a:mysql:mysql:5.5.47"
+    ],
+    "log_method": [
+      "Oracle MySQL Server <= 5.7.40, 8.x <= 8.0.31 Security Update (cpuapr2023) - Linux",
+      "cve: CVE-2023-21963"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Oracle MySQL Server <= 5.6.44 / 5.7 <= 5.7.18 Security Update (cpujul2019) - Linux",
+    "description": [
+      "The remote host responded to an ICMP timestamp request."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOW",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "The following response / ICMP packet has been received: - ICMP Type: 14 - ICMP Code: 0"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "ICMP Timestamp Reply Information Disclosure",
+    "description": [
+      "The remote host responded to an ICMP timestamp request."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOW",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": null,
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "A web server is running on this port"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Log 80/tcp"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Services",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Services"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "HTTP Server Banner Enumeration",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOW",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "It was possible to enumerate the following HTTP server banner(s):"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "HTTP Server Banner Enumeration"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "HTTP Server type and version",
+    "description": [
+      "This script detects and reports the HTTP Server's banner which might provide the type and version of it."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "The remote HTTP Server banner is:\nServer: Apache/2.4.7 (Ubuntu)"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: HTTP Server type and version",
+      "OID:1.3.6.1.4.1.25623.1.0.10107",
+      "Version used: 2023-08-01T13:29:10Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Web Application Scanning Consolidation / Info Reporting",
+    "description": [
+      "The script consolidates and reports various information for web application (formerly called 'CGI') scanning."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Web Application Scanning Consolidation / Info Reporting",
+      "OID:1.3.6.1.4.1.25623.1.0.111038",
+      "Version used: 2026-01-13T05:47:36Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 234",
+    "description": [
+      "Web Servers can use a file called /robot(s).txt to ask search engines to ignore certain files and directories. By nature this file can not be used to protect private files from public read access."
+    ],
+    "solution": [
+      "Review the content of the /robots.txt file and consider removing the files from the server or protecting them in other ways if you actually intended non-public availability."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [
+      "Any serious web search engine will honor the /robots.txt file and not scan the files and directories listed there. Any entries listed in this file are not even hidden anymore."
+    ],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 235",
+    "description": [
+      "Missing Headers | More Information"
+    ],
+    "solution": [
+      "Check the content of the /robots.txt file and consider removing the files from the server or protecting them in other ways if you actually intended non-public availability."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.9.2",
+    "port": 80,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [
+      "Any entries listed in this file are not even hidden anymore."
+    ],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "CPE Inventory",
+    "description": [
+      "This routine uses information collected by other routines about CPE identities of operating systems, services and applications detected during the scan."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": null,
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "path / port: 80/tcp"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: CPE Inventory",
+      "OID:1.3.6.1.4.1.25623.1.0.810002",
+      "Version used: 2022-07-27T10:11:28Z",
+      "References:[url: https://nvd.nist.gov/products/cpe]",
+      "Quality of Detection (QoD): 80%"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Traceroute",
+    "description": [
+      "Collect information about the network route and network distance between the scanner host and the target host."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Network route from scanner (172.30.0.2) to target (172.30.9.2): 172.30.0.2, 172.30.9.2",
+      "Network distance between scanner and target: 2"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Traceroute",
+      "OID:1.3.6.1.4.1.25623.1.0.51662",
+      "Version used: 2022-10-17T11:13:19Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "PHP Detection Consolidation",
+    "description": [
+      "Consolidation of PHP detections.",
+      "Detected PHP Version: 5.5.9",
+      "Location: 80/tcp",
+      "CPE: cpe:/a:php:php:5.5.9"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: PHP Detection Consolidation",
+      "OID:1.3.6.1.4.1.25623.1.0.171722",
+      "Version used: 2025-09-24T05:39:03Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Hostname Determination Reporting",
+    "description": [
+      "The script reports information on how the hostname of the target was determined."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Hostname Determination Reporting",
+      "OID:1.3.6.1.4.1.25623.1.0.108449",
+      "Version used: 2022-07-27T10:11:28Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "OS Detection Consolidation and Reporting",
+    "description": [
+      "This script consolidates the OS information detected by several VTs and tries to find the best matching OS. Furthermore it reports all previously collected information leading to this best matching OS. It also reports possible additional information which might help to improve the OS detection."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Best matching OS: OS: Ubuntu",
+      "CPE: cpe:/o:canonical:ubuntu_linux"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: OS Detection Consolidation and Reporting",
+      "OID:1.3.6.1.4.1.25623.1.0.105937",
+      "Version used: 2026-01-21T05:50:46Z",
+      "References: url: https://forum.greenbone.net/c/vulnerability-tests/7"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "IP Forwarding Enabled - Active Check",
+    "description": [
+      "Checks if the remote host has IP forwarding enabled. Quality of Detection (QoD): 70%"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: IP Forwarding Enabled - Active Check",
+      "OID:1.3.6.1.4.1.25623.1.0.147205",
+      "Version used: 2021-12-03T08:27:06Z",
+      "References:cve: CVE-1999-0511"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Apache HTTP Server Detection Consolidation",
+    "description": [
+      "Consolidation of Apache HTTP Server detections. Quality of Detection (QoD): 80%"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Apache HTTP Server Detection Consolidation",
+      "OID:1.3.6.1.4.1.25623.1.0.117232",
+      "Version used: 2024-03-08T15:37:10Z",
+      "References:url: https://httpd.apache.org"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Database Open Access Information Disclosure Vulnerability",
+    "description": [
+      "Various Database server might be prone to an information disclosure vulnerability if accessible to remote systems. Quality of Detection (QoD): 80%"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Database Open Access Information Disclosure Vulnerability",
+      "OID:1.3.6.1.4.1.25623.1.0.902799",
+      "Version used: 2025-09-09T05:38:49Z",
+      "References:url: https://www.pcisecuritystandards.org/security_standards/index.php?id=pci_ds"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+    "description": [
+      "MySQL protocol-based detection of MariaDB / Oracle MySQL.",
+      "Quality of Detection (QoD): 80%"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Detected Oracle MySQL",
+      "Version: 5.5.47-0ubuntu0.14.04.1",
+      "Location: 3306/tcp",
+      "CPE: cpe:/a:oracle:mysql:5.5.47"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: MariaDB / Oracle MySQL Detection (MySQL Protocol)",
+      "OID:1.3.6.1.4.1.25623.1.0.100152",
+      "Version used: 2025-09-09T05:38:49Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Services",
+    "description": [
+      "This plugin performs service detection.",
+      "Quality of Detection (QoD): 80%"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.9.2",
+    "port": 3306,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "A MySQL server is running on this port"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Services",
+      "OID:1.3.6.1.4.1.25623.1.0.10330",
+      "Version used: 2025-03-05T05:38:53Z"
+    ],
+    "source": "OPENVAS"
+  }
+]

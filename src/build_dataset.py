@@ -25,13 +25,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import containment, tokens  # noqa: E402
 from sources import SOURCES  # noqa: E402
 
+from mulitaminer.chunking import pack  # noqa: E402
 from mulitaminer.evaluation.fields import field_plans  # noqa: E402
-from mulitaminer.extraction import render_block  # noqa: E402
+from mulitaminer.extraction import render_chunk  # noqa: E402
 from mulitaminer.scanner_engine import get_scanner  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[1]
 TOOL = REPO.parent / "MulitaMiner2"
 CONTAINMENT_MIN = 0.80
+# mirrors production packing: profile.max_vulns_per_chunk blocks under the
+# serving profiles' max_output_tokens budget
+TRAIN_TOKEN_BUDGET = 8000
 
 
 def text_fields(scanner: str) -> list[str]:
@@ -78,6 +82,7 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
     trimmed: Counter = Counter()
     fill: Counter = Counter()
 
+    by_report: dict[tuple[str, str], dict[int, object]] = {}
     for source in sources:
         for ex in source.examples():
             if Path(ex.source_id).stem.lower() in deny_stems:
@@ -96,24 +101,40 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float) -> None:
             for field, value in ex.target.items():
                 if value not in (None, [], {}, ""):
                     fill[field] += 1
-            prompt = prompts.setdefault(ex.scanner, get_scanner(ex.scanner).prompt())
+            # first gold wins on duplicate block matches within a report
+            by_report.setdefault((ex.scanner, ex.source_id), {}).setdefault(ex.block.id, ex)
+
+    # production-shaped examples: pack each report's gold-bearing blocks with
+    # the tool's own chunker and answer every block of the chunk at once
+    n_records = 0
+    for (scanner, source_id), by_id in by_report.items():
+        prompt = prompts.setdefault(scanner, get_scanner(scanner).prompt())
+        ordered = [by_id[i] for i in sorted(by_id)]
+        chunks, _ = pack(
+            [e.block for e in ordered],
+            max_blocks_per_chunk=get_scanner(scanner).max_vulns_per_chunk,
+            token_budget=TRAIN_TOKEN_BUDGET,
+        )
+        for chunk in chunks:
+            items = [by_id[b.id].target for b in chunk.blocks]
+            n_records += len(items)
             examples.append({
                 "messages": [
                     {"role": "system", "content": prompt},
-                    {"role": "user", "content": render_block(ex.block)},
+                    {"role": "user", "content": render_chunk(chunk.blocks)},
                     {"role": "assistant",
-                     "content": json.dumps({"items": [ex.target]}, ensure_ascii=False)},
+                     "content": json.dumps({"items": items}, ensure_ascii=False)},
                 ],
-                "_source": ex.source_id,
-                "_scanner": ex.scanner,
+                "_source": source_id,
+                "_scanner": scanner,
             })
 
     _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
-           deny_stems, deny_hosts)
+           deny_stems, deny_hosts, n_records)
 
 
 def _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
-           deny_stems, deny_hosts):
+           deny_stems, deny_hosts, n_records):
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "prompts").mkdir(exist_ok=True)
     prompt_hashes = {}
@@ -135,8 +156,9 @@ def _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
     per_scanner = Counter(ex["_scanner"] for ex in examples)
     report = [
         "# Training dataset report", "",
-        f"- examples admitted: {len(examples)} (train {len(train)}, val {len(val)})",
-        f"- per scanner: {dict(per_scanner)}",
+        f"- examples admitted: {len(examples)} chunks / {n_records} records "
+        f"(train {len(train)}, val {len(val)} chunks)",
+        f"- per scanner (chunks): {dict(per_scanner)}",
         f"- dropped (scalar field not contained): {sum(dropped.values())}"
         + (f" {dict(dropped)}" if dropped else ""),
         f"- trimmed paragraphs (not rendered in the PDF): {sum(trimmed.values())}"
@@ -146,7 +168,7 @@ def _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
         f"denied examples: {dict(denied) or 0}",
         f"- prompt snapshots: {prompt_hashes}",
         "", "## Field fill rate", "",
-        *[f"- {f}: {n} ({n / max(len(examples), 1):.0%})" for f, n in fill.most_common()],
+        *[f"- {f}: {n} ({n / max(n_records, 1):.0%})" for f, n in fill.most_common()],
     ]
     (out_dir / "dataset_report.md").write_text("\n".join(report) + "\n", encoding="utf-8")
     print("\n".join(report[1:9]))

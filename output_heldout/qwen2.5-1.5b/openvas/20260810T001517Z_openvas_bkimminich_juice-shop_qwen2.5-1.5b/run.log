@@ -1,0 +1,17 @@
+2026-08-10 00:15:17,307 INFO mulitaminer.pdf_reader: Extracted 19 pages from openvas_bkimminich_juice-shop.pdf
+2026-08-10 00:15:17,310 INFO mulitaminer.pipeline: Segmented 18 finding blocks
+2026-08-10 00:15:17,363 INFO mulitaminer.chunking: Packed 18 blocks into 5 chunks
+2026-08-10 00:15:23,632 INFO mulitaminer.extraction: Chunk 0: 3/4 blocks extracted
+2026-08-10 00:15:24,248 INFO mulitaminer.extraction: Chunk 1: 1/4 blocks extracted
+2026-08-10 00:15:29,363 INFO mulitaminer.extraction: Chunk 2: 4/4 blocks extracted
+2026-08-10 00:15:32,784 INFO mulitaminer.extraction: Chunk 3: 4/4 blocks extracted
+2026-08-10 00:15:34,147 INFO mulitaminer.extraction: Chunk 4: 2/2 blocks extracted
+2026-08-10 00:15:34,148 INFO mulitaminer.extraction: Retry round 1: re-sending 4 unresolved block(s)
+2026-08-10 00:15:34,148 INFO mulitaminer.chunking: Packed 4 blocks into 2 chunks
+2026-08-10 00:15:35,180 INFO mulitaminer.extraction: Chunk 0: 1/2 blocks extracted
+2026-08-10 00:15:37,229 INFO mulitaminer.extraction: Chunk 1: 2/2 blocks extracted
+2026-08-10 00:15:37,229 INFO mulitaminer.extraction: Retry round 2: re-sending 1 unresolved block(s)
+2026-08-10 00:15:37,230 INFO mulitaminer.chunking: Packed 1 blocks into 1 chunks
+2026-08-10 00:15:39,863 INFO mulitaminer.extraction: Chunk 0: 1/1 blocks extracted
+2026-08-10 00:15:40,146 INFO mulitaminer.pipeline: Extracted 18/18 blocks; 18 records after consolidation
+2026-08-10 00:15:40,147 INFO mulitaminer.writers: Wrote 18 records to /training/output_heldout/qwen2.5-1.5b/openvas/20260810T001517Z_openvas_bkimminich_juice-shop_qwen2.5-1.5b/results.json

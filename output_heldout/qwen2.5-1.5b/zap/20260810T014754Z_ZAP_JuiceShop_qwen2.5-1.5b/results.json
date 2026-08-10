@@ -1,0 +1,545 @@
+[
+  {
+    "Name": "SQL Injection",
+    "description": [
+      "SQL injection may be possible."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "High",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": 40018,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000/rest/products/search?q=%27%28",
+        "input_type": "",
+        "input_name": "q",
+        "payload": "'('",
+        "proof": "HTTP/1.1 500 Internal Server Error",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "Content Security Policy (CSP) Header Not Set",
+    "description": [
+      "Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": 10038,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/juice-shop/build/routes/fileServer.js:53:13",
+        "input_type": "",
+        "input_name": "q",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/sitemap.xml",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/chunk-PX7UKXVL.js",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/chunk-QBYXNN7Z.js",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/chunk-VS3A3LTT.js",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/robots.txt",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "Cross-Domain Misconfiguration",
+    "description": [
+      "Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": 10098,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000/assets/public/favicon_js.ico",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/chunk-PX7UKXVL.js",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/chunk-QBYXNN7Z.js",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/chunk-VS3A3LTT.js",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/robots.txt",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "Missing Anti-clickjacking Header",
+    "description": [
+      "The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Medium",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": 10020,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000/socket.io/?EIO=4&transport=polling&t=P-VNIRm&sid=5jJuvaEko_flaHTgAAIS",
+        "input_type": "",
+        "input_name": "",
+        "payload": "X-Frame-Options: DENY",
+        "proof": "The response does not include the X-Frame-Options header.",
+        "output": "",
+        "request_method": "POST",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "Session ID in URL Rewrite",
+    "description": [
+      "URL rewrite is used to track user session ID. The session ID may be disclosed via cross-site referer header. In addition, the session ID might be stored in browser history or server logs."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [
+      "https://seclists.org/webappsec/2002/q4/111",
+      "CWE 598",
+      "WASC 13"
+    ],
+    "severity": "Medium",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": 3,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000/socket.io/?EIO=4&transport=polling&t=P-VNIRm&sid=5jJuvaEko_flaHTgAAIS",
+        "input_type": "",
+        "input_name": "sid",
+        "payload": "5jJuvaEko_flaHTgAAIS",
+        "proof": "5jJuvaEko_flaHTgAAIS",
+        "output": "",
+        "request_method": "POST",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "Private IP Disclosure",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": 2,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000/rest/admin/application-configuration",
+        "input_type": "",
+        "input_name": "",
+        "payload": "192.168.99.100:3000",
+        "proof": "192.168.99.100:3000",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "Low Timestamp Disclosure - Unix",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": null,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000/styles.css",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "1528301887, which evaluates to: 2018-06-06 16:18:07.",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/styles.css",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "1578947368, which evaluates to: 2020-01-13 20:29:28.",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/styles.css",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "1528301887, which evaluates to: 2018-06-06 16:18:07.",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/styles.css",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "1578947368, which evaluates to: 2020-01-13 20:29:28.",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/styles.css",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "1528301887, which evaluates to: 2018-06-06 16:18:07.",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/styles.css",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "1578947368, which evaluates to: 2020-01-13 20:29:28.",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "X-Content-Type-Options Header Missing",
+    "description": [
+      "The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [
+      "https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)",
+      "https://owasp.org/www-community/Security_Headers",
+      "CWE 693",
+      "WASC 15"
+    ],
+    "severity": "Low",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": 10021,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000/socket.io/?EIO=4&transport=polling&t=P-VNIRn&sid=5jJuvaEko_flaHTgAAIS",
+        "input_type": "",
+        "input_name": "",
+        "payload": "(40)",
+        "proof": "HTTP/1.1 401 Unauthorized",
+        "output": "",
+        "request_method": "POST",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/socket.io/?EIO=4&transport=polling&t=P-VNIQz",
+        "input_type": "",
+        "input_name": "",
+        "payload": "(40)",
+        "proof": "HTTP/1.1 401 Unauthorized",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/socket.io/?EIO=4&transport=polling&t=P-VNIRm&sid=5jJuvaEko_flaHTgAAIS",
+        "input_type": "",
+        "input_name": "",
+        "payload": "(40)",
+        "proof": "HTTP/1.1 401 Unauthorized",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "Informational Modern Web Application",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Informational",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": null,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/juice-shop/build/routes/fileServer.js:53:13",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/juice-shop/node_modules/express/lib/router/index.js:286:9",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      },
+      {
+        "instance": "http://172.30.7.1:3000/sitemap.xml",
+        "input_type": "",
+        "input_name": "",
+        "payload": "",
+        "proof": "",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  },
+  {
+    "Name": "User Agent Fuzzer",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Informational",
+    "host": null,
+    "port": null,
+    "protocol": null,
+    "plugin": 10104,
+    "instances": [
+      {
+        "instance": "http://172.30.7.1:3000/socket.io/?EIO=4&transport=polling&t=P-VNLYo&sid=q1ZXLlPiKifQLggXAAI6",
+        "input_type": "",
+        "input_name": "",
+        "payload": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+        "proof": "Other Info",
+        "output": "",
+        "request_method": "GET",
+        "http_status_code": null,
+        "http_protocol": "",
+        "response_content_type": ""
+      }
+    ],
+    "source": "ZAP"
+  }
+]

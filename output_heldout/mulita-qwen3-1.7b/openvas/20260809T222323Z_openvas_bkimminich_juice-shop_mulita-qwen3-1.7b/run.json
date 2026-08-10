@@ -1,0 +1,55 @@
+{
+  "config": {
+    "input": "/training/data/heldout/openvas/openvas_bkimminich_juice-shop.pdf",
+    "scanner": "openvas",
+    "model": "mulita-qwen3-1.7b",
+    "model_name": null,
+    "formats": [],
+    "debug": false
+  },
+  "block_count": 18,
+  "raw_record_count": 12,
+  "final_record_count": 12,
+  "usage": {
+    "prompt_tokens": 19907,
+    "completion_tokens": 5559,
+    "calls": 8,
+    "cost_usd": 0.0
+  },
+  "duration_s": 307.29,
+  "warnings": [
+    "block 0 yielded no record after 3 attempts; dropped",
+    "block 2 yielded no record after 3 attempts; dropped",
+    "block 3 yielded no record after 3 attempts; dropped",
+    "block 12 yielded no record after 3 attempts; dropped",
+    "block 14 yielded no record after 3 attempts; dropped",
+    "block 15 yielded no record after 3 attempts; dropped",
+    "negation gate: 1 flip candidate(s) flagged; see negation_flags in run.json"
+  ],
+  "drops": {
+    "unknown_id": 0,
+    "duplicate_id": 0,
+    "validation_error": 0,
+    "unrecovered": 6
+  },
+  "retries": {
+    "bad_json": 14,
+    "bad_shape": 0
+  },
+  "merge_log": [],
+  "negation_flags": [
+    {
+      "block_id": 8,
+      "field": "detection_result",
+      "kind": "dropped",
+      "overlap": 0.853,
+      "extracted_sentence": "Header Name | Header Value --------------------------------------- Feature-Policy | payment 'self' X-Content-Type-Options | nosniff X-Frame-Options | SAMEORIGIN Missing Headers | More Information -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Content-Security-Policy | https://owasp.org/www-project-secure-headers/#content-security-policy Cross-Origin-Embedder-Policy | https://scotthelme.co.uk/coop-and-coep/, Note: This is an upcoming header Cross-Origin-Opener-Policy | https://scotthelme.co.uk/coop-and-coep/, Note: This is an upcoming header Cross-Origin-Resource-Policy | https://scotthelme.co.uk/coop-and-coep/, Note: This is an upcoming header Document-Policy | https://w3c.github.io/webappsec-feature-policies/document-policy#document-policy-http-header Permissions-Policy | https://w3c.github.io/webappsec-feature-policies/#permissions-policy-http-header-field Referrer-Policy | https://owasp.org/www-project-secure-headers/#referrer-policy Sec-Fetch-Dest | https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header supported only in newer browsers like e.g. Firefox 90 Sec-Fetch-Mode | https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header supported only in newer browsers like e.g. Firefox 90 Sec-Fetch-Site | https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header supported only in newer browsers like e.g. Firefox 90 Sec-Fetch-User | https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header supported only in newer browsers like e.g. Firefox 90 X-Permitted-Cross-Domain-Policies | https://owasp.org/www-project-secure-headers/#x-permitted-cross-domain-policies X-XSS-Protection | https://owasp.org/www-project-secure-headers/#x-xss-protection, Note: Most major browsers have dropped / deprecated support for this header in 2020.",
+      "source_sentence": "Quality of Detection (QoD): 80%\nVulnerability Detection Result\nHeader Name | Header Value\n---------------------------------------\nFeature-Policy | payment 'self'\nX-Content-Type-Options | nosniff\nX-Frame-Options | SAMEORIGIN\nMissing Headers | More Information\n--------------------------------------------------------------------------------\n,→------------------------------------------------------------------------------\n,→------------------------------------------------\nContent-Security-Policy | https://owasp.org/www-project-secure-headers\n,→/#content-security-policy\nCross-Origin-Embedder-Policy | https://scotthelme.co.uk/coop-and-coep/, Not\n,→e: This is an upcoming header\nCross-Origin-Opener-Policy | https://scotthelme.co.uk/coop-and-coep/, Not\n,→e: This is an upcoming header\nCross-Origin-Resource-Policy | https://scotthelme.co.uk/coop-and-coep/, Not\n,→e: This is an upcoming header\nDocument-Policy | https://w3c.github.io/webappsec-feature-poli\n,→cy/document-policy#document-policy-http-header\nPermissions-Policy | https://w3c.github.io/webappsec-feature-poli\n,→cy/#permissions-policy-http-header-field\nReferrer-Policy | https://owasp.org/www-project-secure-headers\n,→/#referrer-policy\nSec-Fetch-Dest | https://developer.mozilla.org/en-US/docs/Web\n,→/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header suppo\n,→rted only in newer browsers like e.g. Firefox 90\nSec-Fetch-Mode | https://developer.mozilla.org/en-US/docs/Web\n,→/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header suppo\n,→rted only in newer browsers like e.g. Firefox 90\nSec-Fetch-Site | https://developer.mozilla.org/en-US/docs/Web\n,→/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header suppo\n,→rted only in newer browsers like e.g. Firefox 90\nSec-Fetch-User | https://developer.mozilla.org/en-US/docs/Web\n,→/HTTP/Headers#fetch_metadata_request_headers, Note: This is a new header suppo\n,→rted only in newer browsers like e.g. Firefox 90\nX-Permitted-Cross-Domain-Policies | https://owasp.org/www-project-secure-headers\n,→/#x-permitted-cross-domain-policies\nX-XSS-Protection | https://owasp.org/www-project-secure-headers\n,→/#x-xss-protection, Note: Most major browsers have dropped / deprecated suppor\n,→t for this header in 2020.",
+      "nli_score": null
+    }
+  ],
+  "pdf": {
+    "pages": 19,
+    "backend": "pypdfium2"
+  }
+}

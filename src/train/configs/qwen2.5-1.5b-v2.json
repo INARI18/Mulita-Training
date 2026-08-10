@@ -1,0 +1,11 @@
+{
+  "name": "mulita-qwen2.5-1.5b-v2",
+  "base_model": "unsloth/Qwen2.5-1.5B-Instruct",
+  "max_seq_len": 12288,
+  "lora_r": 32,
+  "lora_alpha": 32,
+  "batch_size": 1,
+  "grad_accum": 16,
+  "epochs": 2,
+  "lr": 2e-4
+}

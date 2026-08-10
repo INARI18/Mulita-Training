@@ -101,6 +101,17 @@ def test_norm_key_immune_to_artifacts():
     assert norm_key("Apache 2.4 mod_proxy") == norm_key("Apache 2.4 mod￾_proxy")
 
 
+def test_parse_log_method_section():
+    from sources.openvas.csv_source import parse_log_method
+
+    block = ("High (CVSS: 7.5)\nNVT: x\nSummary:\nA summary.\n"
+             "Log Method\nDetails: CPE Inventory\nOID:1.2.3\n"
+             "Version used: 2022-07-27\nReferences\nurl: https://a.example\n")
+    assert parse_log_method(block) == [
+        "Details: CPE Inventory", "OID:1.2.3", "Version used: 2022-07-27"]
+    assert parse_log_method("NVT: x\nSummary:\nNo log section here.") == []
+
+
 # --- qualys ------------------------------------------------------------------
 
 

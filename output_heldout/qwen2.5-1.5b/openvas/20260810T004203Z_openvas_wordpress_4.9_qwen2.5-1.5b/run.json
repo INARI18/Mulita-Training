@@ -1,0 +1,44 @@
+{
+  "config": {
+    "input": "/training/data/heldout/openvas/openvas_wordpress_4.9.pdf",
+    "scanner": "openvas",
+    "model": "qwen2.5-1.5b",
+    "model_name": null,
+    "formats": [],
+    "debug": false
+  },
+  "block_count": 54,
+  "raw_record_count": 52,
+  "final_record_count": 52,
+  "usage": {
+    "prompt_tokens": 80211,
+    "completion_tokens": 14032,
+    "calls": 28,
+    "cost_usd": 0.0
+  },
+  "duration_s": 302.69,
+  "warnings": [
+    "chunk 1: unknown block_id 1 dropped",
+    "chunk 12: duplicate block_id 41 dropped",
+    "chunk 4: duplicate block_id 36 dropped",
+    "chunk 4: duplicate block_id 36 dropped",
+    "block 5 yielded no record after 3 attempts; dropped",
+    "block 32 yielded no record after 3 attempts; dropped"
+  ],
+  "drops": {
+    "unknown_id": 1,
+    "duplicate_id": 3,
+    "validation_error": 0,
+    "unrecovered": 2
+  },
+  "retries": {
+    "bad_json": 6,
+    "bad_shape": 0
+  },
+  "merge_log": [],
+  "negation_flags": [],
+  "pdf": {
+    "pages": 74,
+    "backend": "pypdfium2"
+  }
+}

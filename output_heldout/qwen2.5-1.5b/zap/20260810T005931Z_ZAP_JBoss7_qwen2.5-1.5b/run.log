@@ -1,0 +1,13 @@
+2026-08-10 00:59:31,135 INFO mulitaminer.pdf_reader: Extracted 9 pages from ZAP_JBoss7.pdf
+2026-08-10 00:59:31,137 INFO mulitaminer.pipeline: Segmented 7 finding blocks
+2026-08-10 00:59:31,187 INFO mulitaminer.chunking: Packed 7 blocks into 3 chunks
+2026-08-10 00:59:34,977 INFO mulitaminer.extraction: Chunk 0: 3/3 blocks extracted
+2026-08-10 01:00:13,622 WARNING mulitaminer.extraction: Chunk 1: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-10 01:00:14,408 INFO mulitaminer.extraction: Chunk 2: 1/1 blocks extracted
+2026-08-10 01:00:14,408 INFO mulitaminer.extraction: Retry round 1: re-sending 3 unresolved block(s)
+2026-08-10 01:00:14,408 INFO mulitaminer.chunking: Packed 3 blocks into 3 chunks
+2026-08-10 01:00:16,662 INFO mulitaminer.extraction: Chunk 0: 1/1 blocks extracted
+2026-08-10 01:00:20,663 INFO mulitaminer.extraction: Chunk 1: 1/1 blocks extracted
+2026-08-10 01:00:22,718 INFO mulitaminer.extraction: Chunk 2: 1/1 blocks extracted
+2026-08-10 01:00:23,000 INFO mulitaminer.pipeline: Extracted 7/7 blocks; 7 records after consolidation
+2026-08-10 01:00:23,001 INFO mulitaminer.writers: Wrote 7 records to /training/output_heldout/qwen2.5-1.5b/zap/20260810T005931Z_ZAP_JBoss7_qwen2.5-1.5b/results.json

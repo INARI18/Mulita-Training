@@ -133,18 +133,24 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
   the model fills with real block content and scores 0 on 104 measured pairs.
   Ruler-blind field - ignore its scores for now.
 
-## 6c. Dataset v2 + final retrain (one batch, planned)
+## 6c. Dataset v2 + final retrain (one batch, IMPLEMENTED)
 
-All fixes land in ONE dataset regeneration + ONE qwen2.5 retrain (~1h30):
+All fixes in one dataset regeneration + one qwen2.5 retrain (~1h30):
 
-1. Production chunking: pack examples as 1-4 blocks per call with combined
-   `{"items":[...]}`, mirroring the tool's chunker (user request; removes the
-   train/serve mismatch class entirely).
-2. log_method gold parsed from the block's own `Log Method:` section
-   (deterministic, like build_references); regenerate held-out baselines.
-3. Whatever the cvss/schema test decides (serving flag and/or gold tweak).
+1. Production chunking: examples are now whole chunks (the tool's own
+   `pack` at `max_vulns_per_chunk` / 8000-token budget + `render_chunk`),
+   assistant answers every block of the chunk in one `{"items":[...]}`.
+   Removes the train/serve mismatch class; suspected cvss-null cause.
+2. log_method gold parsed from the block's own `Log Method` section
+   (`parse_log_method` in the openvas source); held-out baselines
+   regenerated with it.
+3. Serving: schema stays ON (decided by the wordpress test).
 
-Then: GGUF re-export, re-evaluate on held-outs, CPU cost, gate.
+Config: `src/train/configs/qwen2.5-1.5b-v2.json` (max_seq_len 12288 for the
+longer chunk examples; outputs to `outputs/mulita-qwen2.5-1.5b-v2`).
+IMPORTANT for the v2 evaluation: baselines changed (log_method filled), so
+re-run `evaluate` for the v1/base outputs against the NEW baselines before
+comparing - extractions are reusable, scores are not.
 
 ## 7. Status
 

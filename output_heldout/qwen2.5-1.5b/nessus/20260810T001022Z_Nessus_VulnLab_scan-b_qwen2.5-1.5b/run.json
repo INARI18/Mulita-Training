@@ -1,0 +1,72 @@
+{
+  "config": {
+    "input": "/training/data/heldout/nessus/Nessus_VulnLab_scan-b.pdf",
+    "scanner": "nessus",
+    "model": "qwen2.5-1.5b",
+    "model_name": null,
+    "formats": [],
+    "debug": false
+  },
+  "block_count": 268,
+  "raw_record_count": 267,
+  "final_record_count": 246,
+  "usage": {
+    "prompt_tokens": 655160,
+    "completion_tokens": 20238,
+    "calls": 248,
+    "cost_usd": 0.0
+  },
+  "duration_s": 294.11,
+  "warnings": [
+    "block 127 yielded no record after 3 attempts; dropped",
+    "negation gate: 1 flip candidate(s) flagged; see negation_flags in run.json"
+  ],
+  "drops": {
+    "unknown_id": 0,
+    "duplicate_id": 0,
+    "validation_error": 0,
+    "unrecovered": 1
+  },
+  "retries": {
+    "bad_json": 4,
+    "bad_shape": 0
+  },
+  "merge_log": [
+    "merged duplicate: 'Nessus SYN scanner' (key={\"Name\": \"nessus syn scanner\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.30.29.1\", \"impact\": [], \"insight\": [], \"plugin\": 11219, \"plugin_details\": {\"family\": null, \"modification_date\": \"2025/07/14\", \"plugin_id\": 11219, \"publication_date\": \"2009/02/04\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'Nessus SYN scanner' (key={\"Name\": \"nessus syn scanner\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.16\", \"impact\": [], \"insight\": [], \"plugin\": 11219, \"plugin_details\": {\"family\": null, \"modification_date\": \"2025/07/14\", \"plugin_id\": 11219, \"publication_date\": \"2009/02/04\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'HTTP Server Type and Version' (key={\"Name\": \"http server type and version\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.48\", \"impact\": [], \"insight\": [], \"plugin\": 10107, \"plugin_details\": {\"family\": null, \"modification_date\": \"2020/10/30\", \"plugin_id\": 10107, \"publication_date\": \"2000/01/04\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'Nessus SYN scanner' (key={\"Name\": \"nessus syn scanner\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.48\", \"impact\": [], \"insight\": [], \"plugin\": 11219, \"plugin_details\": {\"family\": null, \"modification_date\": \"2025/07/14\", \"plugin_id\": 11219, \"publication_date\": \"2009/02/04\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'Service Detection' (key={\"Name\": \"service detection\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.48\", \"impact\": [], \"insight\": [], \"plugin\": 22964, \"plugin_details\": {\"family\": null, \"modification_date\": \"2026/03/23\", \"plugin_id\": 22964, \"publication_date\": \"2007/08/19\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'SSL Certificate Cannot Be Trusted' (key={\"Name\": \"ssl certificate cannot be trusted\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 51192, \"plugin_details\": {\"family\": null, \"modification_date\": \"2025/06/16\", \"plugin_id\": 51192, \"publication_date\": \"2010/12/15\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"MEDIUM\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'HSTS Missing From HTTPS Server' (key={\"Name\": \"hsts missing from https server\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 84502, \"plugin_details\": {\"family\": null, \"modification_date\": \"2024/08/09\", \"plugin_id\": 84502, \"publication_date\": \"2015/07/02\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'HyperText Transfer Protocol (HTTP) Information' (key={\"Name\": \"hypertext transfer protocol (http) information\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 24260, \"plugin_details\": {\"family\": null, \"modification_date\": \"2024/02/26\", \"plugin_id\": 24260, \"publication_date\": \"2007/01/30\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'Nessus SYN scanner' (key={\"Name\": \"nessus syn scanner\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 11219, \"plugin_details\": {\"family\": null, \"modification_date\": \"2025/07/14\", \"plugin_id\": 11219, \"publication_date\": \"2009/02/04\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'Remote Services Using Post-Quantum Ciphers' (key={\"Name\": \"remote services using post-quantum ciphers\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 277653, \"plugin_details\": {\"family\": null, \"modification_date\": \"2025/12/08\", \"plugin_id\": 277653, \"publication_date\": \"2025/12/08\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'SSL / TLS Versions Supported' (key={\"Name\": \"ssl / tls versions supported\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 56984, \"plugin_details\": {\"family\": null, \"modification_date\": \"2025/06/16\", \"plugin_id\": 56984, \"publication_date\": \"2011/12/01\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'SSL Cipher Block Chaining Cipher Suites Supported' (key={\"Name\": \"ssl cipher block chaining cipher suites supported\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 70544, \"plugin_details\": {\"family\": null, \"modification_date\": \"2021/02/03\", \"plugin_id\": 70544, \"publication_date\": \"2013/10/22\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'SSL Cipher Suites Supported' (key={\"Name\": \"ssl cipher suites supported\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 21643, \"plugin_details\": {\"family\": null, \"modification_date\": \"2026/04/13\", \"plugin_id\": 21643, \"publication_date\": \"2006/06/05\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'SSL Perfect Forward Secrecy Cipher Suites Supported' (key={\"Name\": \"ssl perfect forward secrecy cipher suites supported\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 57041, \"plugin_details\": {\"family\": null, \"modification_date\": \"2021/03/09\", \"plugin_id\": 57041, \"publication_date\": \"2011/12/07\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'SSL/TLS Recommended Cipher Suites' (key={\"Name\": \"ssl/tls recommended cipher suites\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 156899, \"plugin_details\": {\"family\": null, \"modification_date\": \"2024/02/12\", \"plugin_id\": 156899, \"publication_date\": \"2022/01/20\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'Service Detection' (key={\"Name\": \"service detection\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 22964, \"plugin_details\": {\"family\": null, \"modification_date\": \"2026/03/23\", \"plugin_id\": 22964, \"publication_date\": \"2007/08/19\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'TLS Supported Groups' (key={\"Name\": \"tls supported groups\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 277654, \"plugin_details\": {\"family\": null, \"modification_date\": \"2026/06/15\", \"plugin_id\": 277654, \"publication_date\": \"2025/12/08\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'TLS Version 1.2 Protocol Detection' (key={\"Name\": \"tls version 1.2 protocol detection\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 136318, \"plugin_details\": {\"family\": null, \"modification_date\": \"2026/04/13\", \"plugin_id\": 136318, \"publication_date\": \"2020/05/04\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'TLS Version 1.3 Protocol Detection' (key={\"Name\": \"tls version 1.3 protocol detection\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.100\", \"impact\": [], \"insight\": [], \"plugin\": 138330, \"plugin_details\": {\"family\": null, \"modification_date\": \"2026/04/13\", \"plugin_id\": 138330, \"publication_date\": \"2020/07/09\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'DNS Server Detection' (key={\"Name\": \"dns server detection\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.101\", \"impact\": [], \"insight\": [], \"plugin\": 11002, \"plugin_details\": {\"family\": null, \"modification_date\": \"2017/05/16\", \"plugin_id\": 11002, \"publication_date\": \"2003/02/13\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})",
+    "merged duplicate: 'Nessus SYN scanner' (key={\"Name\": \"nessus syn scanner\", \"cvss\": [], \"description\": [], \"detection_result\": [], \"host\": \"172.31.1.101\", \"impact\": [], \"insight\": [], \"plugin\": 11219, \"plugin_details\": {\"family\": null, \"modification_date\": \"2025/07/14\", \"plugin_id\": 11219, \"publication_date\": \"2009/02/04\", \"severity\": null}, \"port\": null, \"protocol\": null, \"references\": [], \"severity\": \"NONE\", \"solution\": [], \"source\": \"NESSUS\"})"
+  ],
+  "negation_flags": [
+    {
+      "block_id": 28,
+      "field": "name",
+      "kind": "dropped",
+      "overlap": 0.545,
+      "extracted_sentence": "Redis Server Unprotected by Password Authentication",
+      "source_sentence": "100634 - Redis Server Unprotected by Password Authentication\nSynopsis\nA Redis server is not protected by password authentication.",
+      "nli_score": null
+    }
+  ],
+  "pdf": {
+    "pages": 344,
+    "backend": "pypdfium2"
+  }
+}

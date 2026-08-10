@@ -1,0 +1,212 @@
+2026-08-09 22:01:51,990 INFO mulitaminer.pdf_reader: Extracted 344 pages from Nessus_VulnLab_scan-b.pdf
+2026-08-09 22:01:52,014 INFO mulitaminer.pipeline: Segmented 268 finding blocks
+2026-08-09 22:01:52,076 INFO mulitaminer.chunking: Packed 268 blocks into 90 chunks
+2026-08-09 22:01:59,053 INFO mulitaminer.extraction: Chunk 0: 3/3 blocks extracted
+2026-08-09 22:01:59,784 INFO mulitaminer.extraction: Chunk 1: 1/3 blocks extracted
+2026-08-09 22:02:00,552 INFO mulitaminer.extraction: Chunk 2: 1/3 blocks extracted
+2026-08-09 22:02:02,273 INFO mulitaminer.extraction: Chunk 3: 3/3 blocks extracted
+2026-08-09 22:02:02,997 INFO mulitaminer.extraction: Chunk 4: 1/3 blocks extracted
+2026-08-09 22:02:04,552 INFO mulitaminer.extraction: Chunk 5: 3/3 blocks extracted
+2026-08-09 22:02:06,377 INFO mulitaminer.extraction: Chunk 6: 3/3 blocks extracted
+2026-08-09 22:02:09,982 INFO mulitaminer.extraction: Chunk 7: 3/3 blocks extracted
+2026-08-09 22:02:11,845 INFO mulitaminer.extraction: Chunk 8: 3/3 blocks extracted
+2026-08-09 22:02:12,604 INFO mulitaminer.extraction: Chunk 9: 1/3 blocks extracted
+2026-08-09 22:02:13,553 INFO mulitaminer.extraction: Chunk 10: 1/3 blocks extracted
+2026-08-09 22:02:34,317 WARNING mulitaminer.extraction: Chunk 11: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:02:35,155 INFO mulitaminer.extraction: Chunk 12: 1/3 blocks extracted
+2026-08-09 22:02:37,546 INFO mulitaminer.extraction: Chunk 13: 1/3 blocks extracted
+2026-08-09 22:02:41,405 INFO mulitaminer.extraction: Chunk 14: 3/3 blocks extracted
+2026-08-09 22:02:42,496 INFO mulitaminer.extraction: Chunk 15: 1/3 blocks extracted
+2026-08-09 22:02:45,363 INFO mulitaminer.extraction: Chunk 16: 3/3 blocks extracted
+2026-08-09 22:02:51,412 INFO mulitaminer.extraction: Chunk 17: 3/3 blocks extracted
+2026-08-09 22:02:52,492 INFO mulitaminer.extraction: Chunk 18: 1/3 blocks extracted
+2026-08-09 22:02:54,264 INFO mulitaminer.extraction: Chunk 19: 3/3 blocks extracted
+2026-08-09 22:03:14,974 WARNING mulitaminer.extraction: Chunk 20: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:03:17,546 INFO mulitaminer.extraction: Chunk 21: 3/3 blocks extracted
+2026-08-09 22:03:19,378 INFO mulitaminer.extraction: Chunk 22: 3/3 blocks extracted
+2026-08-09 22:03:22,165 INFO mulitaminer.extraction: Chunk 23: 3/3 blocks extracted
+2026-08-09 22:03:23,681 INFO mulitaminer.extraction: Chunk 24: 3/3 blocks extracted
+2026-08-09 22:03:25,224 INFO mulitaminer.extraction: Chunk 25: 3/3 blocks extracted
+2026-08-09 22:03:28,822 INFO mulitaminer.extraction: Chunk 26: 3/3 blocks extracted
+2026-08-09 22:03:31,048 INFO mulitaminer.extraction: Chunk 27: 3/3 blocks extracted
+2026-08-09 22:03:32,095 INFO mulitaminer.extraction: Chunk 28: 1/3 blocks extracted
+2026-08-09 22:03:33,963 INFO mulitaminer.extraction: Chunk 29: 3/3 blocks extracted
+2026-08-09 22:03:37,215 INFO mulitaminer.extraction: Chunk 30: 3/3 blocks extracted
+2026-08-09 22:03:39,631 INFO mulitaminer.extraction: Chunk 31: 3/3 blocks extracted
+2026-08-09 22:03:40,332 INFO mulitaminer.extraction: Chunk 32: 1/3 blocks extracted
+2026-08-09 22:03:42,309 INFO mulitaminer.extraction: Chunk 33: 1/3 blocks extracted
+2026-08-09 22:03:44,324 INFO mulitaminer.extraction: Chunk 34: 3/3 blocks extracted
+2026-08-09 22:03:46,014 INFO mulitaminer.extraction: Chunk 35: 3/3 blocks extracted
+2026-08-09 22:04:06,731 WARNING mulitaminer.extraction: Chunk 36: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:04:08,662 INFO mulitaminer.extraction: Chunk 37: 1/3 blocks extracted
+2026-08-09 22:04:09,797 INFO mulitaminer.extraction: Chunk 38: 1/3 blocks extracted
+2026-08-09 22:04:10,994 INFO mulitaminer.extraction: Chunk 39: 1/3 blocks extracted
+2026-08-09 22:04:12,355 INFO mulitaminer.extraction: Chunk 40: 1/3 blocks extracted
+2026-08-09 22:04:14,244 INFO mulitaminer.extraction: Chunk 41: 3/3 blocks extracted
+2026-08-09 22:04:15,135 INFO mulitaminer.extraction: Chunk 42: 1/3 blocks extracted
+2026-08-09 22:04:18,604 INFO mulitaminer.extraction: Chunk 43: 3/3 blocks extracted
+2026-08-09 22:04:20,816 INFO mulitaminer.extraction: Chunk 44: 3/3 blocks extracted
+2026-08-09 22:04:23,229 INFO mulitaminer.extraction: Chunk 45: 3/3 blocks extracted
+2026-08-09 22:04:26,512 INFO mulitaminer.extraction: Chunk 46: 3/3 blocks extracted
+2026-08-09 22:04:29,731 INFO mulitaminer.extraction: Chunk 47: 3/3 blocks extracted
+2026-08-09 22:04:32,211 INFO mulitaminer.extraction: Chunk 48: 3/3 blocks extracted
+2026-08-09 22:04:34,131 INFO mulitaminer.extraction: Chunk 49: 3/3 blocks extracted
+2026-08-09 22:04:35,279 INFO mulitaminer.extraction: Chunk 50: 1/3 blocks extracted
+2026-08-09 22:04:37,227 INFO mulitaminer.extraction: Chunk 51: 3/3 blocks extracted
+2026-08-09 22:04:39,483 INFO mulitaminer.extraction: Chunk 52: 3/3 blocks extracted
+2026-08-09 22:04:41,261 INFO mulitaminer.extraction: Chunk 53: 1/3 blocks extracted
+2026-08-09 22:04:43,310 INFO mulitaminer.extraction: Chunk 54: 3/3 blocks extracted
+2026-08-09 22:04:46,209 INFO mulitaminer.extraction: Chunk 55: 3/3 blocks extracted
+2026-08-09 22:04:48,100 INFO mulitaminer.extraction: Chunk 56: 3/3 blocks extracted
+2026-08-09 22:05:08,840 WARNING mulitaminer.extraction: Chunk 57: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:05:12,071 INFO mulitaminer.extraction: Chunk 58: 3/3 blocks extracted
+2026-08-09 22:05:14,616 INFO mulitaminer.extraction: Chunk 59: 3/3 blocks extracted
+2026-08-09 22:05:16,606 INFO mulitaminer.extraction: Chunk 60: 3/3 blocks extracted
+2026-08-09 22:05:37,448 WARNING mulitaminer.extraction: Chunk 61: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:05:38,715 INFO mulitaminer.extraction: Chunk 62: 1/3 blocks extracted
+2026-08-09 22:05:40,594 INFO mulitaminer.extraction: Chunk 63: 3/3 blocks extracted
+2026-08-09 22:05:41,543 INFO mulitaminer.extraction: Chunk 64: 1/3 blocks extracted
+2026-08-09 22:05:44,038 INFO mulitaminer.extraction: Chunk 65: 3/3 blocks extracted
+2026-08-09 22:05:47,117 INFO mulitaminer.extraction: Chunk 66: 3/3 blocks extracted
+2026-08-09 22:05:50,054 INFO mulitaminer.extraction: Chunk 67: 3/3 blocks extracted
+2026-08-09 22:05:51,054 INFO mulitaminer.extraction: Chunk 68: 1/3 blocks extracted
+2026-08-09 22:05:55,151 WARNING mulitaminer.extraction: Chunk 69: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:06:15,816 WARNING mulitaminer.extraction: Chunk 70: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:06:36,493 WARNING mulitaminer.extraction: Chunk 71: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:06:39,089 INFO mulitaminer.extraction: Chunk 72: 1/3 blocks extracted
+2026-08-09 22:06:41,252 INFO mulitaminer.extraction: Chunk 73: 1/3 blocks extracted
+2026-08-09 22:07:01,993 WARNING mulitaminer.extraction: Chunk 74: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:07:03,915 INFO mulitaminer.extraction: Chunk 75: 3/3 blocks extracted
+2026-08-09 22:07:04,985 INFO mulitaminer.extraction: Chunk 76: 1/3 blocks extracted
+2026-08-09 22:07:06,975 INFO mulitaminer.extraction: Chunk 77: 1/3 blocks extracted
+2026-08-09 22:07:27,899 WARNING mulitaminer.extraction: Chunk 78: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:07:30,043 INFO mulitaminer.extraction: Chunk 79: 3/3 blocks extracted
+2026-08-09 22:07:31,893 INFO mulitaminer.extraction: Chunk 80: 3/3 blocks extracted
+2026-08-09 22:07:33,602 INFO mulitaminer.extraction: Chunk 81: 3/3 blocks extracted
+2026-08-09 22:07:35,833 INFO mulitaminer.extraction: Chunk 82: 3/3 blocks extracted
+2026-08-09 22:07:39,582 INFO mulitaminer.extraction: Chunk 83: 3/3 blocks extracted
+2026-08-09 22:07:44,719 INFO mulitaminer.extraction: Chunk 84: 3/3 blocks extracted
+2026-08-09 22:08:05,398 WARNING mulitaminer.extraction: Chunk 85: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:08:10,667 INFO mulitaminer.extraction: Chunk 86: 3/3 blocks extracted
+2026-08-09 22:08:12,527 INFO mulitaminer.extraction: Chunk 87: 1/3 blocks extracted
+2026-08-09 22:08:33,237 WARNING mulitaminer.extraction: Chunk 88: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:08:34,161 INFO mulitaminer.extraction: Chunk 89: 1/1 blocks extracted
+2026-08-09 22:08:34,161 INFO mulitaminer.extraction: Retry round 1: re-sending 90 unresolved block(s)
+2026-08-09 22:08:34,168 INFO mulitaminer.chunking: Packed 90 blocks into 90 chunks
+2026-08-09 22:08:34,855 INFO mulitaminer.extraction: Chunk 0: 1/1 blocks extracted
+2026-08-09 22:08:35,469 INFO mulitaminer.extraction: Chunk 1: 1/1 blocks extracted
+2026-08-09 22:08:37,227 INFO mulitaminer.extraction: Chunk 2: 1/1 blocks extracted
+2026-08-09 22:08:57,947 WARNING mulitaminer.extraction: Chunk 3: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:08:59,416 INFO mulitaminer.extraction: Chunk 4: 1/1 blocks extracted
+2026-08-09 22:09:00,701 INFO mulitaminer.extraction: Chunk 5: 1/1 blocks extracted
+2026-08-09 22:09:21,328 WARNING mulitaminer.extraction: Chunk 6: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:09:22,765 INFO mulitaminer.extraction: Chunk 7: 1/1 blocks extracted
+2026-08-09 22:09:23,535 INFO mulitaminer.extraction: Chunk 8: 1/1 blocks extracted
+2026-08-09 22:09:24,226 INFO mulitaminer.extraction: Chunk 9: 1/1 blocks extracted
+2026-08-09 22:09:24,844 INFO mulitaminer.extraction: Chunk 10: 1/1 blocks extracted
+2026-08-09 22:09:26,600 INFO mulitaminer.extraction: Chunk 11: 1/1 blocks extracted
+2026-08-09 22:09:27,186 INFO mulitaminer.extraction: Chunk 12: 1/1 blocks extracted
+2026-08-09 22:09:28,038 INFO mulitaminer.extraction: Chunk 13: 1/1 blocks extracted
+2026-08-09 22:09:28,757 INFO mulitaminer.extraction: Chunk 14: 1/1 blocks extracted
+2026-08-09 22:09:30,241 INFO mulitaminer.extraction: Chunk 15: 1/1 blocks extracted
+2026-08-09 22:09:31,034 INFO mulitaminer.extraction: Chunk 16: 1/1 blocks extracted
+2026-08-09 22:09:31,735 INFO mulitaminer.extraction: Chunk 17: 1/1 blocks extracted
+2026-08-09 22:09:32,498 INFO mulitaminer.extraction: Chunk 18: 1/1 blocks extracted
+2026-08-09 22:09:53,121 WARNING mulitaminer.extraction: Chunk 19: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:09:53,849 INFO mulitaminer.extraction: Chunk 20: 1/1 blocks extracted
+2026-08-09 22:10:08,011 INFO mulitaminer.extraction: Chunk 21: 1/1 blocks extracted
+2026-08-09 22:10:08,860 INFO mulitaminer.extraction: Chunk 22: 1/1 blocks extracted
+2026-08-09 22:10:10,595 INFO mulitaminer.extraction: Chunk 23: 1/1 blocks extracted
+2026-08-09 22:10:11,883 INFO mulitaminer.extraction: Chunk 24: 1/1 blocks extracted
+2026-08-09 22:10:12,498 INFO mulitaminer.extraction: Chunk 25: 1/1 blocks extracted
+2026-08-09 22:10:13,503 INFO mulitaminer.extraction: Chunk 26: 1/1 blocks extracted
+2026-08-09 22:10:14,754 INFO mulitaminer.extraction: Chunk 27: 1/1 blocks extracted
+2026-08-09 22:10:15,850 INFO mulitaminer.extraction: Chunk 28: 1/1 blocks extracted
+2026-08-09 22:10:16,765 INFO mulitaminer.extraction: Chunk 29: 1/1 blocks extracted
+2026-08-09 22:10:37,454 WARNING mulitaminer.extraction: Chunk 30: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:10:38,302 INFO mulitaminer.extraction: Chunk 31: 1/1 blocks extracted
+2026-08-09 22:10:39,014 INFO mulitaminer.extraction: Chunk 32: 1/1 blocks extracted
+2026-08-09 22:10:40,466 INFO mulitaminer.extraction: Chunk 33: 1/1 blocks extracted
+2026-08-09 22:10:41,188 INFO mulitaminer.extraction: Chunk 34: 1/1 blocks extracted
+2026-08-09 22:10:41,742 INFO mulitaminer.extraction: Chunk 35: 1/1 blocks extracted
+2026-08-09 22:10:45,040 INFO mulitaminer.extraction: Chunk 36: 1/1 blocks extracted
+2026-08-09 22:10:48,631 INFO mulitaminer.extraction: Chunk 37: 1/1 blocks extracted
+2026-08-09 22:11:09,380 WARNING mulitaminer.extraction: Chunk 38: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:11:14,419 WARNING mulitaminer.extraction: Chunk 39: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:11:15,998 INFO mulitaminer.extraction: Chunk 40: 1/1 blocks extracted
+2026-08-09 22:11:16,932 INFO mulitaminer.extraction: Chunk 41: 1/1 blocks extracted
+2026-08-09 22:11:17,538 WARNING mulitaminer.extraction: Chunk 42: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:11:18,902 INFO mulitaminer.extraction: Chunk 43: 1/1 blocks extracted
+2026-08-09 22:11:19,819 INFO mulitaminer.extraction: Chunk 44: 1/1 blocks extracted
+2026-08-09 22:11:20,969 INFO mulitaminer.extraction: Chunk 45: 1/1 blocks extracted
+2026-08-09 22:11:21,666 INFO mulitaminer.extraction: Chunk 46: 1/1 blocks extracted
+2026-08-09 22:11:22,294 INFO mulitaminer.extraction: Chunk 47: 1/1 blocks extracted
+2026-08-09 22:11:22,922 INFO mulitaminer.extraction: Chunk 48: 1/1 blocks extracted
+2026-08-09 22:11:43,549 WARNING mulitaminer.extraction: Chunk 49: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:11:44,946 INFO mulitaminer.extraction: Chunk 50: 1/1 blocks extracted
+2026-08-09 22:11:46,540 INFO mulitaminer.extraction: Chunk 51: 1/1 blocks extracted
+2026-08-09 22:11:48,138 INFO mulitaminer.extraction: Chunk 52: 1/1 blocks extracted
+2026-08-09 22:11:49,190 INFO mulitaminer.extraction: Chunk 53: 1/1 blocks extracted
+2026-08-09 22:11:50,104 INFO mulitaminer.extraction: Chunk 54: 1/1 blocks extracted
+2026-08-09 22:12:10,694 WARNING mulitaminer.extraction: Chunk 55: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:12:31,481 WARNING mulitaminer.extraction: Chunk 56: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:12:32,183 INFO mulitaminer.extraction: Chunk 57: 1/1 blocks extracted
+2026-08-09 22:12:32,745 INFO mulitaminer.extraction: Chunk 58: 1/1 blocks extracted
+2026-08-09 22:12:36,795 INFO mulitaminer.extraction: Chunk 59: 1/1 blocks extracted
+2026-08-09 22:12:41,006 INFO mulitaminer.extraction: Chunk 60: 1/1 blocks extracted
+2026-08-09 22:13:01,857 WARNING mulitaminer.extraction: Chunk 61: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:13:22,646 WARNING mulitaminer.extraction: Chunk 62: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:13:27,522 INFO mulitaminer.extraction: Chunk 63: 1/1 blocks extracted
+2026-08-09 22:13:30,111 INFO mulitaminer.extraction: Chunk 64: 1/1 blocks extracted
+2026-08-09 22:13:40,628 WARNING mulitaminer.extraction: Chunk 65: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:14:01,475 WARNING mulitaminer.extraction: Chunk 66: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:14:22,348 WARNING mulitaminer.extraction: Chunk 67: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:14:23,126 INFO mulitaminer.extraction: Chunk 68: 1/1 blocks extracted
+2026-08-09 22:14:23,738 INFO mulitaminer.extraction: Chunk 69: 1/1 blocks extracted
+2026-08-09 22:14:44,284 WARNING mulitaminer.extraction: Chunk 70: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:15:04,986 WARNING mulitaminer.extraction: Chunk 71: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:15:05,999 INFO mulitaminer.extraction: Chunk 72: 1/1 blocks extracted
+2026-08-09 22:15:06,881 INFO mulitaminer.extraction: Chunk 73: 1/1 blocks extracted
+2026-08-09 22:15:27,449 WARNING mulitaminer.extraction: Chunk 74: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:15:28,879 INFO mulitaminer.extraction: Chunk 75: 1/1 blocks extracted
+2026-08-09 22:15:30,165 INFO mulitaminer.extraction: Chunk 76: 1/1 blocks extracted
+2026-08-09 22:15:31,243 INFO mulitaminer.extraction: Chunk 77: 1/1 blocks extracted
+2026-08-09 22:15:32,693 INFO mulitaminer.extraction: Chunk 78: 1/1 blocks extracted
+2026-08-09 22:15:33,610 INFO mulitaminer.extraction: Chunk 79: 1/1 blocks extracted
+2026-08-09 22:15:34,388 INFO mulitaminer.extraction: Chunk 80: 1/1 blocks extracted
+2026-08-09 22:15:55,096 WARNING mulitaminer.extraction: Chunk 81: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:15:56,975 INFO mulitaminer.extraction: Chunk 82: 1/1 blocks extracted
+2026-08-09 22:16:01,699 INFO mulitaminer.extraction: Chunk 83: 1/1 blocks extracted
+2026-08-09 22:16:22,555 WARNING mulitaminer.extraction: Chunk 84: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:16:43,275 WARNING mulitaminer.extraction: Chunk 85: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:16:44,195 INFO mulitaminer.extraction: Chunk 86: 1/1 blocks extracted
+2026-08-09 22:17:04,769 WARNING mulitaminer.extraction: Chunk 87: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:17:25,475 WARNING mulitaminer.extraction: Chunk 88: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:17:26,262 INFO mulitaminer.extraction: Chunk 89: 1/1 blocks extracted
+2026-08-09 22:17:26,263 INFO mulitaminer.extraction: Retry round 2: re-sending 23 unresolved block(s)
+2026-08-09 22:17:26,265 INFO mulitaminer.chunking: Packed 23 blocks into 23 chunks
+2026-08-09 22:17:27,408 INFO mulitaminer.extraction: Chunk 0: 1/1 blocks extracted
+2026-08-09 22:17:30,171 INFO mulitaminer.extraction: Chunk 1: 1/1 blocks extracted
+2026-08-09 22:17:41,093 WARNING mulitaminer.extraction: Chunk 2: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:17:42,006 INFO mulitaminer.extraction: Chunk 3: 1/1 blocks extracted
+2026-08-09 22:18:02,767 WARNING mulitaminer.extraction: Chunk 4: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:18:07,735 WARNING mulitaminer.extraction: Chunk 5: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:18:28,428 WARNING mulitaminer.extraction: Chunk 6: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:18:49,237 WARNING mulitaminer.extraction: Chunk 7: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:19:09,998 WARNING mulitaminer.extraction: Chunk 8: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:19:30,781 WARNING mulitaminer.extraction: Chunk 9: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:19:51,558 WARNING mulitaminer.extraction: Chunk 10: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:20:12,273 WARNING mulitaminer.extraction: Chunk 11: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:20:14,359 INFO mulitaminer.extraction: Chunk 12: 1/1 blocks extracted
+2026-08-09 22:20:16,372 INFO mulitaminer.extraction: Chunk 13: 1/1 blocks extracted
+2026-08-09 22:20:37,091 WARNING mulitaminer.extraction: Chunk 14: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:20:57,881 WARNING mulitaminer.extraction: Chunk 15: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:21:18,592 WARNING mulitaminer.extraction: Chunk 16: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:21:39,236 WARNING mulitaminer.extraction: Chunk 17: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:22:00,067 WARNING mulitaminer.extraction: Chunk 18: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:22:20,843 WARNING mulitaminer.extraction: Chunk 19: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:22:41,501 WARNING mulitaminer.extraction: Chunk 20: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:23:02,150 WARNING mulitaminer.extraction: Chunk 21: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:23:22,852 WARNING mulitaminer.extraction: Chunk 22: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:23:23,184 INFO mulitaminer.pipeline: Extracted 250/268 blocks; 250 records after consolidation
+2026-08-09 22:23:23,189 INFO mulitaminer.writers: Wrote 250 records to /training/output_heldout/mulita-qwen3-1.7b/nessus/20260809T220151Z_Nessus_VulnLab_scan-b_mulita-qwen3-1.7b/results.json

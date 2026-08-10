@@ -1,0 +1,479 @@
+[
+  {
+    "Name": "TCP Sequence Number Approximation Reset DoS Vulnerability (Apr 2004)",
+    "description": [
+      "Various TCP services of different vendors are prone to a denial of service (DoS) vulnerability.",
+      "Successful exploitation will allow remote attackers to guess sequence numbers and cause a denial of service to persistent TCP connections by repeatedly injecting a TCP RST packet."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "MEDIUM",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Vulnerability was detected according to the Vulnerability Detection Method."
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      ",",
+      "References:[\"CVE-2004-0230\",\"https://www.cisa.gov/news-events/alerts/2004/04/20/vulnerabilities-tcp\",\"https://exchange.xforce.ibmcloud.com/vulnerabilities/15886\",\"https://web.archive.org/web/20210124082256/http://www.securityfocus.com/bid,→/10183\",\"https://www.ibm.com/support/pages/apar/IY55949\",\"https://www.ibm.com/support/pages/apar/IY55950\",\"https://web.archive.org/web/20160913121458/http://www-01.ibm.com/support/do,→cview.wss?uid=isg1IY62006\",\"https://learn.microsoft.com/en-us/security-updates/securitybulletins/2005/m\n,→s05-019\",\"https://learn.microsoft.com/en-us/security-updates/securitybulletins/2006/m\n,→s06-064\",\"https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdviso\n,→ry/cisco-sa-20040420-tcp-nonios\n",
+      "cert-bund: CB-K17/0697\n",
+      "cert-bund: CB-K17/0297\n",
+      "cert-bund: CB-K17/0238\n",
+      "cert-bund: CB-K17/0168\n",
+      "cert-bund: CB-K15/0080\n",
+      "cert-bund: CB-K14/1162\n",
+      "cert-bund: CB-K14/0852\n"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 1 (host: 172.30.7.1, port: general/icmp)",
+    "description": [
+      "The remote host responded to an ICMP timestamp request.",
+      "Quality of Detection (QoD): 80%"
+    ],
+    "solution": [
+      "Disable the support for ICMP timestamp on the remote host completely.",
+      "Protect the remote host by a firewall, and block ICMP packets passing through the firewall in either direction (either completely or only for untrusted networks)."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [
+      "The Timestamp Reply is an ICMP message which replies to a Timestamp message. It consists of the originating timestamp sent by the sender of the Timestamp as well as a receive timestamp and a transmit timestamp."
+    ],
+    "detection_result": [],
+    "detection_method": [
+      "Sends an ICMP Timestamp (Type 13) request and checks if a Timestamp Reply (Type 14) is received."
+    ],
+    "product_detection_result": [
+      "The following response / ICMP packet has been received: - ICMP Type: 14 - ICMP Code: 0"
+    ],
+    "log_method": [
+      "Special IP packets are forged and sent with a little delay in between to the target IP. The responses are searched for timestamps."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 2 (host: 172.30.7.1, port: general/icmp)",
+    "description": [
+      "The remote host responded to an ICMP timestamp request.",
+      "Quality of Detection (QoD): 80%"
+    ],
+    "solution": [
+      "Disable the support for ICMP timestamp on the remote host completely.",
+      "Protect the remote host by a firewall, and block ICMP packets passing through the firewall in either direction (either completely or only for untrusted networks)."
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.7.1",
+    "port": "general",
+    "protocol": null,
+    "cvss": null,
+    "insight": [
+      "The Timestamp Reply is an ICMP message which replies to a Timestamp message. It consists of the originating timestamp sent by the sender of the Timestamp as well as a receive timestamp and a transmit timestamp."
+    ],
+    "detection_result": [],
+    "detection_method": [
+      "Sends an ICMP Timestamp (Type 13) request and checks if a Timestamp Reply (Type 14) is received."
+    ],
+    "product_detection_result": [
+      "The following response / ICMP packet has been received: - ICMP Type: 14 - ICMP Code: 0"
+    ],
+    "log_method": [
+      "Special IP packets are forged and sent with a little delay in between to the target IP. The responses are searched for timestamps."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Block 3 (host: 172.30.7.1, port: general/tcp)",
+    "description": [
+      "The remote host implements TCP timestamps and therefore allows to compute the uptime.",
+      "Quality of Detection (QoD): 80%"
+    ],
+    "solution": [
+      "Disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.",
+      "Disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'"
+    ],
+    "impact": [],
+    "references": [],
+    "severity": "Low",
+    "host": "172.30.7.1",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [
+      "The Timestamp Reply is an ICMP message which replies to a Timestamp message. It consists of the originating timestamp sent by the sender of the Timestamp as well as a receive timestamp and a transmit timestamp."
+    ],
+    "detection_result": [],
+    "detection_method": [
+      "Sends an ICMP Timestamp (Type 13) request and checks if a Timestamp Reply (Type 14) is received."
+    ],
+    "product_detection_result": [
+      "The following timestamps were retrieved with a delay of 1 seconds in-between: Packet 1: 3356253919 Packet 2: 3356255029"
+    ],
+    "log_method": [
+      "Special IP packets are forged and sent with a little delay in between to the target IP. The responses are searched for timestamps."
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "CPE Inventory",
+    "description": [
+      "This routine uses information collected by other routines about CPE identities of operating systems, services and applications detected during the scan."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": "general",
+    "protocol": null,
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: CPE Inventory",
+      "OID:1.3.6.1.4.1.25623.1.0.810002",
+      "Version used: 2022-07-27T10:11:28Z",
+      "References:[url: https://nvd.nist.gov/products/cpe]",
+      "[ return to 172.30.7.1 ]"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Response Time / No 404 Error Code Check",
+    "description": [
+      "This VT tests if the remote web server does not reply with a 404 error code and checks if it is responding to the scanners requests in a reasonable amount of time. Quality of Detection (QoD): 80%"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "The service is responding with a 200 HTTP status code to non-existent files/urls"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Response Time / No 404 Error Code Check",
+      "OID:1.3.6.1.4.1.25623.1.0.10386",
+      "Version used: 2025-04-11T15:45:04Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "security.txt Detection (HTTP)",
+    "description": [
+      "Web Servers can use a file called security.txt to provide contact information for security researchers and other security related content. Quality of Detection (QoD): 80%"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "The file 'http://juice-shop.trabalho_vulnnet:3000/.well-known/security.txt' contains the following:"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Checks if a security.txt is present at the following locations:/.well-known/security.txt",
+      "/security.txt (Legacy compatibility)",
+      "Note: The file found under well-known is used / reported if both are present.",
+      "OID:1.3.6.1.4.1.25623.1.0.102093",
+      "Version used: 2024-01-16T05:05:27Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Allowed HTTP Methods Enumeration",
+    "description": [],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "The following list contains the URLs and corresponding supported HTTP methods."
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "],"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "HTTP Security Headers Detection",
+    "description": [
+      "All known security headers are being checked on the remote web server. On completion a report will hand back whether a specific security header has been implemented (including its value and if it is deprecated) or is missing on the target."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Log",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Header Name | Header Value\n---------------------------------------\nFeature-Policy | payment 'self'\nX-Content-Type-Options | nosniff\nX-Frame-Options | SAMEORIGIN\nMissing Headers | More Information"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      ",",
+      "References:\nurl: https://owasp.org/www-project-secure-headers/\nurl: https://owasp.org/www-project-secure-headers/#div-headers\nurl: https://securityheaders.com/"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Web Application Scanning Consolidation / Info Reporting",
+    "description": [
+      "The script consolidates and reports various information for web application (formerly called 'CGI') scanning. This information is based on the following scripts / settings:\n- HTTP-Version Detection (OID: 1.3.6.1.4.1.25623.1.0.100034)\n- No 404 check (OID: 1.3.6.1.4.1.25623.1.0.10386)\n- Web mirroring / webmirror.nasl (OID: 1.3.6.1.4.1.25623.1.0.10662)\n- Directory Scanner / DDI_Directory_Scanner.nasl (OID: 1.3.6.1.4.1.25623.1.0.11032)\n- The configured 'cgi_path' within the 'Scanner Preferences' of the scan config in use\n- The configured 'Enable CGI scanning', 'Enable generic web application scanning' and 'Add historic /scripts and /cgi-bin to directories for CGI scanning' within the 'Global variable settings' of the scan config in use\nIf you think any of this information is wrong please report it to the referenced community forum.\nQuality of Detection (QoD): 80%\nVulnerability Detection Result\nThe Hostname/IP "
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Log",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      ",",
+      "References:\nurl: https://forum.greenbone.net/c/vulnerability-tests/7"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "robot.txt / robots.txt exists on the Web Server (HTTP)",
+    "description": [
+      "Web Servers can use a file called /robot(s).txt to ask search engines to ignore certain files and directories. By nature this file can not be used to protect private files from public read access.\nQuality of Detection (QoD): 80%\nVulnerability Detection Result\nThe file 'http://juice-shop.trabalho_vulnnet:3000/robots.txt' contains the following:\nUser-agent: *\nDisallow: /ftp\nSolution:\nSolution type: Mitigation\nReview the content of the /robot(s).txt file and consider removing the files from the server or protect them in other ways in case you actually intended non-public availability.\nVulnerability Insight\nAny serious web search engine will honor the /robot(s).txt file and not scan the files and directories listed there. Any entries listed in this file are not even hidden anymore.\nLog Method\nDetails: robot.txt / robots.txt exists on the Web Server (HTTP)\nOID:1.3.6.1.4.1.25623.1.0.10302\nVersion used: 2024-02-26T14:36:40Z\nReferences:\nurl: https://www.robotstxt.org/\nurl: https://www.robotstxt.org/norobots-rfc.txt"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Log",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Check open ports",
+    "description": [
+      "This plugin checks if the port scanners did not kill a service.\nQuality of Detection (QoD): 80%\nVulnerability Detection Result\nThis port was detected as being open by a port scanner but is now closed.\nThis service might have been crashed by a port scanner or by a plugin\nSolution:\nLog Method\nDetails: Check open ports\nOID:1.3.6.1.4.1.25623.1.0.10919\nVersion used: 2023-08-03T05:05:16Z"
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "Log",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Services",
+    "description": [
+      "This plugin performs service detection."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": 3000,
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "A web server is running on this port"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Services",
+      "OID:1.3.6.1.4.1.25623.1.0.10330",
+      "Version used: 2025-03-05T05:38:53Z",
+      "[return to 172.30.7.1]"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "OS Detection Consolidation and Reporting",
+    "description": [
+      "This script consolidates the OS information detected by several VTs and tries to find the best matching OS. Furthermore it reports all previously collected information leading to this best matching OS. It also reports possible additional information which might help to improve the OS detection. If any of this information is wrong or could be improved please consider to report these to the referenced community forum."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "CRITICAL",
+    "host": "172.30.7.1",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Best matching OS: Linux Kernel",
+      "CPE: cpe:/o:linux:kernel"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: OS Detection Consolidation and Reporting",
+      "OID:1.3.6.1.4.1.25623.1.0.105937",
+      "Version used: 2026-01-21T05:50:46Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "IP Forwarding Enabled - Active Check",
+    "description": [
+      "Checks if the remote host has IP forwarding enabled."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "It was possible to route a TCP packet through the target host and received an answer which means IP forwarding is enabled"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: IP Forwarding Enabled - Active Check",
+      "OID:1.3.6.1.4.1.25623.1.0.147205",
+      "Version used: 2021-12-03T08:27:06Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Traceroute",
+    "description": [
+      "Collect information about the network route and network distance between the scanner host and the target host."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Network route from scanner (172.30.0.2) to target (172.30.7.1): 172.30.0.2, 172.30.7.1",
+      "Network distance between scanner and target: 2"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Traceroute",
+      "OID:1.3.6.1.4.1.25623.1.0.51662",
+      "Version used: 2022-10-17T11:13:19Z"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "jQuery Detection Consolidation",
+    "description": [
+      "Consolidation of jQuery detections."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [
+      "Detected jQuery"
+    ],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: jQuery Detection Consolidation",
+      "OID:1.3.6.1.4.1.25623.1.0.150658",
+      "Version used: 2023-07-14T05:06:08Z",
+      "References:[url: https://jquery.com/]"
+    ],
+    "source": "OPENVAS"
+  },
+  {
+    "Name": "Hostname Determination Reporting",
+    "description": [
+      "The script reports information on how the hostname of the target was determined."
+    ],
+    "solution": [],
+    "impact": [],
+    "references": [],
+    "severity": "LOG",
+    "host": "172.30.7.1",
+    "port": "general",
+    "protocol": "tcp",
+    "cvss": null,
+    "insight": [],
+    "detection_result": [],
+    "detection_method": [],
+    "product_detection_result": [],
+    "log_method": [
+      "Details: Hostname Determination Reporting",
+      "OID:1.3.6.1.4.1.25623.1.0.108449",
+      "Version used: 2022-07-27T10:11:28Z"
+    ],
+    "source": "OPENVAS"
+  }
+]

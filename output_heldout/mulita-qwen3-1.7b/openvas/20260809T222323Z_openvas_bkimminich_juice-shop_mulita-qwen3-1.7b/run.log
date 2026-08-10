@@ -1,0 +1,31 @@
+2026-08-09 22:23:23,735 INFO mulitaminer.pdf_reader: Extracted 19 pages from openvas_bkimminich_juice-shop.pdf
+2026-08-09 22:23:23,738 INFO mulitaminer.pipeline: Segmented 18 finding blocks
+2026-08-09 22:23:23,791 INFO mulitaminer.chunking: Packed 18 blocks into 5 chunks
+2026-08-09 22:23:44,481 WARNING mulitaminer.extraction: Chunk 0: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:24:05,462 WARNING mulitaminer.extraction: Chunk 1: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:24:10,019 INFO mulitaminer.extraction: Chunk 2: 4/4 blocks extracted
+2026-08-09 22:24:30,935 WARNING mulitaminer.extraction: Chunk 3: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:24:32,738 INFO mulitaminer.extraction: Chunk 4: 2/2 blocks extracted
+2026-08-09 22:24:32,738 INFO mulitaminer.extraction: Retry round 1: re-sending 12 unresolved block(s)
+2026-08-09 22:24:32,740 INFO mulitaminer.chunking: Packed 12 blocks into 6 chunks
+2026-08-09 22:24:37,633 INFO mulitaminer.extraction: Chunk 0: 1/2 blocks extracted
+2026-08-09 22:24:58,490 WARNING mulitaminer.extraction: Chunk 1: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:25:19,274 WARNING mulitaminer.extraction: Chunk 2: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:25:40,114 WARNING mulitaminer.extraction: Chunk 3: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:26:00,831 WARNING mulitaminer.extraction: Chunk 4: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:26:21,608 WARNING mulitaminer.extraction: Chunk 5: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:26:21,608 INFO mulitaminer.extraction: Retry round 2: re-sending 11 unresolved block(s)
+2026-08-09 22:26:21,609 INFO mulitaminer.chunking: Packed 11 blocks into 11 chunks
+2026-08-09 22:26:42,412 WARNING mulitaminer.extraction: Chunk 0: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:27:03,177 WARNING mulitaminer.extraction: Chunk 1: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:27:23,924 WARNING mulitaminer.extraction: Chunk 2: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:27:24,656 INFO mulitaminer.extraction: Chunk 3: 1/1 blocks extracted
+2026-08-09 22:27:25,466 INFO mulitaminer.extraction: Chunk 4: 1/1 blocks extracted
+2026-08-09 22:27:26,913 INFO mulitaminer.extraction: Chunk 5: 1/1 blocks extracted
+2026-08-09 22:27:27,751 INFO mulitaminer.extraction: Chunk 6: 1/1 blocks extracted
+2026-08-09 22:27:48,285 WARNING mulitaminer.extraction: Chunk 7: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:27:49,224 INFO mulitaminer.extraction: Chunk 8: 1/1 blocks extracted
+2026-08-09 22:28:09,877 WARNING mulitaminer.extraction: Chunk 9: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:28:30,678 WARNING mulitaminer.extraction: Chunk 10: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-09 22:28:30,970 INFO mulitaminer.pipeline: Extracted 12/18 blocks; 12 records after consolidation
+2026-08-09 22:28:30,970 INFO mulitaminer.writers: Wrote 12 records to /training/output_heldout/mulita-qwen3-1.7b/openvas/20260809T222323Z_openvas_bkimminich_juice-shop_mulita-qwen3-1.7b/results.json

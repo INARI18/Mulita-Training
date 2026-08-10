@@ -1,0 +1,15 @@
+2026-08-10 01:47:54,393 INFO mulitaminer.pdf_reader: Extracted 11 pages from ZAP_JuiceShop.pdf
+2026-08-10 01:47:54,395 INFO mulitaminer.pipeline: Segmented 10 finding blocks
+2026-08-10 01:47:54,447 INFO mulitaminer.chunking: Packed 10 blocks into 4 chunks
+2026-08-10 01:48:01,154 INFO mulitaminer.extraction: Chunk 0: 3/3 blocks extracted
+2026-08-10 01:48:34,692 WARNING mulitaminer.extraction: Chunk 1: invalid response (JSONDecodeError); its blocks go to retry
+2026-08-10 01:48:40,413 INFO mulitaminer.extraction: Chunk 2: 2/3 blocks extracted
+2026-08-10 01:48:41,229 INFO mulitaminer.extraction: Chunk 3: 1/1 blocks extracted
+2026-08-10 01:48:41,229 INFO mulitaminer.extraction: Retry round 1: re-sending 4 unresolved block(s)
+2026-08-10 01:48:41,230 INFO mulitaminer.chunking: Packed 4 blocks into 4 chunks
+2026-08-10 01:48:42,127 INFO mulitaminer.extraction: Chunk 0: 1/1 blocks extracted
+2026-08-10 01:48:43,215 INFO mulitaminer.extraction: Chunk 1: 1/1 blocks extracted
+2026-08-10 01:48:43,897 INFO mulitaminer.extraction: Chunk 2: 1/1 blocks extracted
+2026-08-10 01:48:46,098 INFO mulitaminer.extraction: Chunk 3: 1/1 blocks extracted
+2026-08-10 01:48:46,347 INFO mulitaminer.pipeline: Extracted 10/10 blocks; 10 records after consolidation
+2026-08-10 01:48:46,347 INFO mulitaminer.writers: Wrote 10 records to /training/output_heldout/qwen2.5-1.5b/zap/20260810T014754Z_ZAP_JuiceShop_qwen2.5-1.5b/results.json

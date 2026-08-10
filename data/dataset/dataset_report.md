@@ -1,7 +1,7 @@
 # Training dataset report
 
-- examples admitted: 6841 (train 6187, val 654)
-- per scanner: {'nessus': 383, 'openvas': 5459, 'qualys': 910, 'zap': 89}
+- examples admitted: 1899 chunks / 6841 records (train 1702, val 197 chunks)
+- per scanner (chunks): {'nessus': 128, 'openvas': 1413, 'qualys': 324, 'zap': 34}
 - dropped (scalar field not contained): 0
 - trimmed paragraphs (not rendered in the PDF): 457 {'detection_result': 34, 'description': 423}
 - source reports: 136
@@ -24,6 +24,7 @@
 - insight: 4059 (59%)
 - product_detection_result: 3099 (45%)
 - impact: 2357 (34%)
+- log_method: 1582 (23%)
 - plugin: 1382 (20%)
 - category: 910 (13%)
 - plugin_details: 383 (6%)

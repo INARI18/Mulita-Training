@@ -23,6 +23,12 @@ from sources.base import Example
 from sources.openvas.references import build_references
 
 _NVT_RE = re.compile(r"^NVT:\s*(.*)$")
+# section headers that end a Log Method section in the rendered block
+_SECTION_STOP_RE = re.compile(
+    r"^(References|Summary|Impact|Solution|Affected Software/OS|"
+    r"Vulnerability (Insight|Detection Method|Detection Result)|"
+    r"Product [Dd]etection [Rr]esult|Quality of Detection|\[ return to)\b",
+)
 _TEXT_FIELDS = {
     "Summary": "description",
     "Solution": "solution",
@@ -46,6 +52,24 @@ def _protocol(value) -> str | None:
     return p if p in ("tcp", "udp") else None
 
 
+def parse_log_method(block_text: str) -> list[str]:
+    """Gold for log_method from the block's own `Log Method` section (the CSV
+    export has no such column), one line per element as the prompt requires."""
+    lines = block_text.splitlines()
+    out: list[str] = []
+    in_section = False
+    for line in lines:
+        stripped = line.strip()
+        if not in_section:
+            in_section = stripped in ("Log Method", "Log Method:")
+            continue
+        if _SECTION_STOP_RE.match(stripped):
+            break
+        if stripped:
+            out.append(stripped)
+    return out
+
+
 class OpenVASCsvSource:
     name = "openvas-csv"
     scanner = "openvas"
@@ -60,7 +84,7 @@ class OpenVASCsvSource:
         for column, field in _TEXT_FIELDS.items():
             data[field] = paragraphs(row.get(column))
         data["references"] = build_references(block.text)
-        data["log_method"] = []
+        data["log_method"] = parse_log_method(block.text)
         data["cvss"] = None if blank(row.get("CVSS")) else float(row["CVSS"])
         data["severity"] = str(row["Severity"]).strip().upper()
         data["port"] = _port(row.get("Port"))
