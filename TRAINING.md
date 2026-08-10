@@ -152,6 +152,23 @@ IMPORTANT for the v2 evaluation: baselines changed (log_method filled), so
 re-run `evaluate` for the v1/base outputs against the NEW baselines before
 comparing - extractions are reusable, scores are not.
 
+**v2 RESULTS (same 8 held-outs, new baselines, lexical metrics, 1 run):**
+v2 wins 12 of 18 fields plus coverage/contract and fixes all three v1
+pendings - cvss 0.36 -> 0.79 (openvas nulls 55% -> 22%; chunk-dilution
+hypothesis confirmed), insight 0.15 -> 0.56, instances 0.42 -> 0.84,
+port/protocol ~0.87, detection_method 0.80, severity 0.945, recall 0.965,
+unrecovered 19. Cost: prose regressed - description 0.755 -> 0.585, solution
+0.855 -> 0.777, detection_result 0.68 -> 0.63, category 0.50 -> 0.35 (still
+far above base everywhere). log_method now measurable: 0.404 (v1 0.087 with
+its empty-gold training). **CHAMPION: v2.**
+
+**Optional v3 (polish, not gate-blocking):** the two training shapes teach
+complementary skills (single-block -> prose depth; production chunks ->
+multi-item structure). v3 = train on BOTH (all v2 chunks + all v1
+single-block examples, ~2x dataset, ~3h). Trivial assembler change (emit
+both shapes). Expected to recover the prose regression while keeping the
+structural gains; not guaranteed - only worth doing if time allows.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
@@ -171,7 +188,10 @@ comparing - extractions are reusable, scores are not.
 - [x] cvss/schema test done: schema stays ON for the champion (see 6b);
       cvss root cause moves to the v2-retrain re-check
 - [x] Full tuned-vs-base table (6b; bertscore/nli still pending for closing)
-- [ ] Dataset v2 + final retrain (see 6c)
+- [x] Dataset v2 + retrain + evaluation: **v2 is the champion** (results in
+      6c); GGUF at `outputs/mulita-qwen2.5-1.5b-v2/gguf_gguf/`, served as
+      `mulita-qwen2.5-1.5b-v2` (schema ON)
+- [ ] Optional v3 (mixed single-block + chunked dataset; see 6c) if time allows
 - [ ] DeepSeek ceiling row: deferred (API unavailable). 5 of 8 held-outs can
       be scored for free later (extractions already exist in
       output_experiments; only re-evaluate against the trimmed baselines);
