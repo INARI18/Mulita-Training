@@ -223,7 +223,16 @@ records provenance per commit.
 - [x] Dataset v2 + retrain + evaluation: **v2 is the champion** (results in
       6c); GGUF at `outputs/mulita-qwen2.5-1.5b-v2/gguf_gguf/`, served as
       `mulita-qwen2.5-1.5b-v2` (schema ON)
-- [ ] Optional v3 (mixed single-block + chunked dataset; see 6c) if time allows
+- [ ] v3 training (mixed-shape dataset, union design: every record in both
+      shapes, 1 epoch = same 2x exposure as v2; running on the 5080). After
+      `done`: register in Ollama -> extract the 8 held-outs -> scp ->
+      evaluate -> v3 vs v2 table
+- [ ] Collect loss curves for the record (thesis figure): on the box,
+      `docker logs <train-*> | grep -E "eval_loss|train_loss"` for
+      train-q25 / train-q3 / train-q25-v2 / train-q25-v3, or the full
+      history in `outputs/*/checkpoints/*/trainer_state.json`
+- [ ] Novel-NVT memorization cut (6e) is now a STANDARD analysis: run it for
+      every new candidate (v3 included) alongside the field table
 - [ ] DeepSeek ceiling row: deferred (API unavailable). 5 of 8 held-outs can
       be scored for free later (extractions already exist in
       output_experiments; only re-evaluate against the trimmed baselines);
