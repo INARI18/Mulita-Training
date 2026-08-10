@@ -181,6 +181,16 @@ If the v3 table shows the balance leaning one way, the ratio (duplicate
 chunks / subsample singles) is the next knob; the token math above is the
 guide.
 
+**Candidate v4 (noted for Bia, time is not a constraint): mixed dataset, 2
+epochs.** Mechanism: v3's mix gave each skill HALF its specialist's dose
+(chunk practice 1899 passes vs v2's 3798; single practice 6841 vs v1's
+13682). v4 = same mixed dataset x 2 epochs -> every record gets the FULL v1
+dose (2 single passes) AND the full v2 dose (2 chunk passes). Overfit risk
+rises (4 exposures vs 2), watched by eval_loss across epochs + the novel-NVT
+cut. One-command run: config epochs=2 clone of qwen2.5-1.5b-v3.json, ~2h30.
+Decide after the v3 table: if v3 degrades contract vs v2, the half-dose
+hypothesis is confirmed and v4 is the test.
+
 ## 6e. Memorization control (learned vs memorized)
 
 Evidence stack that the champion learned the task rather than the data:
