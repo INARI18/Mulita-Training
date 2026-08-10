@@ -115,12 +115,17 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
   6x slower, JSON truncation); clean free-form. Tuned qwen2.5 tolerates the
   grammar. Model dropped (see decision below); partial runs kept as evidence
   (`output_heldout/mulita-qwen3-1.7b{,-schema}` on the box).
-- **cvss-null anomaly (tuned q25, OpenVAS):** block header shows the score,
-  severity extracted right, cvss=null in ~55%. Training gold had cvss ~100%.
-  Leading hypothesis: mild grammar friction (null = cheapest legal escape).
-  DECIDING TEST pending: wordpress_4.9 with `mulita-qwen2.5-1.5b-noschema`
-  profile; compare null rate vs 27/54 with schema. Outcome decides the
-  champion's serving config (schema on/off).
+- **Schema is REQUIRED for tuned qwen2.5** (opposite of qwen3): the wordpress
+  no-schema test failed nearly every first-pass chunk (JSONDecode/Validation)
+  where the with-schema run was clean (54/54). Champion serves WITH
+  json_schema. The two tuned models have opposite relationships with
+  constrained decoding - thesis finding.
+- **cvss-null anomaly (tuned q25, OpenVAS, ~55%):** block header shows the
+  score, severity extracted right, cvss=null. Training gold had cvss ~100%.
+  Grammar-escape hypothesis WEAKENED by the no-schema test (removing the
+  grammar made everything worse, not cvss better). Current suspect:
+  multi-block chunk dilution (later items losing fields) - which dataset v2's
+  production chunking directly addresses. Re-check cvss after the v2 retrain.
 - **log_method gold bug:** the campaign CSV has no Log Method column, so
   gold AND held-out baseline say empty while the production prompt says fill;
   the model fills with real block content and scores 0 on 104 measured pairs.
@@ -155,7 +160,8 @@ Then: GGUF re-export, re-evaluate on held-outs, CPU cost, gate.
 - [ ] GGUF q4_k_m export of both
 - [x] Tuned qwen2.5 extracted + evaluated on held-outs (partial table in 6b)
 - [ ] Base qwen2.5 on held-outs (`base-q25` container running on the 5080)
-- [ ] cvss/schema deciding test (wordpress noschema; command in chat/6b)
+- [x] cvss/schema test done: schema stays ON for the champion (see 6b);
+      cvss root cause moves to the v2-retrain re-check
 - [ ] Full tuned-vs-base table (after the two above; lexical metrics first,
       bertscore/nli at closing time)
 - [ ] Dataset v2 + final retrain (see 6c)
