@@ -86,7 +86,9 @@ def main() -> None:
             warmup_ratio=0.05,
             logging_steps=10,
             eval_strategy="epoch",
-            save_strategy="epoch",
+            save_strategy="steps",
+            save_steps=100,
+            save_total_limit=2,
             bf16=True,
             seed=42,
             report_to="none",
@@ -98,7 +100,8 @@ def main() -> None:
         instruction_part="<|im_start|>user\n",
         response_part="<|im_start|>assistant\n",
     )
-    trainer.train()
+    has_checkpoint = any((run_dir / "checkpoints").glob("checkpoint-*"))
+    trainer.train(resume_from_checkpoint=True if has_checkpoint else None)
 
     model.save_pretrained(str(run_dir / "adapter"))
     tokenizer.save_pretrained(str(run_dir / "adapter"))
