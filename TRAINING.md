@@ -127,12 +127,12 @@ Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 - [ ] CPU execution cost: serve the winner's GGUF with inference forced to CPU
       (Ollama `num_gpu: 0`) on the dev PC - a GPU-less machine is not needed,
       the measurement is of the CPU-only path (tok/s, minutes/report)
-- [x] Primary model DECIDED: **tuned qwen2.5-1.5b**. The tuned qwen3
-      degenerates under constrained decoding (grammar forces it off its
-      trained path; clean when served free-form but still noisier and slower
-      than tuned qwen2.5) and is the larger model. qwen3 rows stay in the
-      table as the same-recipe/other-family comparison; no further
-      investment in it (no retrain, no logprob investigation).
+- [x] Primary model DECIDED: **tuned qwen2.5-1.5b**; qwen3 dropped entirely.
+      The tuned qwen3 degenerates under constrained decoding (grammar forces
+      it off its trained path; cleaner served free-form but still noisier and
+      slower than tuned qwen2.5) and is the larger model. Its partial runs
+      stay on disk as evidence of the constrained-decoding finding, but it is
+      out of the comparison table and gets no further investment.
 - [ ] Conditional on the gate: publish the winner (HF model card, or GitHub
       Release / ollama push) - only needed if the no-GPU profile is to be
       usable by third parties; thesis results do not depend on it
