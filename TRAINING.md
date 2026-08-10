@@ -245,12 +245,15 @@ records provenance per commit.
       history in `outputs/*/checkpoints/*/trainer_state.json`
 - [ ] Novel-NVT memorization cut (6e) is now a STANDARD analysis: run it for
       every new candidate (v3 included) alongside the field table
-- [ ] Re-score the few-shot study on trimmed baselines (Bia's call: no thesis
-      text exists yet, so the corrected ruler simply becomes THE ruler - no
-      "revised" footnote). Machine-gold scanners regenerate like the
-      held-outs; manual baselines (legacy OpenVAS, Tenable, Acunetix) get
-      trim applied in place against the PDF blocks. Then batch re-`evaluate`
-      of output_experiments results.json - metrics only, no model re-runs.
+- [ ] Re-score the few-shot study on the trimmed baselines (the corrected
+      ruler IS the ruler; no "revised" footnote - no thesis text exists yet).
+      DONE: resources/ xlsx trimmed in place via tools/trim_baselines.py
+      (MulitaMiner2 c1025ed; 1487 paragraphs across 11 reports, ZAP clean,
+      all rows paired). PENDING: batch re-`evaluate` of the SLM copies in
+      MulitaMiner2/output_slm_metrics/ with token_f1,rouge_l,bertscore (no
+      nli) - Bia wants it on the 5080 (GPU bertscore); needs an eval-capable
+      image there (the mulita image ships without the eval group). DeepSeek
+      runs need the same re-score for a coherent study table.
       Expect gaps to widen slightly toward good fillers (empty stays 0).
 - [ ] DeepSeek ceiling row: deferred (API unavailable). 5 of 8 held-outs can
       be scored for free later (extractions already exist in
