@@ -15,6 +15,7 @@ Terminology: the pre-training comparison study ran the models **few-shot**
 | GPU | NVIDIA GeForce RTX 5080, 16 GB VRAM (Blackwell, sm_120) |
 | NVIDIA driver | 595.80 (driver-side CUDA 13.2) |
 | Training image | `unsloth/unsloth` - Unsloth 2026.5.9, Torch 2.10.0+cu128, CUDA toolkit 12.8, Triton 3.6.0, Python 3.12 |
+| Fine-tuning | SFT with QLoRA (Unsloth `FastLanguageModel` + TRL `SFTTrainer`, transformers 4.57.6; recipe in section 5) |
 | Serving | Ollama 0.32.5 (`ollama/ollama` container; OLLAMA_CONTEXT_LENGTH=16384, num_ctx also per request) |
 | Tool image | `mulita-mulita:latest` (Python 3.11-slim + uv; no eval group) |
 | Evaluation | dev PC (Windows 11, Python 3.11 venv) and, for GPU bertscore, the unsloth image with `uv sync --group eval` |
