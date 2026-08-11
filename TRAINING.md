@@ -269,7 +269,8 @@ Physical copies live side by side under `data/` (gitignored):
 `data/dataset-v1` (single-block shape), `data/dataset-v2` (production-chunked,
 archived byte-exact from the v2 training), `data/dataset` = the current one.
 `build_dataset.py --shape single|chunked|mixed` regenerates any shape;
-`mixed` is the v3 recipe. Honest note: `dataset-v1` was REgenerated with the
+`mixed` is the v3 recipe. v4 has NO dataset of its own: it retrains on
+`data/dataset-v3` with epochs=2 (hyperparameter-only change). Honest note: `dataset-v1` was REgenerated with the
 current gold (log_method filled), so it is shape-faithful but not byte-equal
 to what the v1 model actually trained on; the exact historical v1 is
 reproducible only by checking out the pre-v2 commit. dataset_report.md in git
