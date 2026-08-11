@@ -103,6 +103,12 @@ docker run --gpus all -v ~/mulita-extractor-training:/w -w /w -d --name train-<x
 Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 -> ~1h30-2h per model (qwen2.5-1.5b).
 
+Serving runtime for ALL evaluations of this phase (few-shot study + tuned
+series): Ollama **0.32.5** (`ollama/ollama` container on the box,
+OLLAMA_CONTEXT_LENGTH=16384; num_ctx also sent per request). Training itself
+never touches Ollama (Unsloth only). Not to be confused with the WTICG
+artifact's 0.30.0 - that is the old repo's separate experiment.
+
 ## 6b. Findings from the first evaluation round (2026-08-09/10)
 
 - **FINAL tuned-vs-base table (same 8 held-outs, lexical metrics, 1 run):**
