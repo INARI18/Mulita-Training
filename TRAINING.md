@@ -310,7 +310,12 @@ records provenance per commit.
 - [x] Base qwen2.5 on held-outs, evaluated
 - [x] cvss/schema test done: schema stays ON for the champion (see 6b);
       cvss root cause moves to the v2-retrain re-check
-- [x] Full tuned-vs-base table (6b; bertscore/nli still pending for closing)
+- [x] Full tuned-vs-base table (6b) + SEMANTIC LAYER CLOSED: bertscore
+      computed on GPU for the whole study (10 models, trimmed ruler) and the
+      tuned series; rankings and conclusions unchanged everywhere (lexical
+      and semantic within ~0.02 across the series; deepseek solution
+      0.82 -> 0.78 with the fair ruler). v4 final: description 0.85
+      bertscore vs deepseek 0.94.
 - [x] Dataset v2 + retrain + evaluation (results in
       6c); GGUF at `outputs/mulita-qwen2.5-1.5b-v2/gguf_gguf/`, served as
       `mulita-qwen2.5-1.5b-v2` (schema ON)
@@ -322,16 +327,9 @@ records provenance per commit.
       history in `outputs/*/checkpoints/*/trainer_state.json`
 - [ ] Novel-NVT memorization cut (6e) is now a STANDARD analysis: run it for
       every new candidate (v3 included) alongside the field table
-- [ ] Re-score the few-shot study on the trimmed baselines (the corrected
-      ruler IS the ruler; no "revised" footnote - no thesis text exists yet).
-      DONE: resources/ xlsx trimmed in place via tools/trim_baselines.py
-      (MulitaMiner2 c1025ed; 1487 paragraphs across 11 reports, ZAP clean,
-      all rows paired). PENDING: batch re-`evaluate` of the SLM copies in
-      MulitaMiner2/output_slm_metrics/ with token_f1,rouge_l,bertscore (no
-      nli) - Bia wants it on the 5080 (GPU bertscore); needs an eval-capable
-      image there (the mulita image ships without the eval group). DeepSeek
-      runs need the same re-score for a coherent study table.
-      Expect gaps to widen slightly toward good fillers (empty stays 0).
+- [x] Few-shot study re-scored on the trimmed baselines with bertscore
+      (GPU batch, Ollama-box; deepseek included after uploading its local
+      extractions). Ranking unchanged vs the old ruler; conclusions hold.
 - [ ] DeepSeek ceiling row: deferred (API unavailable). 5 of 8 held-outs can
       be scored for free later (extractions already exist in
       output_experiments; only re-evaluate against the trimmed baselines);
