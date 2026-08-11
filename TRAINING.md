@@ -212,6 +212,21 @@ bind to content); (2) adversarial packing: build some chunks from near-clone
 sibling blocks (same NVT family, adjacent versions - the campaign PHP/Apache
 reports have such runs), practicing exactly the bwapp failure case.
 
+**v4 RESULTS - CHAMPION (Bia's decision).** Full-dose paid off: best of the
+series on 8 fields including the thesis-central body fields - description
+0.827 (record, +42% over v2), insight 0.672, detection_result 0.861,
+detection_method 0.922, product_detection_result 0.966, references 0.739,
+severity 0.962 - with contract back at v2 level (unrecovered 20 vs 19) and
+eval_loss still falling across epochs (0.0017 -> 0.00081; no overfit at 4
+exposures). Novel-NVT cut, best of the series: solution 0.997 / description
+0.930 on never-seen content. Costs, honestly: recall 0.934 vs v2's 0.965
+(~31 findings), cvss 0.552 vs 0.791, port/protocol ~0.76, instances 0.658.
+v2 remains the coverage/structured-fields runner-up; single-run caveat
+applies to small deltas. `category` swings wildly across versions
+(0.50 -> 0.35 -> 0.96 -> 0.35) - investigate separately (small-n qualys
+field). Served as `mulita-qwen2.5-1.5b-v4` (schema ON); GGUF at
+`outputs/mulita-qwen2.5-1.5b-v4/gguf_gguf/`. v5 stays conditional.
+
 ## 6e. Memorization control (learned vs memorized)
 
 Evidence stack that the champion learned the task rather than the data:
@@ -261,21 +276,18 @@ records provenance per commit.
 - [x] qwen2.5-1.5b training run complete (`outputs/mulita-qwen2.5-1.5b`)
 - [x] qwen3-1.7b training run (`outputs/mulita-qwen3-1.7b`; eval_loss 0.0038
       -> 0.0027 across epochs, no overfit signal)
-- [ ] Eval infra ready: tuned-model profiles in the tool, GGUF export script,
-      held-out runbook (`scripts/eval_heldout.sh`) - pending first use
-- [ ] GGUF q4_k_m export of both
+- [x] Eval infra: tuned-model profiles, GGUF export script, held-out runbook
+- [x] GGUF q4_k_m exports (v1..v4 under `outputs/*/gguf_gguf/`)
 - [x] Tuned qwen2.5 extracted + evaluated on held-outs (partial table in 6b)
 - [x] Base qwen2.5 on held-outs, evaluated
 - [x] cvss/schema test done: schema stays ON for the champion (see 6b);
       cvss root cause moves to the v2-retrain re-check
 - [x] Full tuned-vs-base table (6b; bertscore/nli still pending for closing)
-- [x] Dataset v2 + retrain + evaluation: **v2 is the champion** (results in
+- [x] Dataset v2 + retrain + evaluation (results in
       6c); GGUF at `outputs/mulita-qwen2.5-1.5b-v2/gguf_gguf/`, served as
       `mulita-qwen2.5-1.5b-v2` (schema ON)
-- [ ] v3 training (mixed-shape dataset, union design: every record in both
-      shapes, 1 epoch = same 2x exposure as v2; running on the 5080). After
-      `done`: register in Ollama -> extract the 8 held-outs -> scp ->
-      evaluate -> v3 vs v2 table
+- [x] v3 trained + evaluated (half-dose, see 6c)
+- [x] v4 trained + evaluated: **v4 is the CHAMPION** (Bia; results in 6c)
 - [ ] Collect loss curves for the record (thesis figure): on the box,
       `docker logs <train-*> | grep -E "eval_loss|train_loss"` for
       train-q25 / train-q3 / train-q25-v2 / train-q25-v3, or the full
