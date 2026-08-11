@@ -7,6 +7,22 @@ Terminology: the pre-training comparison study ran the models **few-shot**
 (the tool's prompts carry worked examples; no weight updates), not zero-shot;
 "base" rows in the post-training tables refer to that regime.
 
+## Environment (reproducibility record)
+
+| Component | Version |
+| --- | --- |
+| GPU box | Ubuntu 26.04 LTS, kernel 7.0.0-28-generic, shared multi-user host |
+| GPU | NVIDIA GeForce RTX 5080, 16 GB VRAM (Blackwell, sm_120) |
+| NVIDIA driver | 595.80 (driver-side CUDA 13.2) |
+| Training image | `unsloth/unsloth` - Unsloth 2026.5.9, Torch 2.10.0+cu128, CUDA toolkit 12.8, Triton 3.6.0, Python 3.12 |
+| Serving | Ollama 0.32.5 (`ollama/ollama` container; OLLAMA_CONTEXT_LENGTH=16384, num_ctx also per request) |
+| Tool image | `mulita-mulita:latest` (Python 3.11-slim + uv; no eval group) |
+| Evaluation | dev PC (Windows 11, Python 3.11 venv) and, for GPU bertscore, the unsloth image with `uv sync --group eval` |
+
+Training never touches Ollama (Unsloth only); Ollama serves every few-shot
+and tuned-model evaluation of this phase. Not to be confused with the WTICG
+artifact's Ollama 0.30.0 (old repo, separate experiment).
+
 ## 1. Gold labels: the scanner's own export, never hand-made
 
 Each scanner contributes (PDF, machine export) pairs; the export is parsed
@@ -102,12 +118,6 @@ docker run --gpus all -v ~/mulita-extractor-training:/w -w /w -d --name train-<x
 
 Measured on the 5080: ~6s/step, 768 steps, eval pass 651 examples in ~1.5 min
 -> ~1h30-2h per model (qwen2.5-1.5b).
-
-Serving runtime for ALL evaluations of this phase (few-shot study + tuned
-series): Ollama **0.32.5** (`ollama/ollama` container on the box,
-OLLAMA_CONTEXT_LENGTH=16384; num_ctx also sent per request). Training itself
-never touches Ollama (Unsloth only). Not to be confused with the WTICG
-artifact's 0.30.0 - that is the old repo's separate experiment.
 
 ## 6b. Findings from the first evaluation round (2026-08-09/10)
 
