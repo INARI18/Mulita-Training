@@ -227,6 +227,16 @@ applies to small deltas. `category` swings wildly across versions
 field). Served as `mulita-qwen2.5-1.5b-v4` (schema ON); GGUF at
 `outputs/mulita-qwen2.5-1.5b-v4/gguf_gguf/`. v5 stays conditional.
 
+**Noted, not implemented (Bia's call): deterministic post-pass for
+mechanical fields.** OpenVAS cvss sits verbatim in the block header
+("Critical (CVSS: 9.8)") and port/protocol are already captured
+deterministically by segmentation into the block context - yet all three are
+filled by the LLM today (host is the only pipeline-filled field). A ~20-line
+post-pass could guarantee them (~1.0 for every model), mooting the v4 cvss
+regression; the trade is that those fields would stop measuring the LLM in
+comparative tables. Revisit at tool-polish time; cvss/port/protocol series
+numbers stay as the "before the annotator" record.
+
 ## 6e. Memorization control (learned vs memorized)
 
 Evidence stack that the champion learned the task rather than the data:
