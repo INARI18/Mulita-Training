@@ -281,25 +281,27 @@ Evidence stack that the champion learned the task rather than the data:
    | report (unseen) | base qwen2.5 | v4 | DeepSeek |
    | --- | --- | --- | --- |
    | Tenable bWAPP | 0.974 / 0.57 / 0.75 | 0.987 / **0.94** / 0.79 | 1.00 / 0.93 / 0.78 |
+   | Tenable JuiceShop | - | 1.00 / **0.90** / **0.95** | - |
    | Acunetix testaspnet | 0.667 / **0.00** / 0.00 | 1.00 / **1.00** / 0.75 | 1.00 / 1.00 / 0.97 |
    | Acunetix testphp | 0.731 / 0.15 / 0.00 | 0.577 / **0.97** / 0.76 | 0.885 / 0.99 / 0.80 |
 
    CONTENT generalizes to unseen scanners at ~cloud level (description
-   0.94-1.00, solution 0.75-0.79; base collapses, e.g. testaspnet 0.00->1.00).
+   0.90-1.00, solution 0.75-0.95; base collapses, e.g. testaspnet 0.00->1.00).
    The tuning taught the TASK (find section -> copy to field), not the four
-   trained scanners. What degrades is CONTRACT/coverage, per-report not
-   per-scanner (testphp recall 0.58 from a runaway generation dropping
-   blocks), addressed by a smaller serving chunk. Gate (plan section 6): the
-   embedded model can be default for content fields even out of distribution;
-   contract robustness on heavy unseen reports wants chunk<=1-2.
+   trained scanners. Recall is robust too (JuiceShop 1.00 despite losing
+   instance-blocks: Tenable blocks are instances that consolidate by plugin,
+   so block loss != finding loss). Gate (plan section 6): the embedded model
+   can be default for content fields even out of distribution.
 
-   Operational note: Tenable JuiceShop timed out at chunk=3 (single call
-   >600s from a degenerate generation - NOT contention, NOT bigger blocks/
-   instances than bWAPP which finished; all three checked). Re-running at
-   `tenable.json` max_vulns_per_chunk=1 (many short calls, no timeout). Design
-   idea parked (Bia's call, not implemented): a per-MODEL chunk cap or, better,
-   the token budget already in pack() as the size-adaptive lever, so one number
-   self-adjusts per scanner instead of a per-(scanner,model) matrix.
+   Robustness fix found here (MulitaMiner2): a heavy Tenable block (25
+   instances -> generation toward the output cap -> call > client deadline)
+   raised an UNCAUGHT APITimeoutError that crashed the whole run, discarding
+   every extracted block (JuiceShop died 3x). Now timeout is a chunk-level
+   failure -> retry -> drop that block as unrecovered, report survives (commit
+   2ac492e, with a regression test). Second fix: REQUEST_TIMEOUT_S 600 -> 120
+   in settings (a local call slower than 120s is degenerate; 0bf2850). Not the
+   chunk size - only 2 timeouts in the JuiceShop run; its 93 min was mostly
+   legitimate slow generation (95 calls x ~59s on a 1.5B model + heavy blocks).
 
 Method for (3): normalize names (alphanumeric squeeze), collect all item
 Names from the training jsonl, classify each evaluation pair, aggregate
