@@ -16,7 +16,7 @@ Terminology: the pre-training comparison study ran the models **few-shot**
 | NVIDIA driver | 595.80 (driver-side CUDA 13.2) |
 | Training image | `unsloth/unsloth` - Unsloth 2026.5.9, Torch 2.10.0+cu128, CUDA toolkit 12.8, Triton 3.6.0, Python 3.12 |
 | Fine-tuning | SFT with QLoRA (Unsloth `FastLanguageModel` + TRL `SFTTrainer`, transformers 4.57.6; recipe in section 5) |
-| Serving | Ollama, `ollama/ollama:0.32.15` container (OLLAMA_CONTEXT_LENGTH=16384, num_ctx also per request). Identify the runtime by the image tag: `/api/version` is unreliable, the v0.32.15 Windows build reports "0.32.5" there. |
+| Serving | Ollama, `ollama/ollama` container, named volume `ollama` -> `/root/.ollama`, `--gpus all`, bound to 127.0.0.1:11434. The container sets no OLLAMA_CONTEXT_LENGTH (an earlier note here claimed 16384; `docker inspect` on 2026-09-13 shows it absent). It does not need to: the tool sends `num_ctx` per request. Identify the runtime by the image tag, not `/api/version`: the v0.32.15 Windows build reports "0.32.5" there. Ran 0.32.15 through 2026-09-13; pinning 0.34.0 for the 6g re-runs. |
 | Tool image | `mulita-mulita:latest` (Python 3.11-slim + uv; no eval group) |
 | Evaluation | dev PC (Windows 11, Python 3.11 venv) and, for GPU bertscore, the unsloth image with `uv sync --group eval` |
 
@@ -460,6 +460,60 @@ C vs B isolates the backend with the version held constant. D vs C isolates
 the version with the hardware held constant. E answers the thesis question
 that motivated picking a small model.
 
+## 6g. Re-run plan after the template fix (2026-09-13)
+
+Everything measured before `serving/Modelfile` existed is suspect on the dev
+PC side (6f). The v4/base held-out numbers from 2026-08-11 stand: the box
+model always had the correct TEMPLATE.
+
+**Frozen configuration for every arm below.** Deviating from any line makes
+the runs non-comparable:
+
+| Item | Value |
+| --- | --- |
+| Serving recipe | `serving/Modelfile` (this repo) - `ollama create mulita-qwen2.5-1.5b-v4 -f serving/Modelfile` |
+| Weights | `outputs/mulita-qwen2.5-1.5b-v4.gguf`, blob `sha256-610aa2014ab4...` |
+| Ollama | pin **0.34.0** (latest as of 2026-09-05) on every machine, same tag |
+| Tool | MulitaMiner2 branch `fix/per-profile-request-timeout` (`adacd63` per-profile timeout + `2cc5d60` runtime provenance in run.json) |
+| Reports | the 8 in `data/heldout/*/*.pdf`, 1028 blocks total |
+| Models | `mulita-qwen2.5-1.5b-v4` and the base `qwen2.5-1.5b` |
+| Command | `./scripts/eval_heldout.sh extract <key>` then `evaluate <out_root>` |
+
+DeepSeek does NOT re-run: the 2026-09-13 pass covers all 8 with recall 0.994,
+cost $0.4723. Its only gap is provenance (it ran before `2cc5d60`).
+
+**Arms:**
+
+| # | Hardware | Status | Projected time (8 reports) |
+| --- | --- | --- | --: |
+| 1 | RTX 5080, CUDA (box) | TO RUN FIRST | 1.8h (measured 2026-08-11) |
+| 2 | RX 6600, Vulkan (dev PC) | deferred, Bia runs later | ~8.4h (4.6x box on ZAP_JBoss7) |
+| 3 | CPU only (dev PC) | deferred, MEASURE FIRST | unknown |
+
+Arm 3 caveat: measure one mid-size report (`openvas_wordpress_4.9`, 54
+blocks, 482s on the box) and project before committing to all 8. It also
+needs a profile declaring a large `request_timeout_s` (the reason `adacd63`
+exists); at CPU throughput the default 120s kills healthy calls.
+
+Box note: its `mulita-mulita:latest` image predates all of this (no
+`REQUEST_TIMEOUT_S`, no runtime block). Rebuild it from the branch above, or
+arm 1 produces no provenance and repeats the 2026-08-11 mistake.
+
+**Reporting change to apply before writing any table (from the DeepSeek
+comparison):** every field mean ships with its `fill_rate_extraction`. v4
+scores `solution` 0.810 but fills it in only 64% of findings, against
+DeepSeek's 0.736 at 94% fill - the means are over different denominators and
+are not comparable alone. Empty is a legal value (even DeepSeek fills
+`impact` only 52% of the time), so emptiness is never an error per record;
+only deviation from a known reference is a signal. That is what the
+conformance check below is for.
+
+**Conformance check (not built yet):** `ZAP_JBoss7` with recorded expected
+scores (references 0.964, instances 0.849, solution 1.0, recall 1.000), run
+at install or config change. 25s on CUDA. It is the only thing that catches
+the silent-empty failure mode, because constrained decoding guarantees shape
+and never content.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
@@ -508,8 +562,15 @@ that motivated picking a small model.
       BLOCKED on the REQUEST_TIMEOUT_S fix (see 6f): at CPU throughput the
       tool's 120s per-request deadline kills healthy calls, so the run would
       measure the timeout, not the model
-- [ ] Serving-backend divergence (6f): run the C/D/E matrix and decide which
-      runtime the thesis numbers are declared against
+- [x] Serving-backend divergence (6f): RESOLVED, it was the Modelfile
+      TEMPLATE, not the backend; recipe committed at `serving/Modelfile`
+- [ ] Re-run arm 1 (RTX 5080, CUDA) per 6g, base + v4, 8 held-outs
+- [ ] Re-run arm 2 (RX 6600, Vulkan) per 6g - Bia, later
+- [ ] Re-run arm 3 (CPU only) per 6g - measure one report first
+- [ ] Rebuild the box's tool image from `fix/per-profile-request-timeout`
+      so the re-runs record provenance
+- [ ] Report field means WITH fill_rate_extraction everywhere (6g)
+- [ ] Build the conformance check (6g)
 - [x] Primary model DECIDED: **tuned qwen2.5-1.5b**; qwen3 dropped entirely.
       The tuned qwen3 degenerates under constrained decoding (grammar forces
       it off its trained path; cleaner served free-form but still noisier and
