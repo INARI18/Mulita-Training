@@ -486,9 +486,14 @@ cost $0.4723. Its only gap is provenance (it ran before `2cc5d60`).
 
 | # | Hardware | Status | Time (8 reports) |
 | --- | --- | --- | --: |
-| 1 | RTX 5080, CUDA (box) | **DONE 2026-09-13**, base + v4 | ~1.5h each |
-| 2 | RX 6600, Vulkan (dev PC) | deferred, Bia runs later | ~8.4h (4.6x box on ZAP_JBoss7) |
+| 1 | RTX 5080, CUDA (box) | **DONE 2026-09-13**, base + v4 | 42 min each (measured) |
+| 2 | RX 6600, Vulkan (dev PC) | deferred, Bia runs later | ~3.2h (4.6x box on ZAP_JBoss7) |
 | 3 | CPU only (dev PC) | deferred, MEASURE FIRST | unknown |
+
+Timing note: 42 min per model measured on 2026-09-13, against 1.8h
+projected from the 2026-08-11 durations. The August figures were inflated,
+most likely by contention on the shared box (6c already records one such
+window). Use the September numbers for planning.
 
 **Arm 1 results.** Conformance passed on the box before scoring (all five
 checks, plugin 1.000). All 16 runs carry `runtime: {server_version 0.34.0,
