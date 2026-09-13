@@ -28,6 +28,8 @@ extract)
   ;;
 evaluate)
   out="${2:?out_root}"
+  # Absolute: $MULITAMINER may be a container whose cwd is not this repo.
+  case "$out" in /*) ;; *) out="$REPO/${out#./}" ;; esac
   for pdf in "$REPO"/data/heldout/*/*.pdf; do
     stem="$(basename "$pdf" .pdf)"
     run="$(find "$out" -type f -name results.json -path "*${stem}*" \
