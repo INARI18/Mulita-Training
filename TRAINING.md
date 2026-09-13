@@ -484,11 +484,63 @@ cost $0.4723. Its only gap is provenance (it ran before `2cc5d60`).
 
 **Arms:**
 
-| # | Hardware | Status | Projected time (8 reports) |
+| # | Hardware | Status | Time (8 reports) |
 | --- | --- | --- | --: |
-| 1 | RTX 5080, CUDA (box) | TO RUN FIRST | 1.8h (measured 2026-08-11) |
+| 1 | RTX 5080, CUDA (box) | **DONE 2026-09-13**, base + v4 | ~1.5h each |
 | 2 | RX 6600, Vulkan (dev PC) | deferred, Bia runs later | ~8.4h (4.6x box on ZAP_JBoss7) |
 | 3 | CPU only (dev PC) | deferred, MEASURE FIRST | unknown |
+
+**Arm 1 results.** Conformance passed on the box before scoring (all five
+checks, plugin 1.000). All 16 runs carry `runtime: {server_version 0.34.0,
+processor 100% GPU}` - the first runs in this project with provenance.
+
+v4 reproduced itself across a month AND an Ollama major change (0.32.15 ->
+0.34.0), same Modelfile:
+
+| Field | 2026-08-11 | 2026-09-13 | delta |
+| --- | --: | --: | --: |
+| description | 0.827 | 0.827 | -0.000 |
+| solution | 0.810 | 0.828 | +0.018 |
+| insight | 0.672 | 0.655 | -0.017 |
+| impact | 0.784 | 0.773 | -0.011 |
+| detection_result | 0.861 | 0.853 | -0.007 |
+| references | 0.739 | 0.748 | +0.009 |
+| severity | 0.962 | 0.964 | +0.001 |
+| instances | 0.658 | 0.737 | +0.079 |
+| plugin | 0.898 | 0.848 | -0.050 |
+| recall | 0.934 | 0.942 | +0.008 |
+
+Seven of nine fields within +/-0.02. The two that moved most are the
+small-sample ones. **So the rule for the thesis is not "pin the Ollama
+version", it is "serve it with the Modelfile":** changing the runtime moved
+nothing, omitting the Modelfile destroyed three fields (6f).
+
+**Cloud ceiling, finally on the same 8 reports** (`scripts/compare_models.py`,
+token_f1 except where noted, each mean with its fill rate):
+
+| Field | base | v4 | DeepSeek |
+| --- | --: | --: | --: |
+| description | 0.503 (0.62) | 0.827 (0.87) | 0.931 (1.00) |
+| solution | 0.004 (0.01) | **0.828** (0.66) | 0.736 (0.94) |
+| insight | 0.000 (0.00) | 0.655 (0.57) | 0.999 (0.86) |
+| impact | 0.477 (0.31) | **0.773** (0.30) | 0.745 (0.52) |
+| detection_result | 0.300 (0.37) | 0.853 (0.84) | 0.986 (0.97) |
+| references (set_f1) | 0.144 (0.23) | 0.748 (0.49) | 0.837 (0.63) |
+| severity (exact) | 0.803 (1.00) | 0.964 (1.00) | 1.000 (1.00) |
+| instances (structural) | 0.596 (1.00) | 0.737 (0.91) | 0.958 (1.00) |
+| plugin (exact) | 0.811 (0.97) | 0.848 (0.95) | 1.000 (1.00) |
+| RECALL | 0.853 | 0.942 | 0.994 |
+
+Read it as: where v4 answers, it matches the cloud on the body fields
+(`solution` 0.828 vs 0.736, `impact` 0.773 vs 0.745) - it just answers less
+often (0.66 and 0.30 fill against 0.94 and 0.52). Claiming v4 beats the cloud
+on those without the fill rate beside it would be claiming credit for
+omission. `insight` is the one honest gap: worse on both axes, 0.655 at 0.57
+fill against 0.999 at 0.86.
+
+DeepSeek's column is the 2026-09-13 API pass (8/8, $0.4723). It predates
+`2cc5d60`, so it carries the date and the profile key but no runtime block -
+declare that asymmetry rather than implying parity.
 
 Arm 3 caveat: measure one mid-size report (`openvas_wordpress_4.9`, 54
 blocks, 482s on the box) and project before committing to all 8. It also
@@ -562,10 +614,10 @@ collapse to zero, not a small regression: two CUDA runs a month apart moved
 - [x] Few-shot study re-scored on the trimmed baselines with bertscore
       (GPU batch, Ollama-box; deepseek included after uploading its local
       extractions). Ranking unchanged vs the old ruler; conclusions hold.
-- [ ] DeepSeek ceiling row: deferred (API unavailable). 5 of 8 held-outs can
-      be scored for free later (extractions already exist in
-      output_experiments; only re-evaluate against the trimmed baselines);
-      the 3 campaign OpenVAS held-outs need one small API run
+- [x] DeepSeek ceiling row: DONE 2026-09-13, all 8 held-outs, recall 0.994,
+      $0.4723 total. The old note here was wrong about which reports were
+      missing (OpenVAS existed, the 3 ZAP did not, and the Qualys run had
+      died mid-way leaving only a run.log)
 - [ ] Unseen-scanner cut (Tenable) for the tuned models
 - [ ] CPU execution cost: serve the winner's GGUF with inference forced to CPU
       (Ollama `num_gpu: 0`) on the dev PC - a GPU-less machine is not needed,
@@ -575,12 +627,14 @@ collapse to zero, not a small regression: two CUDA runs a month apart moved
       measure the timeout, not the model
 - [x] Serving-backend divergence (6f): RESOLVED, it was the Modelfile
       TEMPLATE, not the backend; recipe committed at `serving/Modelfile`
-- [ ] Re-run arm 1 (RTX 5080, CUDA) per 6g, base + v4, 8 held-outs
+- [x] Re-run arm 1 (RTX 5080, CUDA) per 6g, base + v4, 8 held-outs
 - [ ] Re-run arm 2 (RX 6600, Vulkan) per 6g - Bia, later
 - [ ] Re-run arm 3 (CPU only) per 6g - measure one report first
 - [ ] Rebuild the box's tool image from `fix/per-profile-request-timeout`
       so the re-runs record provenance
-- [ ] Report field means WITH fill_rate_extraction everywhere (6g)
+- [x] Report field means WITH fill_rate_extraction everywhere: the
+      evaluate summary table (MulitaMiner2 `1469e4a`) and
+      `scripts/compare_models.py`
 - [x] Conformance check built and verified both ways (6g)
 - [x] Primary model DECIDED: **tuned qwen2.5-1.5b**; qwen3 dropped entirely.
       The tuned qwen3 degenerates under constrained decoding (grammar forces
