@@ -16,7 +16,7 @@ Terminology: the pre-training comparison study ran the models **few-shot**
 | NVIDIA driver | 595.80 (driver-side CUDA 13.2) |
 | Training image | `unsloth/unsloth` - Unsloth 2026.5.9, Torch 2.10.0+cu128, CUDA toolkit 12.8, Triton 3.6.0, Python 3.12 |
 | Fine-tuning | SFT with QLoRA (Unsloth `FastLanguageModel` + TRL `SFTTrainer`, transformers 4.57.6; recipe in section 5) |
-| Serving | Ollama 0.32.5 (`ollama/ollama` container; OLLAMA_CONTEXT_LENGTH=16384, num_ctx also per request) |
+| Serving | Ollama, `ollama/ollama:0.32.15` container (OLLAMA_CONTEXT_LENGTH=16384, num_ctx also per request). Identify the runtime by the image tag: `/api/version` is unreliable, the v0.32.15 Windows build reports "0.32.5" there. |
 | Tool image | `mulita-mulita:latest` (Python 3.11-slim + uv; no eval group) |
 | Evaluation | dev PC (Windows 11, Python 3.11 venv) and, for GPU bertscore, the unsloth image with `uv sync --group eval` |
 
@@ -320,6 +320,146 @@ to what the v1 model actually trained on; the exact historical v1 is
 reproducible only by checking out the pre-v2 commit. dataset_report.md in git
 records provenance per commit.
 
+## 6f. Serving backend changes the output (OPEN, 2026-09-13)
+
+Plugging the v4 GGUF into the tool on the dev PC does NOT reproduce the box
+numbers. Same model file, same report (`ZAP_JBoss7`), same trimmed baseline.
+
+| Field | box CUDA 08-11 | box CUDA 09-13 | dev PC 0.34.0 Vulkan | dev PC 0.32.15 Vulkan |
+| --- | --: | --: | --: | --: |
+| recall | 1.000 | 1.000 | 1.000 | 0.857 |
+| name / description / severity | 1.0 | 1.0 | 1.0 | 1.0 |
+| solution | 1.0 | 1.0 | 0.574 | 0.673 |
+| plugin | 1.0 | 1.0 | 0.0 | 0.0 |
+| references | 0.821 | 0.964 | **0.0** | **0.0** |
+| instances | 0.577 | 0.849 | **0.0** | **0.0** |
+| completion tokens | 3855 | 4561 | 1700 | 1263 |
+| wall clock | 30.8s | 25.5s | 167.7s | 1555.6s |
+
+**RESOLVED: the cause is the Modelfile TEMPLATE, not the backend.** The
+backend hypothesis was wrong and CPU killed it: forcing `num_gpu: 0` on the
+dev PC reproduced the same failure (references 0.0, instances 0.0, plugin
+0.0), so Vulkan was not the variable - every dev-PC run shared a different
+cause.
+
+`ollama show --modelfile` on the box gave it away. The weights are identical
+(both manifests point at blob `sha256-610aa2014ab4...`), but the box model was
+created with an explicit Go-template `TEMPLATE` block, while a bare `FROM
+model.gguf` makes Ollama fall back to the Jinja chat template in the GGUF
+metadata. Two template engines, two different final prompts, and a fine-tuned
+model degrades on exactly the most fragile part of its output: the structured
+fields.
+
+Re-registering the same GGUF with the box's Modelfile, on the same Radeon via
+Vulkan, reproduces the box run to the third decimal:
+
+| Field | box CUDA 09-13 | bare FROM (Vulkan) | box TEMPLATE (Vulkan) |
+| --- | --: | --: | --: |
+| recall | 1.000 | 1.000 | 1.000 |
+| solution | 1.0 | 0.574 | 1.000 |
+| references | 0.964 | 0.0 | 0.964 |
+| instances | 0.849 | 0.0 | 0.849 |
+| plugin | 1.0 | 0.0 | 0.571 |
+| completion tokens | 4561 | 1700 | 4517 |
+
+**The model is portable across hardware; it is not portable without its
+Modelfile.** The serving recipe is now committed at `serving/Modelfile` and
+must ship with any published GGUF. `plugin` at 0.571 vs 1.0 is the one
+residual, small enough to be run variance on a 7-finding report; worth a
+second look if it persists on a bigger one.
+
+Run-to-run variance on the SAME backend is real but small and non-categorical
+(CUDA references 0.821 -> 0.964, instances 0.577 -> 0.849 between 08-11 and
+09-13), which is the single-run caveat already declared in RESULTADOS.md. A
+flat 0.0 on two fields is not that.
+
+Both Vulkan runs empty the same two fields and break on the same chunk; only
+the symptom changes with the version (0.34.0 emitted duplicate block ids and
+kept 7/7; 0.32.15 timed out three times and dropped block 6, recall 0.857).
+
+**The tool was not the same version either.** The 2026-08-11 reference runs
+ran at MulitaMiner2 commit `1977690` (2026-08-11 09:57 -0300; the first
+held-out run starts 09:59). At that commit the per-request deadline was 600s
+and a timeout was FATAL: `2ac492e` (making it a chunk failure) landed 21:17
+that night and `0bf2850` (600s -> 120s) at 00:48 on the 12th. So run B's
+recall drop is partly an artifact of today's 120s deadline and would not have
+happened under the 2026-08-11 tool. Run A hit no timeout at all, so its empty
+`references`/`instances` is NOT timeout-related - that failure stands on its
+own and is the one worth chasing.
+
+To replay 2026-08-11 faithfully, check the tool out at `1977690`. To isolate
+the backend against the dev-PC runs above, use the same commit they used
+(`main` at `9c827d5`; extraction is untouched between it and the runs).
+
+The box's `mulita-mulita:latest` image is itself from that era: its
+`settings.py` has no `REQUEST_TIMEOUT_S` at all (the named setting arrives in
+`0bf2850`), and its `llm.py` carries the hardcoded `timeout=600.0`. So the box
+has always run with a 5x larger deadline than the dev PC, which is why it
+never hit the timeouts seen here. Useful property: a box run measures the
+backend without the deadline interfering. Running the tool on the box means
+the image, not a checkout - `docker run --rm --network host -v
+~/mulita-extractor-training:/training mulita-mulita:latest <subcommand>`,
+with the training repo mounted at `/training` (globs must be expanded inside
+the container, not by the host shell).
+
+The model dumped the reference list into `solution` as prose and left
+`references` and `instances` empty. Not sampling noise: `temperature` is 0.0
+and `prompt_tokens` is 7216 on both sides, byte-identical prompt, same
+segmentation and packing. What differs is generation: 3855 completion tokens
+on the box vs 1700 here.
+
+Chunk 2 of that report (a single block) is where it breaks, and it breaks in
+both Ollama versions tried on the AMD card, differently each time:
+
+| Runtime | GPU | Chunk 2 |
+| --- | --- | --- |
+| 0.32.15 container | RTX 5080 (CUDA) | clean, 3 calls, 30.8s total |
+| 0.34.0 (installed) | RX 6600 (Vulkan) | `duplicate block_id 6` x3 |
+| 0.32.15 (standalone zip) | RX 6600 (Vulkan) | APITimeoutError at 120s |
+
+Two Ollama versions fail on the same chunk on Vulkan and neither fails on
+CUDA, so the suspect is the BACKEND, not the version. One report and one
+chunk, so this is a lead, not a conclusion. Consistent with 6b's finding that
+this model is unusually sensitive to constrained decoding (schema REQUIRED;
+the tuned qwen3 degenerated under grammar) - a backend that computes logits
+slightly differently hits a model already near that edge.
+
+Measured end-to-end throughput on the same report (includes model load and
+prompt processing, not pure generation speed):
+
+| Environment | completion tokens | duration | tok/s |
+| --- | --: | --: | --: |
+| RTX 5080, CUDA | 3855 | 30.8s | ~125 |
+| RX 6600, Vulkan | 1700 | 167.7s | ~10 |
+
+**Consequence for REQUEST_TIMEOUT_S (tool side).** The tool's 120s per-request
+deadline (`settings.py`, a degeneracy detector: "a local call slower than this
+is a degenerate generation") assumes box-class throughput. At ~125 tok/s the
+profile's 8000 `max_output_tokens` take 64s and fit. At ~10 tok/s they take
+800s, so the deadline only allows ~1200 output tokens and kills healthy calls.
+Any CPU-only measurement will hit this first. The timeout should move to the
+model profile (the shape `context_window` and `max_output_tokens` already
+have), keeping 120s as the default so GPU profiles keep the detector; a
+CPU-serving profile then declares a value derived from its measured tok/s.
+
+**Provenance gap:** `run.json` records the model key but not the serving
+runtime or the backend, so there is no way to prove retroactively which
+version and which GPU produced the 2026-08-11 numbers.
+
+**Test matrix to settle it** (same PDF, same baseline, one row at a time):
+
+| # | Runtime | Hardware | Isolates |
+| --- | --- | --- | --- |
+| A | 0.34.0 | RX 6600 Vulkan | done, diverges |
+| B | 0.32.15 | RX 6600 Vulkan | done, diverges (differently) |
+| C | 0.32.15 | RTX 5080 CUDA | reproduces 2026-08-11? |
+| D | latest | RTX 5080 CUDA | version effect on CUDA |
+| E | chosen version | CPU only (`num_gpu: 0`) | embeddability, needs the timeout fix first |
+
+C vs B isolates the backend with the version held constant. D vs C isolates
+the version with the hardware held constant. E answers the thesis question
+that motivated picking a small model.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
@@ -364,7 +504,12 @@ records provenance per commit.
 - [ ] Unseen-scanner cut (Tenable) for the tuned models
 - [ ] CPU execution cost: serve the winner's GGUF with inference forced to CPU
       (Ollama `num_gpu: 0`) on the dev PC - a GPU-less machine is not needed,
-      the measurement is of the CPU-only path (tok/s, minutes/report)
+      the measurement is of the CPU-only path (tok/s, minutes/report).
+      BLOCKED on the REQUEST_TIMEOUT_S fix (see 6f): at CPU throughput the
+      tool's 120s per-request deadline kills healthy calls, so the run would
+      measure the timeout, not the model
+- [ ] Serving-backend divergence (6f): run the C/D/E matrix and decide which
+      runtime the thesis numbers are declared against
 - [x] Primary model DECIDED: **tuned qwen2.5-1.5b**; qwen3 dropped entirely.
       The tuned qwen3 degenerates under constrained decoding (grammar forces
       it off its trained path; cleaner served free-form but still noisier and
