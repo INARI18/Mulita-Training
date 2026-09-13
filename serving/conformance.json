@@ -1,0 +1,71 @@
+{
+  "_why": "Environment check, not a quality check. A model registered without serving/Modelfile reports perfect recall and returns empty structured fields; nothing in the pipeline catches that. See TRAINING.md 6f.",
+  "report": "data/heldout/zap/ZAP_JBoss7.pdf",
+  "scanner": "zap",
+  "baseline": "data/heldout/zap/ZAP_JBoss7.xlsx",
+  "model": "mulita-qwen2.5-1.5b-v4",
+  "recorded": {
+    "_note": "good runs: RTX 5080/CUDA 2026-08-11 and 2026-09-13, RX 6600/Vulkan 2026-09-13 with the committed Modelfile. bad: same weights, bare FROM.",
+    "recall": {
+      "good": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bad": [
+        0.857,
+        1.0
+      ]
+    },
+    "solution.token_f1": {
+      "good": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bad": [
+        0.574,
+        0.621,
+        0.673
+      ]
+    },
+    "references.set_f1": {
+      "good": [
+        0.821,
+        0.964,
+        0.964
+      ],
+      "bad": [
+        0.0
+      ]
+    },
+    "instances.structural": {
+      "good": [
+        0.577,
+        0.849,
+        0.849
+      ],
+      "bad": [
+        0.0
+      ]
+    },
+    "plugin.exact": {
+      "good": [
+        1.0,
+        1.0,
+        0.571
+      ],
+      "bad": [
+        0.0
+      ]
+    }
+  },
+  "_floors_why": "Floors sit between the worst good run and the best bad one. Deliberately loose: two CUDA runs a month apart moved references 0.821 -> 0.964, so exact match would false-alarm. This detects a collapse to zero, not a small regression.",
+  "floors": {
+    "recall": 0.95,
+    "solution.token_f1": 0.8,
+    "references.set_f1": 0.5,
+    "instances.structural": 0.4,
+    "plugin.exact": 0.3
+  }
+}

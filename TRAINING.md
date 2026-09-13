@@ -508,11 +508,22 @@ are not comparable alone. Empty is a legal value (even DeepSeek fills
 only deviation from a known reference is a signal. That is what the
 conformance check below is for.
 
-**Conformance check (not built yet):** `ZAP_JBoss7` with recorded expected
-scores (references 0.964, instances 0.849, solution 1.0, recall 1.000), run
-at install or config change. 25s on CUDA. It is the only thing that catches
-the silent-empty failure mode, because constrained decoding guarantees shape
-and never content.
+**Conformance check: BUILT** (`scripts/conformance.sh` +
+`serving/conformance.json`). Extracts `ZAP_JBoss7`, scores it, compares
+against recorded floors, exits non-zero on failure. ~25s on CUDA. Run it
+after registering the model, after changing Ollama, and on any new machine.
+
+Verified against both cases on 2026-09-13: the correctly-served model passes
+all five checks, the same weights with a bare `FROM` fail four of five. The
+one that PASSES on the broken model is `recall` (1.000), which is exactly why
+this failure is invisible without it - the headline metric is the one that
+notices nothing.
+
+The floors are deliberately loose and `conformance.json` records the
+observations they came from (good runs vs bad runs, per check), so the
+numbers stay auditable instead of becoming magic constants. It detects a
+collapse to zero, not a small regression: two CUDA runs a month apart moved
+`references` 0.821 -> 0.964, so an exact-match check would false-alarm.
 
 ## 7. Status
 
@@ -570,7 +581,7 @@ and never content.
 - [ ] Rebuild the box's tool image from `fix/per-profile-request-timeout`
       so the re-runs record provenance
 - [ ] Report field means WITH fill_rate_extraction everywhere (6g)
-- [ ] Build the conformance check (6g)
+- [x] Conformance check built and verified both ways (6g)
 - [x] Primary model DECIDED: **tuned qwen2.5-1.5b**; qwen3 dropped entirely.
       The tuned qwen3 degenerates under constrained decoding (grammar forces
       it off its trained path; cleaner served free-form but still noisier and
