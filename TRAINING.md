@@ -520,8 +520,24 @@ small-sample ones. **So the rule for the thesis is not "pin the Ollama
 version", it is "serve it with the Modelfile":** changing the runtime moved
 nothing, omitting the Modelfile destroyed three fields (6f).
 
-**Cloud ceiling, finally on the same 8 reports** (`scripts/compare_models.py`,
-token_f1 except where noted, each mean with its fill rate):
+**Cloud ceiling, finally on the same 8 reports.** Regenerate with
+`python3 scripts/compare_models.py output_heldout/{qwen2.5-1.5b,mulita-qwen2.5-1.5b-v4,deepseek}`.
+token_f1 except where noted; every mean carries its fill rate in parentheses.
+
+Provenance of the columns, so the table travels with it:
+
+| | base and v4 | DeepSeek |
+| --- | --- | --- |
+| Date | 2026-09-13 | 2026-09-13 |
+| Machine | RTX 5080 box (Ubuntu 26.04, driver 595.80, CUDA 13.2) | DeepSeek API |
+| Runtime | Ollama **0.34.0**, `ollama/ollama` container, 100% GPU | `deepseek-v4-flash` profile |
+| Serving recipe | `serving/Modelfile` (weights blob `sha256-610aa2014ab4...`) | n/a |
+| Tool | MulitaMiner2 `fix/per-profile-request-timeout` | same, but extracted before `2cc5d60` |
+| Provenance in run.json | yes, `runtime` block on all 16 runs | date and profile key only |
+| Conformance | passed before scoring, all 5 checks | n/a |
+
+Reports: the 8 in `data/heldout/*/*.pdf`, 994 baseline findings. One run per
+model per report, so small deltas are indicative, not tested.
 
 | Field | base | v4 | DeepSeek |
 | --- | --: | --: | --: |
