@@ -515,10 +515,12 @@ v4 reproduced itself across a month AND an Ollama major change (0.32.15 ->
 | plugin | 0.898 | 0.848 | -0.050 |
 | recall | 0.934 | 0.942 | +0.008 |
 
-Seven of nine fields within +/-0.02. The two that moved most are the
-small-sample ones. **So the rule for the thesis is not "pin the Ollama
-version", it is "serve it with the Modelfile":** changing the runtime moved
-nothing, omitting the Modelfile destroyed three fields (6f).
+Seven of nine fields within +/-0.02, but see 6h: with run-to-run noise now
+measured at exactly zero, the two that did move (`instances` +0.079, `plugin`
+-0.050) are real effects of the runtime change, not sampling. The rule stays
+**"serve it with the Modelfile"** - omitting it destroyed three fields (6f),
+an order of magnitude worse - but "changing the runtime moved nothing" was too
+strong and is corrected in 6h.
 
 **Cloud ceiling, finally on the same 8 reports.** Regenerate with
 `python3 scripts/compare_models.py output_heldout/{qwen2.5-1.5b,mulita-qwen2.5-1.5b-v4,deepseek}`.
@@ -597,6 +599,59 @@ observations they came from (good runs vs bad runs, per check), so the
 numbers stay auditable instead of becoming magic constants. It detects a
 collapse to zero, not a small regression: two CUDA runs a month apart moved
 `references` 0.821 -> 0.964, so an exact-match check would false-alarm.
+
+## 6h. Extraction is deterministic; the runtime is what moves it (2026-09-16)
+
+Two campaigns, one conclusion: **given a fixed environment, this pipeline
+produces byte-identical output.** There is no run-to-run noise to average out.
+
+**Warm regime, 80 runs.** `mulitaminer experiment data/heldout --models
+mulita-qwen2.5-1.5b-v4 --runs 10` on the box: 10 passes over the 8 held-outs,
+6h51 continuous, 24514s active. For every report, all 10 `results.json` share
+ONE md5. Durations differ slightly between passes (Nessus 285.42 / 283.56 /
+283.53 / 283.58 ...), which is what proves they were 10 real executions and
+not cached replays. No idle window above 60s in the whole campaign, so the
+5-minute keep_alive never fired and the model stayed resident throughout.
+
+**Cold regime, 5 passes.** `ollama stop` before each, on
+`openvas_wordpress_4.9` (54 blocks): all five `results.json` at md5
+`284f6111941808cdfe2624afc789c945`. Unloading and reloading the model changes
+nothing.
+
+**It is not a caching artifact.** The server log shows `prompt eval time =
+73.97 ms / 2046 tokens` with `cached n_tokens = 4`: the whole prompt was
+recomputed, essentially nothing reused from the prompt cache (observed on a
+sample of tasks, not all ~3600 calls). The model redoes the arithmetic and
+lands on the same answer.
+
+**So the 2026-08-11 -> 2026-09-13 deltas are attributable.** Weights identical
+(blob `sha256-610aa2014ab4...`), Modelfile identical (box model ID
+`e7a4eff77f9b` unchanged across the container swap), hardware identical. The
+tool changed by six commits, all inert for extraction: `0bf2850` lowered the
+deadline 600s -> 120s but NO call in either campaign came within range (0
+timeout warnings on both sides), `9c827d5` only centralised values that were
+already 3 and 0.7, and the rest is comments, display, or provenance written
+after extraction. What is left is **Ollama 0.32.15 -> 0.34.0**, which accounts
+for `instances` +0.079 and `plugin` -0.050.
+
+**Consequences:**
+
+- The RESULTADOS.md limitation "one run per model, no confidence intervals"
+  should be replaced, not softened. There is nothing to put an interval
+  around. The honest statement is that extraction is deterministic given a
+  fixed environment, and that the environment must therefore be declared.
+- Single-run comparisons **within one environment** are exact. The v2 vs v4
+  gap measured on 2026-08-11 (`cvss` 0.790 vs 0.568, `instances` 0.840 vs
+  0.658) is real, not noise. Re-running v2 is still worth 42 minutes, but for
+  a different reason: to compare both under the CURRENT runtime, since 0.34.0
+  moved `instances` for v4.
+- The failure modes are deterministic too. All five cold passes dropped the
+  same `block_id 15` duplicate and the same block 16. The near-clone block_id
+  confusion is systematic model behaviour, not luck, which is what makes the
+  v5 id-discipline idea (6c) an addressable defect.
+- Within a fixed environment an exact-match conformance check would work. The
+  loose floors in `serving/conformance.json` stay right, because the check
+  must survive a runtime upgrade.
 
 ## 7. Status
 
