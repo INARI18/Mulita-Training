@@ -772,6 +772,15 @@ holds, and fills `cvss` in 31% of cases against a gold of 58%.
 - [ ] Re-run arm 3 (CPU only) per 6g - measure one report first
 - [ ] Rebuild the box's tool image from `fix/per-profile-request-timeout`
       so the re-runs record provenance
+- [ ] Deterministic post-pass for cvss/port/protocol (tool side). Confirmed in
+      6i: `extraction.py:53` forces only `host` from the block
+      (`model_validate({**data, "host": block.host})`), so the LLM is asked to
+      echo back `port` and `protocol` that segmentation already captured and
+      renders into the prompt, and `cvss` that sits verbatim in the block
+      header. It fills cvss in 31% of findings against a gold of 58%. A
+      ~20-line pass guarantees these for every model; the trade is that they
+      stop measuring the LLM in comparative tables, so keep the v1-v4 series
+      as the before-the-annotator record
 - [x] Report field means WITH fill_rate_extraction everywhere: the
       evaluate summary table (MulitaMiner2 `1469e4a`) and
       `scripts/compare_models.py`
