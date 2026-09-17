@@ -821,6 +821,45 @@ builder, none to the recipe:
 3. **Adversarial packing** (already in 6c): build some chunks from near-clone
    sibling blocks, practising the bwapp failure case.
 
+**Three-way comparison and the decision (2026-09-17).** Same model, same
+machine, `openvas_wordpress_4.9`, only the packing changes:
+
+| | 4 per chunk | 2 per chunk | 1 per chunk |
+| --- | --: | --: | --: |
+| recall | 0.865 | **1.000** | 1.000 |
+| precision | 0.833 | 0.963 | 0.981 |
+| duration | 2558s | **1187s** | 1411s |
+| calls | 27 | 30 | 53 |
+| input tokens | 84648 | 96119 | 137954 |
+| output tokens | 33937 | **24641** | 25198 |
+| description | 0.378 | 0.558 | 0.635 |
+| solution | 0.382 | 0.488 | 0.537 |
+| references | 0.385 | 0.543 | 0.543 |
+| impact | 0.333 | **0.571** | 0.429 |
+| insight | **0.683** | 0.611 | 0.528 |
+| cvss | **0.644** | 0.577 | 0.462 |
+
+Two is the fastest of the three and reaches recall 1.000 with 30% fewer input
+tokens than one. `insight` and `cvss` decline **monotonically** across all
+three points, which upgrades them from two isolated observations to a
+dose-response curve: real, and still unexplained.
+
+**SHIPPED: OpenVAS `max_vulns_per_chunk` 4 -> 2** (MulitaMiner2 branch
+`fix/openvas-chunk-size`, `57298d8`), with the rationale and the declared cost
+written into `SCANNER_CONFIGS.md` in place of "empirical calibration". The
+change also uncovered a coupling: four extraction tests loaded the shipped
+openvas config, so a calibration value broke tests of retry logic. They now
+pin their own chunk size.
+
+**Consequence: the comparison table must be re-run.** Its three columns (base,
+v4, DeepSeek) were all measured at 4 per chunk. Mixing them with a 2-per-chunk
+run would compare models AND configs at once. DeepSeek re-runs too, at the
+same setting: the methodology declares "same pipeline and prompts for all
+models", and a per-model chunk size would invite the question of whether the
+cloud model was tuned as carefully. Cost is roughly unchanged (~$0.48 against
+$0.4723) because input is half the price of output and output falls as input
+rises. Box time: about 40 min per local model.
+
 **Architecture question, open, for Bia to decide.** `max_vulns_per_chunk` is a
 property of the SCANNER config, but the right value depends on the pair
 scanner x model: at 4 per chunk on the same report, DeepSeek fills
@@ -889,8 +928,10 @@ became available with `1469e4a` and `scripts/compare_models.py`.
 - [x] Serving-backend divergence (6f): RESOLVED, it was the Modelfile
       TEMPLATE, not the backend; recipe committed at `serving/Modelfile`
 - [x] Re-run arm 1 (RTX 5080, CUDA) per 6g, base + v4, 8 held-outs
-- [ ] Lower OpenVAS `max_vulns_per_chunk` in the tool (6j). Bia chose 2;
-      4 and 1 are measured, 2 is being tested before the config changes
+- [x] Lower OpenVAS `max_vulns_per_chunk` 4 -> 2 (6j), MulitaMiner2 `57298d8`
+- [ ] Re-run the comparison table at 2 per chunk: base + v4 on the box
+      (~40 min each) and DeepSeek on the API (~$0.48). Until then the shipped
+      config and the published table disagree (6j)
 - [ ] v5: shuffled block order + varied chunk size + adversarial packing in
       the dataset builder (6j). The ONLY defect it targets is block_id
       discipline; the omission is a serving-config fix
