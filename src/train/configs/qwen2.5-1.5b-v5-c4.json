@@ -1,0 +1,12 @@
+{
+  "name": "mulita-qwen2.5-1.5b-v5-c4",
+  "base_model": "unsloth/Qwen2.5-1.5B-Instruct",
+  "max_seq_len": 12288,
+  "lora_r": 32,
+  "lora_alpha": 32,
+  "batch_size": 1,
+  "grad_accum": 16,
+  "epochs": 2,
+  "lr": 0.0002,
+  "_note": "v5 = v4 recipe, unchanged, on a shuffled blocks, OpenVAS packed 4 per chunk (same packing as v4). The ONLY difference from v4 is the dataset; lora_r/alpha, epochs, lr and batch are identical so the block-order effect is isolated. See TRAINING.md 6j."
+}
