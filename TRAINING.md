@@ -653,6 +653,70 @@ for `instances` +0.079 and `plugin` -0.050.
   loose floors in `serving/conformance.json` stay right, because the check
   must survive a runtime upgrade.
 
+## 6i. Why v4 omits: fill-rate analysis (2026-09-17)
+
+Field means hid this because they are computed only over pairs the model
+answered. Comparing `fill_rate_extraction` against `fill_rate_baseline` from
+the same evaluation.json (same denominator, 8 held-outs, 2026-09-13 runs):
+
+| Field | gold | v4 | DeepSeek | v4 vs gold |
+| --- | --: | --: | --: | --: |
+| description | 99% | 87% | 100% | -13 |
+| solution | 79% | 66% | 94% | -13 |
+| insight | 86% | 57% | 86% | **-28** |
+| impact | 38% | 30% | 52% | -8 |
+| detection_result | 97% | 84% | 97% | -13 |
+| references | 61% | 49% | 63% | -12 |
+| instances | 100% | 91% | 100% | -9 |
+| cvss | 58% | 31% | 59% | **-26** |
+| port | 83% | 67% | 86% | -16 |
+
+**DeepSeek tracks the gold almost exactly** on every field (100 vs 99, 86 vs
+86, 97 vs 97, 63 vs 61, 100 vs 100). That is the reference behaviour. **v4
+under-fills every single field**, by 8 to 28 points. The omission is uniform,
+which suggests one mechanism rather than nine field-specific problems.
+
+(An earlier draft of this analysis compared the model against the TRAINING
+gold fill rates in `dataset_report.md` and concluded the model was faithfully
+reproducing its training distribution. That comparison was wrong: different
+report set, different denominator. The table above is the correct one.)
+
+**Where the omission lives.** Joining `results.json` with the baseline xlsx
+for `references`, per report:
+
+| Report | omitted | gold has | rate |
+| --- | --: | --: | --: |
+| openvas_raesene_bwapp (246 blocks) | 94 | 187 | 50% |
+| openvas_wordpress_4.9 (54 blocks) | 22 | 35 | 63% |
+| Qualys_VulnLab_scan-b (419 blocks) | 3 | 198 | 2% |
+| Nessus_VulnLab_scan-b (268 blocks) | 0 | 120 | 0% |
+| openvas_bkimminich_juice-shop (18 blocks) | 0 | 12 | 0% |
+| the 3 ZAP | 0 | 22 | 0% |
+
+Not a weakness of the field: a weakness on **large OpenVAS reports**. The
+small OpenVAS report omits nothing; Qualys, at 419 blocks, omits 2%. And the
+model almost never fabricates: 2 invented references in 936 pairs.
+
+**Hypothesis (untested): multi-block chunk dilution.** OpenVAS packs 4
+findings per chunk, the most of any scanner, and the two failing reports are
+the large ones. This is the same mechanism 6b suspected for the cvss-null
+anomaly, and `cvss` is the second-worst field here (-26). If later items in a
+chunk lose fields, both are one defect.
+
+**It could not be tested with the artifacts on hand:** `block_id` does not
+survive consolidation into `results.json`, so a record cannot be mapped back
+to its position inside its chunk. The test is a `--debug` run (which dumps
+chunk composition) on `openvas_wordpress_4.9`, about 4 minutes, then checking
+whether the omission rate rises with position in the chunk. If it does, the
+v5 lever is the packing, not the epochs.
+
+**cvss and port are not pipeline-filled today.** `extraction.py:53` forces
+only `host` from the block (`model_validate({**data, "host": block.host})`);
+everything else comes from the LLM, including `port` and `protocol`, which
+segmentation already captured into the block context and renders into the
+prompt. The model is being asked to echo back data the pipeline already
+holds, and fills `cvss` in 31% of cases against a gold of 58%.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
