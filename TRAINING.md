@@ -757,12 +757,86 @@ one line of scanner config rather than a v5 retrain.
 0.528 and `cvss` 0.644 -> 0.462. No mechanism proposed. This needs
 understanding before the shipped config changes.
 
-**Caveats.** One report (54 blocks), one environment. The local 4-per-chunk
-baseline tracks the box within a few points on this report (description 0.378
-vs 0.415, insight 0.683 vs 0.696, references 0.385 vs 0.371) but not exactly
-as it did on ZAP_JBoss7, so the internal comparison is sound and the absolute
-numbers are not transferable. Validation pending on
-`openvas_raesene_bwapp` (246 blocks, the worst case) and on the box.
+**Confirmed on the worst case.** `openvas_raesene_bwapp` (246 blocks), on the
+box, 4 per chunk (2026-09-13) vs 1 per chunk (2026-09-17):
+
+| | 4 per chunk | 1 per chunk |
+| --- | --: | --: |
+| recall | 0.906 | **1.000** |
+| precision | 0.802 | **0.884** |
+| duration | 952s | **500s** |
+| completion tokens | 206996 | **155341** |
+| prompt tokens | 459922 | 676235 |
+| log_method | 0.226 | 0.762 |
+| impact | 0.320 | 0.683 |
+| description | 0.407 | 0.741 |
+| solution | 0.425 | 0.721 |
+| references | 0.428 | 0.707 |
+| detection_result | 0.715 | 0.952 |
+| detection_method | 0.847 | 0.951 |
+| severity | 0.938 | 0.991 |
+| insight | 0.657 | **0.553** |
+| cvss | 0.500 | **0.439** |
+
+Ten of twelve fields improve, several by more than 0.3, on the hardest report
+in the benchmark. `insight` and `cvss` regress on BOTH reports, same
+direction, similar size (wordpress -0.155/-0.182, bwapp -0.104/-0.061), so it
+is reproducible and **unexplained**. `cvss` is moot if the deterministic
+post-pass lands (it sits in the block header); `insight` is the real cost of
+the change and should be declared.
+
+**But smaller chunks do NOT fix the block_id defect.** On bwapp at 1 block per
+chunk the drops barely move (75 -> 67) and 68 warnings remain. Classifying the
+40 pasted `unknown block_id` errors:
+
+| Pattern | Count |
+| --- | --: |
+| id = chunk + 1 (off by one) | 24 |
+| id = 0 or 1 (index within the chunk, not the real id) | 14 |
+| id = chunk - 1 | 2 |
+
+**With a single block in front of it the model still gets the id wrong.** It
+is not reading `block_id` from the header, it is predicting it from position:
+training chunks always number blocks in ascending order, so it learned to
+count instead of to copy. This is exactly the positional shortcut 6c's v5
+candidate targets, now with direct evidence instead of inference.
+
+**Two independent defects, two different fixes:**
+
+| Defect | Fix | Evidence |
+| --- | --- | --- |
+| Field omission | smaller `max_vulns_per_chunk` (serving config) | validated on 54 and 246 block reports |
+| block_id discipline | v5: shuffled block order in training | 67 errors persist at 1 block per call |
+
+**v5 design (approved by Bia, 2026-09-17).** Three changes to the dataset
+builder, none to the recipe:
+
+1. **Shuffle block order inside training chunks.** Kills the positional
+   shortcut; forces ids to bind to content.
+2. **Vary chunk size across examples** (1, 2, 3, 4) instead of always packing
+   at the maximum. `max_vulns_per_chunk` is a knob the tool exposes to users,
+   so the model must be robust across its range. Training only at one size
+   would recreate the v1 train/serve mismatch, and the v4 mixed dataset is
+   precisely why serving at 1 per chunk works today.
+3. **Adversarial packing** (already in 6c): build some chunks from near-clone
+   sibling blocks, practising the bwapp failure case.
+
+**Architecture question, open, for Bia to decide.** `max_vulns_per_chunk` is a
+property of the SCANNER config, but the right value depends on the pair
+scanner x model: at 4 per chunk on the same report, DeepSeek fills
+`description` 100% and the tuned 1.5B fills 87%. A cloud model does not need
+the smaller chunk and pays for it in prompt tokens (+47% on bwapp). Whether
+the value should be overridable per model profile is a tool design decision,
+not recorded here as a plan.
+
+**Why the current values looked right.** `SCANNER_CONFIGS.md` documents them
+only as "empirical calibration", and the history says what against: `be6cf36`
+set Tenable to 1 because 3 per chunk TIMED OUT, and `2ac492e` reverted it
+because "the size was never the cause". The criterion was survival - the
+largest chunk that does not break. OpenVAS at 4 never broke: zero timeouts,
+zero fatal JSON errors. It was silently costing 0.33 of `description` on
+bwapp. The criterion that exposes it (field fill rate against the gold) only
+became available with `1469e4a` and `scripts/compare_models.py`.
 
 ## 7. Status
 
@@ -815,6 +889,11 @@ numbers are not transferable. Validation pending on
 - [x] Serving-backend divergence (6f): RESOLVED, it was the Modelfile
       TEMPLATE, not the backend; recipe committed at `serving/Modelfile`
 - [x] Re-run arm 1 (RTX 5080, CUDA) per 6g, base + v4, 8 held-outs
+- [ ] Lower OpenVAS `max_vulns_per_chunk` in the tool (6j). Bia chose 2;
+      4 and 1 are measured, 2 is being tested before the config changes
+- [ ] v5: shuffled block order + varied chunk size + adversarial packing in
+      the dataset builder (6j). The ONLY defect it targets is block_id
+      discipline; the omission is a serving-config fix
 - [ ] Re-run arm 2 (RX 6600, Vulkan) per 6g - Bia, later
 - [ ] Re-run arm 3 (CPU only) per 6g - measure one report first
 - [ ] Rebuild the box's tool image from `fix/per-profile-request-timeout`
