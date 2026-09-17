@@ -717,6 +717,53 @@ segmentation already captured into the block context and renders into the
 prompt. The model is being asked to echo back data the pipeline already
 holds, and fills `cvss` in 31% of cases against a gold of 58%.
 
+## 6j. Chunk size, not the recipe, drives the omission (2026-09-17, partial)
+
+Following 6i's lead. A `--debug` run dumps `llm_traffic.jsonl` with each
+chunk's block list and the raw response, so the omission can be located.
+
+**The positional hypothesis is refuted.** `references` filled per position
+inside multi-block chunks on `openvas_wordpress_4.9`: 30% / 36% / 60% / 50%.
+No decline toward the end of the chunk. What did stand out was the retries,
+which send a single block: 3 of 3 filled.
+
+**Direct test.** Same report, same model, same machine, only
+`max_vulns_per_chunk` changed from 4 to 1 (via `MULITAMINER_SCANNERS_DIR`, no
+repo change; the override dir needs a `prompts/` folder beside it):
+
+| | 4 per chunk | 1 per chunk |
+| --- | --: | --: |
+| recall | 0.865 | **1.000** |
+| false positives | 9 | **1** |
+| duration | 2558s | **1411s** |
+| calls | 27 | 53 |
+| description | 0.378 | 0.635 |
+| references | 0.385 | 0.543 |
+| solution | 0.382 | 0.537 |
+| impact | 0.333 | 0.429 |
+| detection_result | 0.933 | 1.000 |
+| port | 0.800 | 0.827 |
+| insight | 0.683 | **0.528** |
+| cvss | 0.644 | **0.462** |
+
+Recall goes to 1.000, false positives drop 9 -> 1, and it is **45% faster
+despite twice the calls**: multi-block chunks generate long answers and
+trigger retries, single blocks answer short and land first time.
+
+**So the omission is a packing problem, not a recipe problem**, and the fix is
+one line of scanner config rather than a v5 retrain.
+
+**Two fields moved the other way and are unexplained:** `insight` 0.683 ->
+0.528 and `cvss` 0.644 -> 0.462. No mechanism proposed. This needs
+understanding before the shipped config changes.
+
+**Caveats.** One report (54 blocks), one environment. The local 4-per-chunk
+baseline tracks the box within a few points on this report (description 0.378
+vs 0.415, insight 0.683 vs 0.696, references 0.385 vs 0.371) but not exactly
+as it did on ZAP_JBoss7, so the internal comparison is sound and the absolute
+numbers are not transferable. Validation pending on
+`openvas_raesene_bwapp` (246 blocks, the worst case) and on the box.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
