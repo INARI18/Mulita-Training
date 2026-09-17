@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import random
 import sys
 from collections import Counter
 from pathlib import Path
@@ -73,7 +74,8 @@ def eval_identity(repo: Path) -> tuple[set[str], set[str]]:
 
 
 def assemble(sources, out_dir: Path, val_frac: float, cmin: float,
-             shape: str = "chunked") -> None:
+             shape: str = "chunked", shuffle_blocks: bool = False,
+             seed: int = 0) -> None:
     deny_stems, deny_hosts = eval_identity(REPO)
     tf_cache: dict[str, list[str]] = {}
     prompts: dict[str, str] = {}
@@ -109,6 +111,10 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float,
     # own chunker); "single" = one block per call (items of length 1);
     # "mixed" = both, interleaved by the trainer's shuffle
     n_records = 0
+    # Chunks are packed in ascending block_id, so the model can predict the id
+    # from position instead of reading it. Shuffling the presentation order
+    # keeps every id attached to its own content and breaks that shortcut.
+    rng = random.Random(seed)
 
     def emit(scanner, source_id, prompt, blocks, targets):
         examples.append({
@@ -136,15 +142,21 @@ def assemble(sources, out_dir: Path, val_frac: float, cmin: float,
                 token_budget=TRAIN_TOKEN_BUDGET,
             )
             for chunk in chunks:
-                emit(scanner, source_id, prompt, chunk.blocks,
-                     [by_id[b.id].target for b in chunk.blocks])
+                blocks = list(chunk.blocks)
+                if shuffle_blocks:
+                    rng.shuffle(blocks)
+                emit(scanner, source_id, prompt, blocks,
+                     [by_id[b.id].target for b in blocks])
 
     _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
-           deny_stems, deny_hosts, n_records)
+           deny_stems, deny_hosts, n_records,
+           build={"shape": shape, "shuffle_blocks": shuffle_blocks, "seed": seed,
+                  "max_vulns_per_chunk": {s: get_scanner(s).max_vulns_per_chunk
+                                          for s in sorted(prompts)}})
 
 
 def _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
-           deny_stems, deny_hosts, n_records):
+           deny_stems, deny_hosts, n_records, build=None):
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "prompts").mkdir(exist_ok=True)
     prompt_hashes = {}
@@ -177,6 +189,8 @@ def _write(out_dir, examples, val_frac, dropped, denied, trimmed, fill, prompts,
         f"- contamination guard: {len(deny_stems)} stems, {len(deny_hosts)} eval-only hosts; "
         f"denied examples: {dict(denied) or 0}",
         f"- prompt snapshots: {prompt_hashes}",
+        f"- build: {build}",   # shape, shuffle, seed, chunk sizes in force
+
         "", "## Field fill rate", "",
         *[f"- {f}: {n} ({n / max(n_records, 1):.0%})" for f, n in fill.most_common()],
     ]
@@ -200,6 +214,9 @@ def main() -> None:
     parser.add_argument("--sources", default="all",
                         help="'all' or comma list of: " + ",".join(sorted(SOURCES)))
     parser.add_argument("--shape", default="chunked", choices=["single", "chunked", "mixed"])
+    parser.add_argument("--shuffle-blocks", action="store_true",
+                        help="randomise block order inside each training chunk")
+    parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", type=Path, default=REPO / "data" / "dataset")
     parser.add_argument("--val-frac", type=float, default=0.1)
     args = parser.parse_args()
@@ -207,7 +224,7 @@ def main() -> None:
     factories = default_sources()
     names = sorted(factories) if args.sources == "all" else args.sources.split(",")
     assemble([factories[n]() for n in names], args.out, args.val_frac,
-             CONTAINMENT_MIN, args.shape)
+             CONTAINMENT_MIN, args.shape, args.shuffle_blocks, args.seed)
 
 
 if __name__ == "__main__":
