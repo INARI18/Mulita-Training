@@ -877,6 +877,116 @@ zero fatal JSON errors. It was silently costing 0.33 of `description` on
 bwapp. The criterion that exposes it (field fill rate against the gold) only
 became available with `1469e4a` and `scripts/compare_models.py`.
 
+## 6k. v5 (shuffled block order): NEGATIVE (2026-09-19)
+
+Two candidates, both the v4 recipe unchanged (`lora_r` 32, 2 epochs, lr 2e-4),
+differing only in the dataset: `v5-c4` shuffles block order inside chunks with
+OpenVAS packed at 4 (otherwise identical to v4's dataset: same 8740 chunks,
+6841 records, same counts, same prompt hashes); `v5-c2` shuffles with OpenVAS
+packed at 2.
+
+**Validation loss confirmed the mechanism.** Same data, same recipe:
+
+| Model | eval_loss |
+| --- | --: |
+| v4 (unshuffled, chunks of 4) | 0.00081 |
+| v5-c4 (shuffled, chunks of 4) | **0.00118** |
+| v5-c2 (shuffled, chunks of 2) | 0.00064 |
+
+Shuffling made the task measurably harder, which is what a removed shortcut
+looks like. Loss at this level (99.9% confidence per token) does not predict
+field quality, so this is direction only.
+
+**But the payoff was small and the cost was large.** On `bwapp`, model against
+model at the same packing:
+
+| | unknown_id | duplicate_id | sum |
+| --- | --: | --: | --: |
+| v4 @4 | 69 | 3 | 72 |
+| v5-c4 @4 | 55 | 7 | **62** |
+| v5-c4 @2 | 31 | 7 | 38 |
+
+A 14% reduction in the defect it was built to fix. The drop to 38 comes mostly
+from the smaller packing, which was already known and needs no retrain.
+
+Field quality on the 8 held-outs:
+
+| Field | v4 @4 | v5-c4 @4 | v5-c4 @2 |
+| --- | --: | --: | --: |
+| description | 0.827 | 0.838 | 0.849 |
+| solution | 0.828 | 0.847 | 0.849 |
+| impact | 0.773 | 0.818 | 0.805 |
+| references | 0.748 | 0.771 | 0.786 |
+| instances | 0.737 | **0.842** | 0.842 |
+| cvss | 0.506 | 0.538 | 0.594 |
+| recall | 0.942 | 0.946 | 0.965 |
+| **insight** | **0.655** | **0.255** | 0.303 |
+
+Everything moved slightly up, `instances` moved up a lot, and `insight`
+collapsed by 0.40 in the field that was already the worst gap against the
+cloud (0.655 against DeepSeek's 0.999). No mechanism proposed. Trading that
+for 14% of the id defect is not worth it.
+
+**`v5-c2` is broken outright.** Zero records on all 8 held-outs, in BOTH
+packings. Not wrong ids: `unknown_id` 0, `duplicate_id` 0, only `unrecovered`.
+It emits ~19 completion tokens per call against v5-c4's ~4500 on the same
+report, i.e. an empty item list. It also has the LOWEST loss of the three, so
+this is a degeneration at inference, not a failed fit. Uninvestigated.
+
+**VERDICT: v4 remains champion.** v5 is recorded as a measured negative
+result. The real gain of this line of work was the serving config
+(`max_vulns_per_chunk`), which cost no GPU at all.
+
+## 6l. Chunk-size robustness is inverse to chunk-size training (2026-09-19)
+
+Hypothesis under test: the model does badly at 4 blocks per call because it
+sat in that context for only ~15% of training. The v3/v4 dataset is bimodal:
+
+| Blocks per example | v3 (= v4's dataset) |
+| --- | --: |
+| 1 | 79.0% |
+| 2 | 0.8% |
+| 3 | 5.4% |
+| 4 | 14.8% |
+
+(Note 6c's distinction: by EXAMPLES singles are 79%, by GRADIENT MASS the two
+shapes are 50/50. The 79% governs how often the model sits in a 1-block
+context, which is what this hypothesis is about.)
+
+Free test, no training: v1 was trained on single blocks ONLY, v2 on chunks
+ONLY. Predicted: v1 collapses as the chunk grows, v2 stays flat.
+
+`openvas_wordpress_4.9`, on the box, same session:
+
+| description | @1 | @2 | @4 | drop 1->4 |
+| --- | --: | --: | --: | --: |
+| **v1** (single only) | 1.000 | 0.960 | 0.911 | **-0.089** |
+| **v2** (chunked only) | 0.596 | 0.308 | 0.175 | **-0.421** |
+| v4 (mixed) | 0.745 | 0.620 | 0.415 | -0.330 |
+
+| solution | @1 | @2 | @4 | drop |
+| --- | --: | --: | --: | --: |
+| v1 | 1.000 | 1.000 | 0.882 | -0.118 |
+| v2 | 0.936 | 0.630 | 0.517 | -0.419 |
+| v4 | 0.675 | 0.564 | 0.367 | -0.308 |
+
+**REFUTED, and inverted.** The model trained ONLY on single blocks is the most
+robust to large chunks and the best in absolute terms; the one trained ONLY on
+chunks is the worst on both counts. More chunk practice made the model WORSE
+at chunks.
+
+This kills the v6 design that was about to be written (fill the distribution
+with more multi-block examples). If anything the arrow points the other way.
+
+What it does NOT license: v1 is not simply better. Recall at 4 per chunk is v2
+0.942, v1 0.865, v4 0.788, and 6b records v1 as the worst of the series on the
+structured fields (cvss 0.346, instances 0.423, insight 0.150). This is the
+v1/v2 trade of 6c, now measured along the chunk-size axis: v1 is content, v2
+is coverage, v4 is the compromise.
+
+Caveat: one report. Repeat on `openvas_raesene_bwapp` before designing
+anything on it.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
@@ -932,9 +1042,10 @@ became available with `1469e4a` and `scripts/compare_models.py`.
 - [ ] Re-run the comparison table at 2 per chunk: base + v4 on the box
       (~40 min each) and DeepSeek on the API (~$0.48). Until then the shipped
       config and the published table disagree (6j)
-- [ ] v5: shuffled block order + varied chunk size + adversarial packing in
-      the dataset builder (6j). The ONLY defect it targets is block_id
-      discipline; the omission is a serving-config fix
+- [x] v5 trained and evaluated: NEGATIVE, v4 stays champion (6k)
+- [ ] Unexplained, both from 6k/6l: why shuffling collapses `insight` by 0.40,
+      and why v5-c2 emits empty item lists despite the best loss of the series
+- [ ] Repeat the 6l chunk-size curve on `openvas_raesene_bwapp` before any v6
 - [ ] Re-run arm 2 (RX 6600, Vulkan) per 6g - Bia, later
 - [ ] Re-run arm 3 (CPU only) per 6g - measure one report first
 - [ ] Rebuild the box's tool image from `fix/per-profile-request-timeout`
