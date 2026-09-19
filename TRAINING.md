@@ -1009,6 +1009,48 @@ is coverage, v4 is the compromise.
 Caveat: one report. Repeat on `openvas_raesene_bwapp` before designing
 anything on it.
 
+## 6m. The tuned model is extremely sensitive to its system prompt (2026-09-19)
+
+The prompt IS the system message the model was fine-tuned on, and
+`dataset_report.md` records its hash. Editing it puts serving off the
+training distribution, the same class of failure as the Modelfile in 6f.
+
+Measured. One sentence added to the OpenVAS prompt (93 lines), forbidding the
+tool-generated `### BLOCK` header as a Name, targeting the 46 header-in-Name
+inventions of 6j. Same model, same machine, same packing, only the prompt
+differs:
+
+| | old prompt | new prompt | delta |
+| --- | --: | --: | --: |
+| header in Name | 0 | 0 | - |
+| recall | 1.000 | 1.000 | = |
+| precision | 0.963 | 0.963 | = |
+| impact | 0.571 | 0.214 | **-0.357** |
+| solution | 0.488 | 0.220 | -0.268 |
+| references | 0.543 | 0.326 | -0.217 |
+| description | 0.558 | 0.346 | -0.211 |
+| insight | 0.611 | 0.806 | +0.195 |
+| cvss | 0.577 | 0.750 | +0.173 |
+| port | 0.827 | 1.000 | +0.173 |
+
+**One sentence moved six fields by 0.17 to 0.36.** Reverted; the four prompt
+hashes match `dataset_report.md` again.
+
+Two things worth keeping:
+
+- **The test was aimed at the wrong report.** `wordpress` already had zero
+  header-in-Name cases; the 14 remaining ones live in the other reports. The
+  change could not have shown a gain here, which is a measurement design
+  error, not a property of the change.
+- **The direction is the v1/v2 seesaw again.** Prose fields down, `cvss` and
+  `insight` up: one sentence moved the model along the same axis that
+  separates a single-block-trained model from a chunk-trained one. Whatever
+  that axis is, the system prompt reaches it.
+
+**Rule this establishes: the prompt is part of the trained artifact.** It
+belongs with the weights and the Modelfile in `serving/`, not with the tool's
+editable config, and any change to it needs a retrain or a full re-measure.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
