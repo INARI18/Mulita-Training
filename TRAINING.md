@@ -710,12 +710,34 @@ chunk composition) on `openvas_wordpress_4.9`, about 4 minutes, then checking
 whether the omission rate rises with position in the chunk. If it does, the
 v5 lever is the packing, not the epochs.
 
-**cvss and port are not pipeline-filled today.** `extraction.py:53` forces
-only `host` from the block (`model_validate({**data, "host": block.host})`);
-everything else comes from the LLM, including `port` and `protocol`, which
-segmentation already captured into the block context and renders into the
-prompt. The model is being asked to echo back data the pipeline already
-holds, and fills `cvss` in 31% of cases against a gold of 58%.
+**Correction (2026-09-19): `port`/`protocol` ARE already backfilled.** An
+earlier version of this paragraph said only `host` was pipeline-filled. It
+read `extraction.py:53` and stopped before line 59:
+
+```python
+if record.port is None and block.port is not None:
+    record.port = block.port
+    if block.protocol in ("tcp", "udp"):
+        record.protocol = block.protocol
+```
+
+The accurate state. Four fields captured by the same
+`context.header_patterns` mechanism, four different policies, none declared:
+
+| Field | captured | in the prompt | fills the record |
+| --- | --- | --- | --- |
+| `host` | yes | yes | ALWAYS, overrides the model |
+| `port` | yes | yes | only when the model left it empty |
+| `protocol` | yes | yes | only when empty AND tcp/udp |
+| `severity_hint` | yes | NO | NEVER (inspection only: the `segment` command and the debug dump) |
+
+So the opportunity is narrower than claimed: the backfill is a FALLBACK, not
+authoritative, so a wrong `port` from the model is kept even though
+segmentation holds the right one. `cvss` is the only one of the four that is
+genuinely not captured; capturing it needs a pattern that does not exist,
+since the OpenVAS `marker_pattern` matches the `High (CVSS: 10.0)` line but
+takes only the severity. It fills `cvss` in 31% of findings against a gold
+of 58%.
 
 ## 6j. Chunk size, not the recipe, drives the omission (2026-09-17, partial)
 
@@ -1050,15 +1072,15 @@ anything on it.
 - [ ] Re-run arm 3 (CPU only) per 6g - measure one report first
 - [ ] Rebuild the box's tool image from `fix/per-profile-request-timeout`
       so the re-runs record provenance
-- [ ] Deterministic post-pass for cvss/port/protocol (tool side). Confirmed in
-      6i: `extraction.py:53` forces only `host` from the block
-      (`model_validate({**data, "host": block.host})`), so the LLM is asked to
-      echo back `port` and `protocol` that segmentation already captured and
-      renders into the prompt, and `cvss` that sits verbatim in the block
-      header. It fills cvss in 31% of findings against a gold of 58%. A
-      ~20-line pass guarantees these for every model; the trade is that they
-      stop measuring the LLM in comparative tables, so keep the v1-v4 series
-      as the before-the-annotator record
+- [ ] Segmentation-context policy (tool side, corrected table in 6i). Four
+      fields captured by one mechanism, four undeclared policies. Make the
+      rule explicit and uniform (segmentation context wins where it has a
+      value), which means flipping `port`/`protocol` from fallback to
+      authoritative. MEASURE FIRST: check block.port against the gold before
+      letting it override the model. `cvss` is a separate case: it needs a
+      capture that does not exist, and unlike `port` (which the model already
+      gets ~0.96 right) it DOES discriminate between models (0.506 for v4
+      against 0.848 for v2), so making it deterministic costs a real signal
 - [x] Report field means WITH fill_rate_extraction everywhere: the
       evaluate summary table (MulitaMiner2 `1469e4a`) and
       `scripts/compare_models.py`
