@@ -1009,6 +1009,21 @@ is coverage, v4 is the compromise.
 Caveat: one report. Repeat on `openvas_raesene_bwapp` before designing
 anything on it.
 
+**Third independent strike against distribution matching (2026-09-20).**
+Serving at 2 per chunk MOVES AWAY from the training distribution, and
+improves anyway. Chunked training examples are 70% four-block; serving at 4
+produces four-block chunks on the first pass; chunks of 2 are 3.7% of the
+chunked examples. (An earlier draft claimed production never matched
+training. That read a `--debug` traffic dump without noticing the sink only
+records calls that parsed, so failed first-pass chunks are invisible and the
+retry ladder's 1- and 2-block calls looked like first-pass ones. Block sizes
+are also the same in both sets: median 618 tokens in training, 664 in the
+held-outs.)
+
+So what works is fewer findings per call, and the shape of the training data
+does not predict it. Still unexplained, now triply confirmed not to be
+distribution matching.
+
 ## 6m. The tuned model is extremely sensitive to its system prompt (2026-09-19)
 
 The prompt IS the system message the model was fine-tuned on, and
