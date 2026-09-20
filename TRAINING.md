@@ -1076,6 +1076,45 @@ and ZAP's +0.04 is not worth it.
 belongs with the weights and the Modelfile in `serving/`, not with the tool's
 editable config, and any change to it needs a retrain or a full re-measure.
 
+## 6n. Deterministic fix vs prompt fix, measured side by side (2026-09-20)
+
+Two changes tried in the same week, each isolated with its own A/B on the
+same model, machine and packing.
+
+**Code** (MulitaMiner2 `d64fae7`, `cb98259`): drop the OpenVAS pseudo-port
+`general` from the record whoever produced it, validate the protocol by shape
+instead of an allow-list, and un-nest the protocol backfill from the port
+condition. On `openvas_wordpress_4.9`:
+
+| Field | before | after |
+| --- | --: | --: |
+| port | 0.827 | **1.000** |
+| protocol | 0.840 | 0.843 |
+| the other 12 | unchanged to three decimals | |
+
+recall and precision identical. The port gain is the 9 `general` values on
+that report becoming empty, which is what the baseline has; fill drops 1.00
+-> 0.83 and accuracy rises, because every one of them was wrong.
+
+**Prompt** (one sentence, seven files, reverted): measured on all 8 held-outs
+on the box, 6m. It removed ZERO header-in-Name cases on any report and moved
+8 of 14 OpenVAS fields by up to 0.25.
+
+| | hit its target | side effects |
+| --- | --- | --- |
+| code change | yes, port +0.173 | none, 12 fields identical |
+| prompt change | no, 0 cases removed | 8 fields moved, up to -0.25 |
+
+The generalisation worth keeping: a deterministic change does what it says
+and nothing else, and its blast radius is knowable by reading it. A prompt
+change to a fine-tuned model is unpredictable in both directions, and this
+one did not even deliver its target.
+
+Scope of the code change: OpenVAS only. It is the only scanner whose config
+recovers a port from headers (`?P<port>` in `context.header_patterns`) and
+the only one whose output ever carried a non-numeric port (26 `general` in
+994 findings). For the other six it is a no-op by construction.
+
 ## 7. Status
 
 - [x] Multi-scanner data engine + verification (qualys/nessus/zap 100% vs xlsx)
