@@ -1047,6 +1047,31 @@ Two things worth keeping:
   separates a single-block-trained model from a chunk-trained one. Whatever
   that axis is, the system prompt reaches it.
 
+**Measured properly afterwards, on the box, all 8 held-outs, old prompt
+against new, same model and packing.** The first pass above was one report on
+the dev PC, which was not enough to revert seven prompts on.
+
+The stated goal was not met anywhere. Header-in-Name counts are IDENTICAL
+between the two prompts on every report: 1/1 Nessus, 0/0 Qualys, 0/0 on the
+three ZAP, 11/11 bwapp, 2/2 wordpress. The sentence removed no case at all.
+
+Side effects are per scanner:
+
+| Scanner | fields moving > 0.02 | direction |
+| --- | --: | --- |
+| nessus | 0 of 13 | inert |
+| zap | 3 of 7 | references +0.045, plugin +0.043, instances +0.035 |
+| qualys | 3 of 10 | port -0.147, protocol -0.143, category -0.054 |
+| openvas | 8 of 14 | solution -0.252, references -0.235, description -0.225, impact -0.209, against cvss +0.186 and insight +0.112 |
+
+OpenVAS on the box reproduces the dev-PC numbers closely (there: solution
+-0.268, references -0.217, description -0.211), which also confirms the local
+A/B was representative.
+
+Reverted everywhere, on the measurement rather than on the risk argument: a
+change that achieves nothing anywhere does not earn a train/serve mismatch,
+and ZAP's +0.04 is not worth it.
+
 **Rule this establishes: the prompt is part of the trained artifact.** It
 belongs with the weights and the Modelfile in `serving/`, not with the tool's
 editable config, and any change to it needs a retrain or a full re-measure.
