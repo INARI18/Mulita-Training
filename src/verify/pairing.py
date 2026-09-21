@@ -18,7 +18,6 @@ Run from the MulitaMiner2 repo (uses its environment):
 from __future__ import annotations
 
 import argparse
-import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -31,20 +30,11 @@ from mulitaminer.pdf_reader import extract_pdf  # noqa: E402
 from mulitaminer.scanner_engine import get_scanner  # noqa: E402
 
 from common import norm_key as norm_name  # noqa: E402
+# Same title reader the dataset builder uses: two copies drifted once and cost
+# 370 silently dropped rows, so this file must not grow its own.
+from sources.openvas.csv_source import _NVT_RE as NVT_RE, nvt_title  # noqa: E402
 
 HERE = Path(__file__).resolve().parents[2]
-
-NVT_RE = re.compile(r"^NVT:\s*(.*)$")
-# Report furniture after a wrapped NVT name: the per-host results index and
-# bare page/count lines.
-FURNITURE_RE = re.compile(r"^\d+\s+results?\b|^\d+\s*$", re.IGNORECASE)
-SECTION_RE = re.compile(
-    r"^(Summary|Impact|Solution|Vulnerability Detection Result|"
-    r"Vulnerability Insight|Vulnerability Detection Method|"
-    r"Product Detection Result|Log Method|References|Affected Software|"
-    r"OID|CVSS|Quality of Detection)\b",
-    re.IGNORECASE,
-)
 
 
 def pdf_findings(pdf_path: Path, profile) -> tuple[str | None, Counter]:
@@ -58,17 +48,9 @@ def pdf_findings(pdf_path: Path, profile) -> tuple[str | None, Counter]:
             hosts.add(block.host)
         lines = block.text.splitlines()
         for i, line in enumerate(lines):
-            m = NVT_RE.match(line.strip())
-            if not m:
+            if not NVT_RE.match(line.strip()):
                 continue
-            name = m.group(1).strip()
-            # Wrapped title: keep appending lines until a section header.
-            for cont in lines[i + 1:]:
-                cont = cont.strip()
-                if not cont or SECTION_RE.match(cont) or FURNITURE_RE.match(cont):
-                    break
-                name += " " + cont
-            names.append(norm_name(name))
+            names.append(norm_name(nvt_title(lines, i)))
             break
     host = hosts.pop() if len(hosts) == 1 else (None if not hosts else sorted(hosts)[0])
     return host, Counter(names)

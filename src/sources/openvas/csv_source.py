@@ -29,6 +29,29 @@ _SECTION_STOP_RE = re.compile(
     r"Vulnerability (Insight|Detection Method|Detection Result)|"
     r"Product [Dd]etection [Rr]esult|Quality of Detection|\[ return to)\b",
 )
+# What ends a wrapped NVT title: a section header, or report furniture (the
+# per-host results index, bare page numbers).
+_TITLE_STOP_RE = re.compile(
+    r"^(Summary|Impact|Solution|Vulnerability Detection Result|"
+    r"Vulnerability Insight|Vulnerability Detection Method|"
+    r"Product Detection Result|Log Method|References|Affected Software|"
+    r"OID|CVSS|Quality of Detection)\b",
+    re.IGNORECASE,
+)
+_FURNITURE_RE = re.compile(r"^\d+\s+results?\b|^\d+\s*$", re.IGNORECASE)
+
+
+def nvt_title(lines: list[str], i: int) -> str:
+    """The block's full NVT name starting at the `NVT:` line `i`. The PDF wraps
+    long titles, so keep appending lines until a section header; reading only
+    the first line yields a prefix that no CSV row matches."""
+    name = _NVT_RE.match(lines[i].strip()).group(1).strip()
+    for cont in lines[i + 1:]:
+        cont = cont.strip()
+        if not cont or _TITLE_STOP_RE.match(cont) or _FURNITURE_RE.match(cont):
+            break
+        name += " " + cont
+    return name
 _TEXT_FIELDS = {
     "Summary": "description",
     "Solution": "solution",
@@ -100,10 +123,10 @@ class OpenVASCsvSource:
             blocks = profile.segment(extract_pdf(pdf).text)
             index: dict[str, list] = defaultdict(list)
             for block in blocks:
-                for line in block.text.splitlines():
-                    m = _NVT_RE.match(line.strip())
-                    if m:
-                        index[norm_key(m.group(1))].append(block)
+                lines = block.text.splitlines()
+                for i, line in enumerate(lines):
+                    if _NVT_RE.match(line.strip()):
+                        index[norm_key(nvt_title(lines, i))].append(block)
                         break
             host = next((b.host for b in blocks if b.host), None)
             rows = df[df["IP"] == host] if host else df.iloc[0:0]
